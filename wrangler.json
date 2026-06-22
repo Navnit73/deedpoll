@@ -1,5 +1,7 @@
 {
   "name": "deedpoll",
-  "pages_build_output_dir": "out",
+  "assets": {
+    "directory": "out"
+  },
   "compatibility_date": "2024-03-20"
 }
