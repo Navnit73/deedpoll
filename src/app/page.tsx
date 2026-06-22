@@ -339,25 +339,25 @@ export default function Home() {
           "@graph": [
             {
               "@type": "Organization",
-              "@id": "https://www.deedpolluk.uk/#organization",
+              "@id": "https://deedpolluk.uk/#organization",
               "name": "Deed Poll UK",
-              "url": "https://www.deedpolluk.uk",
+              "url": "https://deedpolluk.uk",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://www.deedpolluk.uk/logo.png"
+                "url": "https://deedpolluk.uk/logo.png"
               }
             },
             {
               "@type": "WebSite",
-              "@id": "https://www.deedpolluk.uk/#website",
-              "url": "https://www.deedpolluk.uk",
+              "@id": "https://deedpolluk.uk/#website",
+              "url": "https://deedpolluk.uk",
               "name": "Deed Poll UK",
               "publisher": {
-                "@id": "https://www.deedpolluk.uk/#organization"
+                "@id": "https://deedpolluk.uk/#organization"
               },
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://www.deedpolluk.uk/search?q={search_term_string}",
+                "target": "https://deedpolluk.uk/search?q={search_term_string}",
                 "query-input": "required name=search_term_string"
               }
             }
