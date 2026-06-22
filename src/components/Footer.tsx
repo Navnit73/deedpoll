@@ -18,7 +18,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li><Link href="/faq" className="hover:underline underline-offset-2">Frequently Asked Questions</Link></li>
               <li><Link href="/my-deed-poll-was-rejected" className="hover:underline underline-offset-2">Rejected Deed Polls Guide</Link></li>
-              <li><a href="mailto:dan@DeedPollUK.co.uk" className="hover:underline underline-offset-2">Contact via Email</a></li>
+              <li><a href="mailto:dan@DeedPollUK.uk" className="hover:underline underline-offset-2">Contact via Email</a></li>
             </ul>
           </div>
           <div>

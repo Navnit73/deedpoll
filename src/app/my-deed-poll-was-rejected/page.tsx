@@ -14,7 +14,7 @@ export default function Rejection() {
       <div className="text-gray-800 mb-12 text-lg space-y-4">
         <p>
           Sometimes, an organisation might reject a deed poll and refuse to update their records with your
-          new name. This is true regardless of whether it's one created by DeedPollUK.co.uk or one
+          new name. This is true regardless of whether it's one created by DeedPollUK.uk or one
           produced by anybody else.
         </p>
         <p>
