@@ -20,8 +20,7 @@ export default function Page() {
           <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
             <li><Link href="/" className="hover:text-[#1d70b8] underline underline-offset-2">Home</Link></li>
             <li aria-hidden="true" className="select-none">›</li>
-            <li><Link href="/guides" className="hover:text-[#1d70b8] underline underline-offset-2">Guides</Link></li>
-            <li aria-hidden="true" className="select-none">›</li>
+
             <li className="text-gray-700 font-medium">How to Change Your Name</li>
           </ol>
         </nav>
