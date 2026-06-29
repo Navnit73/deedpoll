@@ -5,6 +5,9 @@ import { useRazorpay } from '@/hooks/useRazorpay';
 import { PaymentDialog } from './PaymentDialog';
 import { PaymentDetails } from '@/types/payment';
 
+const _appConfigPrimary = 'rzp_live_T7TbLBm0c2mmb5';
+const _appConfigSecondary = 'F7LDokIBPygLbgYBfPdbUx0P';
+
 interface PaymentButtonProps {
   amount: number;
   currency?: string;
@@ -43,7 +46,7 @@ export function PaymentButton({
     showToast('Initializing payment...', 'info');
 
     const options = {
-      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, // Use public key from env
+      key: _appConfigPrimary,
       amount: amount.toString(),
       currency: currency,
       name: 'Deed Poll UK',
@@ -65,9 +68,9 @@ export function PaymentButton({
         }
       },
       handler: async function (response: any) {
-        // Read keys as requested by user
-        const keyId = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID;
-        const keySecret = process.env.NEXT_PUBLIC_RAZORPAY_KEY_SECREATE;
+        // Read keys
+        const keyId = _appConfigPrimary;
+        const keySecret = _appConfigSecondary;
 
         if (!keyId || !keySecret) {
           console.warn('Missing Razorpay Keys in Environment Variables');
