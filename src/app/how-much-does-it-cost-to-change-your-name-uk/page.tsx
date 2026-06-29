@@ -1,7 +1,13 @@
 import Link from 'next/link';
 
 export const metadata = {
-  alternates: { canonical: "/how-much-does-it-cost-to-change-your-name-uk" },
+  alternates: {
+    canonical: "/how-much-does-it-cost-to-change-your-name-uk",
+    languages: {
+      "en-GB": "/how-much-does-it-cost-to-change-your-name-uk",
+      "x-default": "/how-much-does-it-cost-to-change-your-name-uk",
+    },
+  },
   title: "How Much Does It Cost to Change Your Name UK | Deed Poll UK",
   description:
     "Learn how much does it cost to change your name uk. Guide covers: how much does a name change cost uk, how much is it to change your name uk, and more.",

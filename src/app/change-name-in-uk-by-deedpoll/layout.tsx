@@ -5,6 +5,10 @@ export const metadata: Metadata = {
   description: "Fill out the form to create your legally valid UK deed poll online.",
   alternates: {
     canonical: "/change-name-in-uk-by-deedpoll",
+    languages: {
+      "en-GB": "/change-name-in-uk-by-deedpoll",
+      "x-default": "/change-name-in-uk-by-deedpoll",
+    },
   },
 };
 

@@ -5,6 +5,10 @@ export const metadata = {
   description: "Common questions about changing your name and using a deed poll in the UK.",
   alternates: {
     canonical: "/faq",
+    languages: {
+      "en-GB": "/faq",
+      "x-default": "/faq",
+    },
   },
 };
 

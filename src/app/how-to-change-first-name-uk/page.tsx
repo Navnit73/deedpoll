@@ -1,7 +1,13 @@
 import Link from 'next/link';
 
 export const metadata = {
-  alternates: { canonical: "/how-to-change-first-name-uk" },
+  alternates: {
+    canonical: "/how-to-change-first-name-uk",
+    languages: {
+      "en-GB": "/how-to-change-first-name-uk",
+      "x-default": "/how-to-change-first-name-uk",
+    },
+  },
   title: "How to Change Your First Name in the UK | Complete 2026 Guide",
   description:
     "Find out how to change your first name or middle name in the UK by deed poll. What you can change, the exact steps, which documents to update, and answers to common questions.",

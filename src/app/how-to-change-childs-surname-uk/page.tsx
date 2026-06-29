@@ -1,7 +1,13 @@
 import Link from 'next/link';
 
 export const metadata = {
-  alternates: { canonical: "/how-to-change-childs-surname-uk" },
+  alternates: {
+    canonical: "/how-to-change-childs-surname-uk",
+    languages: {
+      "en-GB": "/how-to-change-childs-surname-uk",
+      "x-default": "/how-to-change-childs-surname-uk",
+    },
+  },
   title: "How to Change a Child's Surname UK | Deed Poll UK",
   description:
     "Learn how to change a child's surname in the UK. Step-by-step guide covering parental consent, deed poll process, enrolled deed polls, and what to do when the other parent disagrees.",

@@ -5,6 +5,10 @@ export const metadata = {
   description: "A comprehensive checklist of organisations to notify after changing your name.",
   alternates: {
     canonical: "/checklist",
+    languages: {
+      "en-GB": "/checklist",
+      "x-default": "/checklist",
+    },
   },
 };
 

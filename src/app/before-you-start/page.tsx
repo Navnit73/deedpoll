@@ -5,6 +5,10 @@ export const metadata = {
   description: "Checklist of things to know before creating your deed poll.",
   alternates: {
     canonical: "/before-you-start",
+    languages: {
+      "en-GB": "/before-you-start",
+      "x-default": "/before-you-start",
+    },
   },
 };
 

@@ -1,7 +1,13 @@
 import Link from 'next/link';
 
 export const metadata = {
-  alternates: { canonical: "/how-to-change-name-by-deed-poll-uk" },
+  alternates: {
+    canonical: "/how-to-change-name-by-deed-poll-uk",
+    languages: {
+      "en-GB": "/how-to-change-name-by-deed-poll-uk",
+      "x-default": "/how-to-change-name-by-deed-poll-uk",
+    },
+  },
   title: "How to Change Your Name by Deed Poll UK | Free & Paid Options 2026",
   description:
     "Learn how to change your name by deed poll in the UK — including free DIY options, online deed poll services, and how to enrol at the Royal Courts of Justice. Complete 2026 guide.",

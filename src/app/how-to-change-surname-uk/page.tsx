@@ -1,7 +1,13 @@
 import Link from 'next/link';
 
 export const metadata = {
-  alternates: { canonical: "/how-to-change-surname-uk" },
+  alternates: {
+    canonical: "/how-to-change-surname-uk",
+    languages: {
+      "en-GB": "/how-to-change-surname-uk",
+      "x-default": "/how-to-change-surname-uk",
+    },
+  },
   title: "How to Change Your Surname in the UK | Complete 2026 Guide",
   description:
     "Find out how to change your surname in the UK — legally and quickly. Covers deed polls, marriage, divorce, and every document to update. No solicitor needed.",

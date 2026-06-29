@@ -1,7 +1,13 @@
 import Link from 'next/link';
 
 export const metadata = {
-  alternates: { canonical: "/how-to-change-name-on-birth-certificate-uk" },
+  alternates: {
+    canonical: "/how-to-change-name-on-birth-certificate-uk",
+    languages: {
+      "en-GB": "/how-to-change-name-on-birth-certificate-uk",
+      "x-default": "/how-to-change-name-on-birth-certificate-uk",
+    },
+  },
   title: "How to Change Name on Birth Certificate UK | 2026 Guide",
   description:
     "Can you change your name on a UK birth certificate? Find out what's actually possible, when a deed poll is the right answer, and how to update your records legally.",

@@ -1,7 +1,13 @@
 import Link from 'next/link';
 
 export const metadata = {
-  alternates: { canonical: "/how-to-change-name-after-marriage-uk" },
+  alternates: {
+    canonical: "/how-to-change-name-after-marriage-uk",
+    languages: {
+      "en-GB": "/how-to-change-name-after-marriage-uk",
+      "x-default": "/how-to-change-name-after-marriage-uk",
+    },
+  },
   title: "How to Change Your Name After Marriage in the UK | 2026 Guide",
   description:
     "Step-by-step guide to changing your name after marriage in the UK. Which documents to use, what to update first, how long it takes, and when you need a deed poll.",

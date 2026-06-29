@@ -1,7 +1,13 @@
 import Link from 'next/link';
 
 export const metadata = {
-  alternates: { canonical: "/how-to-change-company-name-uk" },
+  alternates: {
+    canonical: "/how-to-change-company-name-uk",
+    languages: {
+      "en-GB": "/how-to-change-company-name-uk",
+      "x-default": "/how-to-change-company-name-uk",
+    },
+  },
   title: "How to Change Company Name UK | Deed Poll UK",
   description:
     "Learn how to change company name uk. Guide covers: how to change a company name uk, how to change your business name uk, and more.",

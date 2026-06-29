@@ -5,6 +5,10 @@ export const metadata = {
   description: "Watch our short video guide on how to change your name via deed poll.",
   alternates: {
     canonical: "/video",
+    languages: {
+      "en-GB": "/video",
+      "x-default": "/video",
+    },
   },
 };
 

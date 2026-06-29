@@ -34,8 +34,8 @@ export const metadata: Metadata = {
     canonical: "/",
     // hreflang — tells Google this page targets British English speakers
     languages: {
-      "en-GB": "https://deedpolluk.uk",
-      "x-default": "https://deedpolluk.uk",
+      "en-GB": "/",
+      "x-default": "/",
     },
   },
 

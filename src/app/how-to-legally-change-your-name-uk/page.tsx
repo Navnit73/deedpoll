@@ -1,7 +1,13 @@
 import Link from 'next/link';
 
 export const metadata = {
-  alternates: { canonical: "/how-to-legally-change-your-name-uk" },
+  alternates: {
+    canonical: "/how-to-legally-change-your-name-uk",
+    languages: {
+      "en-GB": "/how-to-legally-change-your-name-uk",
+      "x-default": "/how-to-legally-change-your-name-uk",
+    },
+  },
   title: "How to Legally Change Your Name in the UK | Complete 2026 Guide",
   description:
     "Find out how to legally change your name in the UK — whether after marriage, divorce, or for personal reasons. Step-by-step deed poll guide. Start today.",

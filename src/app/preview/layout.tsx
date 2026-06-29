@@ -5,6 +5,10 @@ export const metadata: Metadata = {
   description: "Preview your generated deed poll.",
   alternates: {
     canonical: "/preview",
+    languages: {
+      "en-GB": "/preview",
+      "x-default": "/preview",
+    },
   },
 };
 

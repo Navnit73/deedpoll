@@ -5,6 +5,10 @@ export const metadata = {
   description: "Get in touch with Deed Poll UK for support or feedback.",
   alternates: {
     canonical: "/contact-us",
+    languages: {
+      "en-GB": "/contact-us",
+      "x-default": "/contact-us",
+    },
   },
 };
 

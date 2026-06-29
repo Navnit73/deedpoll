@@ -2,7 +2,13 @@ import Link from 'next/link';
 import StructuredData from '@/components/StructuredData';
 
 export const metadata = {
-  alternates: { canonical: "/how-to-change-your-name-uk" },
+  alternates: {
+    canonical: "/how-to-change-your-name-uk",
+    languages: {
+      "en-GB": "/how-to-change-your-name-uk",
+      "x-default": "/how-to-change-your-name-uk",
+    },
+  },
   title: "How to Change Your Name in the UK | Complete 2026 Guide",
   description:
     "Learn how to change your name in the UK quickly and legally. Step-by-step guide covering deed polls, statutory declarations, and every document to update. Start today.",

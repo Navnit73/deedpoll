@@ -6,6 +6,10 @@ export const metadata = {
     "Deed poll rejected by your bank or another organisation? Follow these six proven steps — from updating your photo ID to invoking your GDPR rights — to get your name change accepted.",
   alternates: {
     canonical: "/my-deed-poll-was-rejected",
+    languages: {
+      "en-GB": "/my-deed-poll-was-rejected",
+      "x-default": "/my-deed-poll-was-rejected",
+    },
   },
 };
 

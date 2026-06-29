@@ -1,7 +1,13 @@
 import Link from 'next/link';
 
 export const metadata = {
-  alternates: { canonical: "/how-to-change-name-on-passport-uk" },
+  alternates: {
+    canonical: "/how-to-change-name-on-passport-uk",
+    languages: {
+      "en-GB": "/how-to-change-name-on-passport-uk",
+      "x-default": "/how-to-change-name-on-passport-uk",
+    },
+  },
   title: "How to Change Your Name on a Passport in the UK | 2026 Guide",
   description:
     "Find out how to change your name on your UK passport — after marriage, deed poll, or divorce. Fees, timescales, and what documents to send. Step-by-step guide.",

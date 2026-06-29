@@ -2,7 +2,13 @@ import Link from 'next/link';
 import StructuredData from '@/components/StructuredData';
 
 export const metadata = {
-  alternates: { canonical: "/how-to-change-last-name-uk" },
+  alternates: {
+    canonical: "/how-to-change-last-name-uk",
+    languages: {
+      "en-GB": "/how-to-change-last-name-uk",
+      "x-default": "/how-to-change-last-name-uk",
+    },
+  },
   title: "How to Change Your Last Name in the UK | Complete 2026 Guide",
   description:
     "Learn how to change your last name in the UK — whether by deed poll, after marriage, or to revert to your maiden name after divorce or separation. Step-by-step guide.",
