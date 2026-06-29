@@ -15,7 +15,7 @@ export interface DeedPollSubmission {
   secondWitnessAddress: string;
 }
 
-export function generateDeedPoll(sub: DeedPollSubmission) {
+export function generateDeedPoll(sub: DeedPollSubmission, isPaid: boolean = false) {
   const doc = new jsPDF();
   const submission = { ...sub };
 
@@ -255,6 +255,18 @@ export function generateDeedPoll(sub: DeedPollSubmission) {
   const title = (submission.newName && submission.newName.trim().length > 0 && submission.newName.trim().length < 32) ?
     `Deed Poll for ${submission.newName}` :
     'Your Deed Poll';
+
+  // Add watermark if not paid
+  if (!isPaid) {
+    doc.saveGraphicsState();
+    doc.setGState(new (doc.GState as any)({ opacity: 0.2 }));
+    doc.setFont('times', 'bold');
+    doc.setFontSize(100);
+    doc.setTextColor(200, 0, 0);
+    // Draw diagonal watermark at the center
+    doc.text('PREVIEW', A4_WIDTH / 2, 160, { angle: 45, align: 'center' });
+    doc.restoreGraphicsState();
+  }
 
   // We return the base64 output, to render via `<iframe src={dataUri}>`
   const pdfDataUri = doc.output('datauristring');

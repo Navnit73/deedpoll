@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { generateDeedPoll, DeedPollSubmission } from '@/lib/generateDeedPoll';
+import { PaymentButton } from '@/components/payment/PaymentButton';
 
 export default function PreviewPage() {
   const router = useRouter();
@@ -12,6 +13,17 @@ export default function PreviewPage() {
   const [pdfTooLong, setPdfTooLong] = useState(false);
   const [title, setTitle] = useState('Your Deed Poll');
   const [hash, setHash] = useState('');
+  const [isPaid, setIsPaid] = useState(false);
+  const [submissionData, setSubmissionData] = useState<DeedPollSubmission | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const accessUntil = localStorage.getItem('deedpoll_premium_access_until');
+      if (accessUntil && parseInt(accessUntil, 10) > Date.now()) {
+        setIsPaid(true);
+      }
+    }
+  }, []);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -35,7 +47,17 @@ export default function PreviewPage() {
         
         // Try parsing JSON
         const decoded = JSON.parse(decodedStr) as DeedPollSubmission;
-        const result = generateDeedPoll(decoded);
+        setSubmissionData(decoded);
+      } catch (e) {
+        console.error("Failed to parse submission data", e);
+      }
+    }
+  }, [router]);
+
+  useEffect(() => {
+    if (submissionData) {
+      try {
+        const result = generateDeedPoll(submissionData, isPaid);
         setPdfDataUri(result.pdfDataUri);
         setHtmlPreview(result.htmlPreview);
         setPdfTooLong(result.pdfTooLong);
@@ -45,7 +67,7 @@ export default function PreviewPage() {
         console.error("Failed to generate PDF", e);
       }
     }
-  }, [router]);
+  }, [submissionData, isPaid]);
 
   if (!pdfDataUri) {
     return <div className="max-w-6xl mx-auto px-4 py-32 text-center text-2xl font-bold text-gray-600 animate-pulse">Generating your legally valid deed poll...</div>;
@@ -69,18 +91,41 @@ export default function PreviewPage() {
       )}
 
       <div className="text-center mb-12 space-y-6">
-        <p className="text-2xl font-bold text-[#00703c]">Your deed poll is ready to print and use!</p>
-        <div className="flex flex-wrap justify-center gap-4">
-          <a href={pdfDataUri} target="_blank" rel="noopener noreferrer" className="bg-[#00703c] hover:bg-[#005a30] text-white font-bold py-4 px-8 transition-colors text-xl">
-            Preview PDF
-          </a>
-          <a href={pdfDataUri} download="deed-poll.pdf" className="bg-white border-2 border-[#1d70b8] text-[#1d70b8] hover:bg-gray-50 font-bold py-4 px-8 transition-colors text-xl">
-            Download PDF
-          </a>
-          <Link href="/checklist" className="bg-[#1d70b8] hover:bg-[#003078] text-white font-bold py-4 px-8 transition-colors text-xl">
-            What to do next →
-          </Link>
-        </div>
+        {!isPaid ? (
+          <>
+            <p className="text-2xl font-bold text-gray-800">Preview your deed poll</p>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Please review the details in the preview below. To download the final legally valid deed poll without the watermark and access the text version, please complete the payment.
+            </p>
+            <div className="flex justify-center mt-6">
+              <PaymentButton 
+                amount={1499} 
+                buttonText="Pay £14.99 to Download" 
+                currency="GBP"
+                onSuccess={() => {
+                  setIsPaid(true);
+                  const expiry = Date.now() + 5 * 24 * 60 * 60 * 1000;
+                  localStorage.setItem('deedpoll_premium_access_until', expiry.toString());
+                }} 
+              />
+            </div>
+          </>
+        ) : (
+          <>
+            <p className="text-2xl font-bold text-[#00703c]">Your deed poll is ready to print and use!</p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a href={pdfDataUri} target="_blank" rel="noopener noreferrer" className="bg-[#00703c] hover:bg-[#005a30] text-white font-bold py-4 px-8 transition-colors text-xl">
+                Preview PDF
+              </a>
+              <a href={pdfDataUri} download="deed-poll.pdf" className="bg-white border-2 border-[#1d70b8] text-[#1d70b8] hover:bg-gray-50 font-bold py-4 px-8 transition-colors text-xl">
+                Download PDF
+              </a>
+              <Link href="/checklist" className="bg-[#1d70b8] hover:bg-[#003078] text-white font-bold py-4 px-8 transition-colors text-xl">
+                What to do next →
+              </Link>
+            </div>
+          </>
+        )}
       </div>
 
       {/* PDF View embedded */}
@@ -88,38 +133,41 @@ export default function PreviewPage() {
         <iframe src={pdfDataUri} className="w-full h-full" title="PDF Preview" />
       </div>
 
-      <div className="max-w-4xl mx-auto mb-16">
-        <h2 className="text-3xl font-bold mb-6">Next Steps</h2>
-        <ol className="list-decimal pl-6 space-y-4 text-xl mb-8">
-          <li><strong>Print your deed poll</strong> (we recommend printing <Link href="/faq#multiple-originals" className="text-[#1d70b8] underline underline-offset-2 hover:text-[#003078]">a few copies</Link>).</li>
-          <li><strong>Sign it</strong> in both your old and new names.</li>
-          <li><strong>Get your witnesses</strong> to sign it too.</li>
-        </ol>
-        <p className="text-xl mb-8 text-gray-800">
-          Congratulations; that's all you need to do to legally change your name! You can now send copies to your bank, the DVLA, and the Passport Office.
-        </p>
+      {isPaid && (
+        <>
+          <div className="max-w-4xl mx-auto mb-16">
+            <h2 className="text-3xl font-bold mb-6">Next Steps</h2>
+            <ol className="list-decimal pl-6 space-y-4 text-xl mb-8">
+              <li><strong>Print your deed poll</strong> (we recommend printing <Link href="/faq#multiple-originals" className="text-[#1d70b8] underline underline-offset-2 hover:text-[#003078]">a few copies</Link>).</li>
+              <li><strong>Sign it</strong> in both your old and new names.</li>
+              <li><strong>Get your witnesses</strong> to sign it too.</li>
+            </ol>
+            <p className="text-xl mb-8 text-gray-800">
+              Congratulations; that's all you need to do to legally change your name! You can now send copies to your bank, the DVLA, and the Passport Office.
+            </p>
 
-
-        <div className="bg-gray-100 p-8 border-l-[8px] border-[#1d70b8] flex flex-col md:flex-row items-center gap-6 justify-between">
-          <div>
-            <h3 className="font-bold text-2xl mb-2">Made a mistake?</h3>
-            <p className="text-lg text-gray-700">You can easily go back and correct your details. Your information is saved.</p>
+            <div className="bg-gray-100 p-8 border-l-[8px] border-[#1d70b8] flex flex-col md:flex-row items-center gap-6 justify-between">
+              <div>
+                <h3 className="font-bold text-2xl mb-2">Made a mistake?</h3>
+                <p className="text-lg text-gray-700">You can easily go back and correct your details. Your information is saved.</p>
+              </div>
+              <Link href={`/change-name-in-uk-by-deedpoll${hash}`} className="whitespace-nowrap bg-white border-2 border-[#1d70b8] text-[#1d70b8] font-bold py-3 px-6 hover:bg-gray-50 text-lg shadow-[0_4px_0_0_#003078] active:shadow-none active:translate-y-1 transition-all">
+                Edit Details
+              </Link>
+            </div>
           </div>
-          <Link href={`/change-name-in-uk-by-deedpoll${hash}`} className="whitespace-nowrap bg-white border-2 border-[#1d70b8] text-[#1d70b8] font-bold py-3 px-6 hover:bg-gray-50 text-lg shadow-[0_4px_0_0_#003078] active:shadow-none active:translate-y-1 transition-all">
-            Edit Details
-          </Link>
-        </div>
-      </div>
 
-      <hr className="my-16 border-gray-300 border-t-2" />
+          <hr className="my-16 border-gray-300 border-t-2" />
 
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold mb-6">Text Version</h2>
-        <p className="text-lg mb-8 text-gray-700">
-          You can use the text below if you want to write out your own deed poll. For example, you can copy it into your favourite word processor for editing and formatting, or you can write it out by hand for a personal touch.
-        </p>
-        <article className="bg-white border-[8px] border-gray-200 p-8 sm:p-12 font-serif text-justify shadow-inner" dangerouslySetInnerHTML={{ __html: htmlPreview }} />
-      </div>
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold mb-6">Text Version</h2>
+            <p className="text-lg mb-8 text-gray-700">
+              You can use the text below if you want to write out your own deed poll. For example, you can copy it into your favourite word processor for editing and formatting, or you can write it out by hand for a personal touch.
+            </p>
+            <article className="bg-white border-[8px] border-gray-200 p-8 sm:p-12 font-serif text-justify shadow-inner" dangerouslySetInnerHTML={{ __html: htmlPreview }} />
+          </div>
+        </>
+      )}
     </div>
   );
 }

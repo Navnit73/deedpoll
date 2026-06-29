@@ -52,7 +52,7 @@ The platform generates professionally formatted Deed Poll documents that are acc
 
 Changing your name in the UK should be simple.
 
-Most solicitors charge between £100–£200 for a Deed Poll service. DeedPollPro UK provides the same legally valid document for only **£12.99**.
+Most solicitors charge between £100–£200 for a Deed Poll service. DeedPollPro UK provides the same legally valid document for only **£14.99**.
 
 * One-time payment
 * No subscriptions
@@ -256,7 +256,7 @@ Your information remains secure throughout the entire process.
 | Metric          | Value           |
 | --------------- | --------------- |
 | Customers       | 50,000+         |
-| Price           | £12.99          |
+| Price           | £14.99          |
 | Delivery        | Instant         |
 | Completion Time | Under 2 Minutes |
 

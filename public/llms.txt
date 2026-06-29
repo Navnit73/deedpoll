@@ -1,6 +1,6 @@
 # Deed Poll UK
 
-> Deed Poll UK (deedpolluk.uk) is an online service that allows British citizens to create a legally valid, unenrolled UK Deed Poll without a solicitor. Users complete a 2-minute form, pay a one-time fee of £12.99, and instantly receive a professionally formatted PDF Deed Poll accepted by all major UK institutions.
+> Deed Poll UK (deedpolluk.uk) is an online service that allows British citizens to create a legally valid, unenrolled UK Deed Poll without a solicitor. Users complete a 2-minute form, pay a one-time fee of £14.99, and instantly receive a professionally formatted PDF Deed Poll accepted by all major UK institutions.
 
 ## What is a Deed Poll?
 
@@ -15,13 +15,13 @@ A Deed Poll is the standard legal document used in England, Wales, and Scotland 
 ## Core user flow
 
 1. User completes an online form (current legal name, chosen new name, date of birth)
-2. User makes a one-time payment of £12.99 via secure checkout (Stripe)
+2. User makes a one-time payment of £14.99 via secure checkout (Stripe)
 3. A legally worded PDF Deed Poll is generated instantly using jsPDF and delivered to the user's inbox
 4. User prints the document, signs it in front of one witness, and sends certified copies to relevant organisations
 
 ## Key facts
 
-- Price: £12.99 one-time payment — no subscription, no hidden fees
+- Price: £14.99 one-time payment — no subscription, no hidden fees
 - Delivery: Instant PDF via email
 - Legal validity: Unenrolled Deed Poll, fully valid under UK law
 - No solicitor required

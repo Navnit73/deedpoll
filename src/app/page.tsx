@@ -55,7 +55,7 @@ export default function Home() {
                   Get Your Deed Poll
                 </div>
                 <div className="bg-[#efeee9] sm:border-y sm:border-r border-[#d8d8d8] py-2 px-6 flex flex-col justify-center items-center text-[#0b0c0c] min-w-[160px]">
-                  <span className="font-bold text-3xl leading-none tracking-tight text-[#0b0c0c]">£12.99</span>
+                  <span className="font-bold text-3xl leading-none tracking-tight text-[#0b0c0c]">£14.99</span>
                   <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold mt-1">One-time payment</span>
                 </div>
               </Link>
@@ -77,7 +77,7 @@ export default function Home() {
               <span className="text-xs sm:text-sm md:text-base">Happy Customers</span>
             </div>
             <div className="flex flex-col">
-              <strong className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1">£12.99</strong>
+              <strong className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1">£14.99</strong>
               <span className="text-xs sm:text-sm md:text-base">One-Off Price</span>
             </div>
             <div className="flex flex-col">
@@ -149,7 +149,7 @@ export default function Home() {
               },
               {
                 icon: <path strokeLinecap="square" strokeLinejoin="miter" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />,
-                title: "Just £12.99 — No Extras",
+                title: "Just £14.99 — No Extras",
                 desc: "One flat fee. No subscriptions, no hidden charges. Solicitors charge £100–£200+ for the same result."
               },
               {
@@ -335,7 +335,7 @@ export default function Home() {
             </div>
             <div>
               <h3 className="text-lg sm:text-xl font-bold mb-2">Can I change my name for free?</h3>
-              <p>You can write your own deed poll by hand, but our professionally worded document at £12.99 guarantees correct legal wording and eliminates the risk of rejection by official bodies.</p>
+              <p>You can write your own deed poll by hand, but our professionally worded document at £14.99 guarantees correct legal wording and eliminates the risk of rejection by official bodies.</p>
             </div>
             <div>
               <h3 className="text-lg sm:text-xl font-bold mb-2">Can I change a child's name?</h3>
@@ -412,7 +412,7 @@ export default function Home() {
                 Get Your Deed Poll
               </div>
               <div className="bg-[#efeee9] sm:border-y sm:border-r border-[#d8d8d8] py-3 px-8 flex flex-col justify-center items-center text-[#0b0c0c] min-w-[160px]">
-                <span className="font-bold text-3xl leading-none tracking-tight text-[#0b0c0c]">£12.99</span>
+                <span className="font-bold text-3xl leading-none tracking-tight text-[#0b0c0c]">£14.99</span>
                 <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold mt-1">One-time payment</span>
               </div>
             </Link>
@@ -467,7 +467,7 @@ export default function Home() {
               "description": "Legally valid UK deed poll documents delivered as instant PDF. Accepted by the Passport Office, DVLA, HMRC, and all major banks.",
               "offers": {
                 "@type": "Offer",
-                "price": "12.99",
+                "price": "14.99",
                 "priceCurrency": "GBP"
               }
             },
