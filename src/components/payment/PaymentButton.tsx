@@ -51,7 +51,7 @@ export function PaymentButton({
       currency: currency,
       name: 'Deed Poll UK',
       description: 'Digital Deed Poll PDF',
-      image: '/favicon.ico',
+      image: 'https://res.cloudinary.com/dipzpwbbk/image/upload/v1782744741/android-chrome-512x512_zns7w3.png',
       prefill: {
         name: details.name,
         email: details.email,
