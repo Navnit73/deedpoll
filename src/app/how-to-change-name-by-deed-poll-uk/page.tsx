@@ -5,6 +5,15 @@ export const metadata = {
   title: "How to Change Your Name by Deed Poll UK | Free & Paid Options 2026",
   description:
     "Learn how to change your name by deed poll in the UK — including free DIY options, online deed poll services, and how to enrol at the Royal Courts of Justice. Complete 2026 guide.",
+  openGraph: {
+    title: "How to Change Your Name by Deed Poll UK | Free & Paid Options 2026",
+    description: "Learn how to change your name by deed poll in the UK — including free DIY options, online deed poll services, and how to enrol at the Royal Courts of Justice. Complete 2026 guide.",
+    url: "https://deedpolluk.uk/how-to-change-name-by-deed-poll-uk",
+  },
+  twitter: {
+    title: "How to Change Your Name by Deed Poll UK | Free & Paid Options 2026",
+    description: "Learn how to change your name by deed poll in the UK — including free DIY options, online deed poll services, and how to enrol at the Royal Courts of Justice. Complete 2026 guide.",
+  }
 };
 
 export default function Page() {
@@ -151,7 +160,32 @@ export default function Page() {
           and posted copies.
         </p>
 
-        {/* CTA */}
+        
+        {/* ══════════════════════════════════════
+            H2 — Related Guides
+        ══════════════════════════════════════ */}
+        <section className="mb-14 border-t-2 border-gray-100 pt-8">
+          <h2 className="text-2xl font-bold mb-6">
+            Related Guides
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            
+            <Link href="/how-to-change-company-name-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
+              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">How to Change a Company Name</h3>
+              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
+            </Link>
+            <Link href="/how-to-change-name-on-passport-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
+              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">How to Change Your Name on a Passport</h3>
+              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
+            </Link>
+            <Link href="/how-to-legally-change-your-name-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
+              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">How to Legally Change Your Name</h3>
+              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
+            </Link>
+          </div>
+        </section>
+
+        {/* ── CTA */}
         <div className="bg-gray-100 p-8 text-center border-t border-b border-gray-300 my-12 not-prose">
           <h2 className="text-2xl font-bold mb-4">Generate your deed poll in minutes</h2>
           <p className="text-gray-700 mb-6">

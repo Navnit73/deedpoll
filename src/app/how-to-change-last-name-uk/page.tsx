@@ -6,6 +6,15 @@ export const metadata = {
   title: "How to Change Your Last Name in the UK | Complete 2026 Guide",
   description:
     "Learn how to change your last name in the UK — whether by deed poll, after marriage, or to revert to your maiden name after divorce or separation. Step-by-step guide.",
+  openGraph: {
+    title: "How to Change Your Last Name in the UK | Complete 2026 Guide",
+    description: "Learn how to change your last name in the UK — whether by deed poll, after marriage, or to revert to your maiden name after divorce or separation. Step-by-step guide.",
+    url: "https://deedpolluk.uk/how-to-change-last-name-uk",
+  },
+  twitter: {
+    title: "How to Change Your Last Name in the UK | Complete 2026 Guide",
+    description: "Learn how to change your last name in the UK — whether by deed poll, after marriage, or to revert to your maiden name after divorce or separation. Step-by-step guide.",
+  }
 };
 
 export default function Page() {
@@ -26,7 +35,10 @@ export default function Page() {
           How to Change Your Last Name in the UK
         </h1>
 
-        <p className="text-sm text-gray-500 mb-8">Last updated: June 2026 · 6-minute read</p>
+        <div className="text-sm text-gray-500 mb-8 flex flex-col gap-1">
+          <p><strong>Written by</strong> Deed Poll UK Editorial Team</p>
+          <p><strong>Reviewed</strong> June 2026 · 6-minute read</p>
+        </div>
 
         <div className="border-l-4 border-[#1d70b8] bg-blue-50 px-5 py-4 mb-8 rounded-r-md">
           <p className="text-base sm:text-lg leading-relaxed text-gray-800">
@@ -71,7 +83,7 @@ export default function Page() {
             <p>
               You have two options: an <strong>unenrolled deed poll</strong> (created
               privately) or an <strong>enrolled deed poll</strong> (registered with the
-              Royal Courts of Justice). The vast majority of people use the unenrolled
+              Royal Courts of Justice). "Most UK banks, HM Passport Office, the DVLA and HMRC accept a correctly executed unenrolled deed poll." use the unenrolled
               route — it's faster, cheaper, and equally valid for updating your
               passport, driving licence, and bank accounts.
             </p>
@@ -325,6 +337,31 @@ export default function Page() {
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        
+        {/* ══════════════════════════════════════
+            H2 — Related Guides
+        ══════════════════════════════════════ */}
+        <section className="mb-14 border-t-2 border-gray-100 pt-8">
+          <h2 className="text-2xl font-bold mb-6">
+            Related Guides
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            
+            <Link href="/how-to-change-first-name-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
+              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">How to Change Your First Name</h3>
+              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
+            </Link>
+            <Link href="/how-to-change-name-on-birth-certificate-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
+              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">Change a Name on a Birth Certificate</h3>
+              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
+            </Link>
+            <Link href="/how-much-does-it-cost-to-change-your-name-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
+              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">Cost to Change Your Name</h3>
+              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
+            </Link>
           </div>
         </section>
 

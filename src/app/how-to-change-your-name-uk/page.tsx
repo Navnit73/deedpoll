@@ -6,6 +6,15 @@ export const metadata = {
   title: "How to Change Your Name in the UK | Complete 2026 Guide",
   description:
     "Learn how to change your name in the UK quickly and legally. Step-by-step guide covering deed polls, statutory declarations, and every document to update. Start today.",
+  openGraph: {
+    title: "How to Change Your Name in the UK | Complete 2026 Guide",
+    description: "Learn how to change your name in the UK quickly and legally. Step-by-step guide covering deed polls, statutory declarations, and every document to update. Start today.",
+    url: "https://deedpolluk.uk/how-to-change-your-name-uk",
+  },
+  twitter: {
+    title: "How to Change Your Name in the UK | Complete 2026 Guide",
+    description: "Learn how to change your name in the UK quickly and legally. Step-by-step guide covering deed polls, statutory declarations, and every document to update. Start today.",
+  }
 };
 
 export default function Page() {
@@ -30,7 +39,10 @@ export default function Page() {
           How to Change Your Name in the UK: Complete Step-by-Step Guide
         </h1>
 
-        <p className="text-sm text-gray-500 mb-8">Last updated: June 2026 · 8-minute read</p>
+        <div className="text-sm text-gray-500 mb-8 flex flex-col gap-1">
+          <p><strong>Written by</strong> Deed Poll UK Editorial Team</p>
+          <p><strong>Reviewed</strong> June 2026 · 8-minute read</p>
+        </div>
 
         {/* ── Intro callout ── */}
         <div className="border-l-4 border-[#1d70b8] bg-blue-50 px-5 py-4 mb-8 rounded-r-md">
@@ -106,7 +118,7 @@ export default function Page() {
           </div>
 
           <div className="bg-amber-50 border border-amber-200 rounded-md px-5 py-4 text-sm text-amber-900">
-            <strong>Note:</strong> There is no official government register of deed polls in England and Wales. You may choose to have your deed poll &ldquo;enrolled&rdquo; at the Royal Courts of Justice, which makes it a matter of public record, but this is optional and rarely necessary.
+            <strong>Note:</strong> There is no official government register of deed polls in England and Wales. You may choose to have your deed poll &ldquo;enrolled&rdquo; at the <a href="https://www.gov.uk/change-name-deed-poll/enrol-a-deed-poll-with-the-courts" target="_blank" rel="noopener noreferrer" className="underline hover:text-amber-700">Royal Courts of Justice</a>, which makes it a matter of public record, but this is optional and rarely necessary.
           </div>
         </section>
 
@@ -181,7 +193,12 @@ export default function Page() {
           {/* Checklist grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
             {[
-              { priority: "High", items: ["Passport (HM Passport Office)", "Driving licence (DVLA)", "National Insurance records (HMRC)", "GP and NHS records"] },
+              { priority: "High", items: [
+                <a href="https://www.gov.uk/changing-passport-information" target="_blank" rel="noopener noreferrer" className="hover:underline text-[#1d70b8]">Passport (HM Passport Office)</a>,
+                <a href="https://www.gov.uk/change-name-driving-licence" target="_blank" rel="noopener noreferrer" className="hover:underline text-[#1d70b8]">Driving licence (DVLA)</a>,
+                <a href="https://www.gov.uk/tell-hmrc-change-of-details" target="_blank" rel="noopener noreferrer" className="hover:underline text-[#1d70b8]">National Insurance records (HMRC)</a>,
+                "GP and NHS records"
+              ] },
               { priority: "High", items: ["Bank and building society accounts", "Employer / payroll records", "Electoral roll (local council)", "State benefits (DWP)"] },
               { priority: "Standard", items: ["Utility providers (gas, electricity, water)", "Broadband and mobile contracts", "Insurance policies", "Pension providers"] },
               { priority: "Standard", items: ["Vehicle registration (V5C logbook)", "Student loans (SLC)", "University or college records", "Loyalty and rewards accounts"] },
@@ -191,8 +208,8 @@ export default function Page() {
                   {col.priority} priority
                 </p>
                 <ul className="space-y-2">
-                  {col.items.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
+                  {col.items.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-sm text-gray-700">
                       <span className="mt-0.5 text-[#00703c] font-bold select-none">✓</span>
                       {item}
                     </li>
@@ -289,6 +306,31 @@ export default function Page() {
           </div>
         </section>
 
+        
+        {/* ══════════════════════════════════════
+            H2 — Related Guides
+        ══════════════════════════════════════ */}
+        <section className="mb-14 border-t-2 border-gray-100 pt-8">
+          <h2 className="text-2xl font-bold mb-6">
+            Related Guides
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            
+            <Link href="/how-to-change-first-name-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
+              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">How to Change Your First Name</h3>
+              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
+            </Link>
+            <Link href="/how-to-change-name-on-birth-certificate-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
+              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">Change a Name on a Birth Certificate</h3>
+              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
+            </Link>
+            <Link href="/how-to-change-surname-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
+              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">How to Change Your Surname</h3>
+              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
+            </Link>
+          </div>
+        </section>
+
         {/* ── CTA block ── */}
         <div className="bg-[#f3f2f1] border border-gray-300 rounded-xl px-6 py-8 sm:px-10 sm:py-10 text-center">
           <p className="text-xs font-semibold uppercase tracking-widest text-[#1d70b8] mb-2">Ready to get started?</p>
@@ -308,36 +350,84 @@ export default function Page() {
         </div>
 
         <StructuredData
-          data={{
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Can I change my name to anything I want in the UK?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Almost any name is acceptable. Courts will not accept names that are offensive, contain numbers or symbols, or are intended to defraud.",
-                },
+          data={[
+            {
+              "@context": "https://schema.org",
+              "@type": "Article",
+              headline: "How to Change Your Name in the UK: Complete Step-by-Step Guide",
+              author: {
+                "@type": "Organization",
+                name: "Deed Poll UK Editorial Team"
               },
-              {
-                "@type": "Question",
-                name: "Is a deed poll the only way to change my name officially?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "No. A statutory declaration, marriage certificate, or decree absolute can also be used depending on your circumstances.",
-                },
+              publisher: {
+                "@type": "Organization",
+                name: "Deed Poll UK",
+                logo: {
+                  "@type": "ImageObject",
+                  url: "https://deedpolluk.uk/og-image.jpg"
+                }
               },
-              {
-                "@type": "Question",
-                name: "Do I need a solicitor to change my name in the UK?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "No. Adults in England and Wales can create their own deed poll without legal assistance.",
-                },
+              image: "https://deedpolluk.uk/og-image.jpg",
+              datePublished: "2026-06-01T08:00:00+00:00",
+              dateModified: "2026-06-01T08:00:00+00:00",
+              mainEntityOfPage: {
+                "@type": "WebPage",
+                "@id": "https://deedpolluk.uk/how-to-change-your-name-uk"
               },
-            ],
-          }}
+              speakable: {
+                "@type": "SpeakableSpecification",
+                cssSelector: ["#steps", "#ways"]
+              }
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Home",
+                  item: "https://deedpolluk.uk/"
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "How to Change Your Name",
+                  item: "https://deedpolluk.uk/how-to-change-your-name-uk"
+                }
+              ]
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "Can I change my name to anything I want in the UK?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Almost any name is acceptable. Courts will not accept names that are offensive, contain numbers or symbols, or are intended to defraud.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Is a deed poll the only way to change my name officially?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "No. A statutory declaration, marriage certificate, or decree absolute can also be used depending on your circumstances.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Do I need a solicitor to change my name in the UK?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "No. Adults in England and Wales can create their own deed poll without legal assistance.",
+                  },
+                },
+              ],
+            }
+          ]}
         />
       </div>
     </main>

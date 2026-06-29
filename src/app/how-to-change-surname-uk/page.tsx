@@ -5,6 +5,15 @@ export const metadata = {
   title: "How to Change Your Surname in the UK | Complete 2026 Guide",
   description:
     "Find out how to change your surname in the UK — legally and quickly. Covers deed polls, marriage, divorce, and every document to update. No solicitor needed.",
+  openGraph: {
+    title: "How to Change Your Surname in the UK | Complete 2026 Guide",
+    description: "Find out how to change your surname in the UK — legally and quickly. Covers deed polls, marriage, divorce, and every document to update. No solicitor needed.",
+    url: "https://deedpolluk.uk/how-to-change-surname-uk",
+  },
+  twitter: {
+    title: "How to Change Your Surname in the UK | Complete 2026 Guide",
+    description: "Find out how to change your surname in the UK — legally and quickly. Covers deed polls, marriage, divorce, and every document to update. No solicitor needed.",
+  }
 };
 
 const reasons = [
@@ -50,7 +59,7 @@ const afterMarriageSteps = [
 ];
 
 const docsToUpdate = [
-  { priority: "High", items: ["Passport (HM Passport Office)", "Driving licence (DVLA)", "National Insurance records (HMRC)", "GP and NHS records"] },
+  { priority: "High", items: [<a href="https://www.gov.uk/changing-passport-information" target="_blank" rel="noopener noreferrer" className="hover:underline text-[#1d70b8]">Passport (HM Passport Office)</a>, <a href="https://www.gov.uk/change-name-driving-licence" target="_blank" rel="noopener noreferrer" className="hover:underline text-[#1d70b8]">Driving licence (DVLA)</a>, <a href="https://www.gov.uk/tell-hmrc-change-of-details" target="_blank" rel="noopener noreferrer" className="hover:underline text-[#1d70b8]">National Insurance records (HMRC)</a>, "GP and NHS records"] },
   { priority: "High", items: ["Bank and building society accounts", "Employer / payroll records", "Electoral roll (local council)", "State benefits (DWP)"] },
   { priority: "Standard", items: ["Utility providers (gas, electricity, water)", "Broadband and mobile contracts", "Insurance policies", "Pension providers"] },
   { priority: "Standard", items: ["Vehicle registration (V5C logbook)", "Student Loans Company", "University or college records", "Loyalty and rewards accounts"] },
@@ -103,7 +112,10 @@ export default function Page() {
           How to Change Your Surname in the UK: Complete 2026 Guide
         </h1>
 
-        <p className="text-sm text-gray-500 mb-8">Last updated: June 2026 · 7-minute read</p>
+        <div className="text-sm text-gray-500 mb-8 flex flex-col gap-1">
+          <p><strong>Written by</strong> Deed Poll UK Editorial Team</p>
+          <p><strong>Reviewed</strong> June 2026 · 7-minute read</p>
+        </div>
 
         {/* ── Intro callout ── */}
         <div className="border-l-4 border-[#1d70b8] bg-blue-50 px-5 py-4 mb-8 rounded-r-md">
@@ -235,8 +247,8 @@ export default function Page() {
                   {col.priority} priority
                 </p>
                 <ul className="space-y-2">
-                  {col.items.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
+                  {col.items.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-sm text-gray-700">
                       <span className="mt-0.5 text-[#00703c] font-bold select-none">✓</span>
                       {item}
                     </li>
@@ -277,7 +289,50 @@ export default function Page() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
+            __html: JSON.stringify([
+              {
+              "@context": "https://schema.org",
+              "@type": "Article",
+              "headline": "How to Change Your Surname in the UK: Complete 2026 Guide",
+              "author": {
+                "@type": "Organization",
+                "name": "Deed Poll UK Editorial Team"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "Deed Poll UK",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://deedpolluk.uk/og-image.jpg"
+                }
+              },
+              "image": "https://deedpolluk.uk/og-image.jpg",
+              "datePublished": "2026-06-01T08:00:00+00:00",
+              "dateModified": "2026-06-01T08:00:00+00:00",
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://deedpolluk.uk/how-to-change-surname-uk"
+              }
+            },
+              {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://deedpolluk.uk/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "How to Change Your Surname",
+                  "item": "https://deedpolluk.uk/how-to-change-surname-uk"
+                }
+              ]
+            },
+              {
               "@context": "https://schema.org",
               "@type": "FAQPage",
               mainEntity: faqs.map(({ q, a }) => ({
@@ -285,9 +340,35 @@ export default function Page() {
                 name: q,
                 acceptedAnswer: { "@type": "Answer", text: a },
               })),
-            }),
+            }
+            ]),
           }}
         />
+
+        
+        {/* ══════════════════════════════════════
+            H2 — Related Guides
+        ══════════════════════════════════════ */}
+        <section className="mb-14 border-t-2 border-gray-100 pt-8">
+          <h2 className="text-2xl font-bold mb-6">
+            Related Guides
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            
+            <Link href="/how-to-change-name-on-passport-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
+              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">How to Change Your Name on a Passport</h3>
+              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
+            </Link>
+            <Link href="/how-to-change-company-name-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
+              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">How to Change a Company Name</h3>
+              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
+            </Link>
+            <Link href="/how-to-change-childs-surname-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
+              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">How to Change a Child's Surname</h3>
+              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
+            </Link>
+          </div>
+        </section>
 
         {/* ── CTA ── */}
         <div className="bg-[#f3f2f1] border border-gray-300 rounded-xl px-6 py-8 sm:px-10 sm:py-10 text-center">

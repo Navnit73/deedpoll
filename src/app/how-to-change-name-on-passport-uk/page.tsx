@@ -5,6 +5,15 @@ export const metadata = {
   title: "How to Change Your Name on a Passport in the UK | 2026 Guide",
   description:
     "Find out how to change your name on your UK passport — after marriage, deed poll, or divorce. Fees, timescales, and what documents to send. Step-by-step guide.",
+  openGraph: {
+    title: "How to Change Your Name on a Passport in the UK | 2026 Guide",
+    description: "Find out how to change your name on your UK passport — after marriage, deed poll, or divorce. Fees, timescales, and what documents to send. Step-by-step guide.",
+    url: "https://deedpolluk.uk/how-to-change-name-on-passport-uk",
+  },
+  twitter: {
+    title: "How to Change Your Name on a Passport in the UK | 2026 Guide",
+    description: "Find out how to change your name on your UK passport — after marriage, deed poll, or divorce. Fees, timescales, and what documents to send. Step-by-step guide.",
+  }
 };
 
 const reasons = [
@@ -115,7 +124,10 @@ export default function Page() {
           How to Change Your Name on a UK Passport: Complete 2026 Guide
         </h1>
 
-        <p className="text-sm text-gray-500 mb-8">Last updated: June 2026 · 7-minute read</p>
+        <div className="text-sm text-gray-500 mb-8 flex flex-col gap-1">
+          <p><strong>Written by</strong> Deed Poll UK Editorial Team</p>
+          <p><strong>Reviewed</strong> June 2026 · 7-minute read</p>
+        </div>
 
         {/* ── Intro callout ── */}
         <div className="border-l-4 border-[#1d70b8] bg-blue-50 px-5 py-4 mb-8 rounded-r-md">
@@ -276,7 +288,50 @@ export default function Page() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
+            __html: JSON.stringify([
+              {
+              "@context": "https://schema.org",
+              "@type": "Article",
+              "headline": "How to Change Your Name on a UK Passport: Complete 2026 Guide",
+              "author": {
+                "@type": "Organization",
+                "name": "Deed Poll UK Editorial Team"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "Deed Poll UK",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://deedpolluk.uk/og-image.jpg"
+                }
+              },
+              "image": "https://deedpolluk.uk/og-image.jpg",
+              "datePublished": "2026-06-01T08:00:00+00:00",
+              "dateModified": "2026-06-01T08:00:00+00:00",
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://deedpolluk.uk/how-to-change-name-on-passport-uk"
+              }
+            },
+              {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://deedpolluk.uk/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Change Name on Passport",
+                  "item": "https://deedpolluk.uk/how-to-change-name-on-passport-uk"
+                }
+              ]
+            },
+              {
               "@context": "https://schema.org",
               "@type": "FAQPage",
               mainEntity: faqs.map(({ q, a }) => ({
@@ -284,9 +339,35 @@ export default function Page() {
                 name: q,
                 acceptedAnswer: { "@type": "Answer", text: a },
               })),
-            }),
+            }
+            ]),
           }}
         />
+
+        
+        {/* ══════════════════════════════════════
+            H2 — Related Guides
+        ══════════════════════════════════════ */}
+        <section className="mb-14 border-t-2 border-gray-100 pt-8">
+          <h2 className="text-2xl font-bold mb-6">
+            Related Guides
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            
+            <Link href="/how-to-change-company-name-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
+              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">How to Change a Company Name</h3>
+              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
+            </Link>
+            <Link href="/how-to-change-childs-surname-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
+              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">How to Change a Child's Surname</h3>
+              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
+            </Link>
+            <Link href="/how-much-does-it-cost-to-change-your-name-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
+              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">Cost to Change Your Name</h3>
+              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
+            </Link>
+          </div>
+        </section>
 
         {/* ── CTA ── */}
         <div className="bg-[#f3f2f1] border border-gray-300 rounded-xl px-6 py-8 sm:px-10 sm:py-10 text-center">
