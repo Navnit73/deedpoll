@@ -17,8 +17,8 @@ async function submitToIndexNow() {
 
   const payload = JSON.stringify({
     host: 'deedpolluk.uk',
-    key: 'fc04c14708e44d5a83a51110a37d7105',
-    keyLocation: 'https://deedpolluk.uk/fc04c14708e44d5a83a51110a37d7105.txt',
+    key: 'fb2ffe0022a7482d935b5872964b5dd5',
+    keyLocation: 'https://deedpolluk.uk/fb2ffe0022a7482d935b5872964b5dd5.txt',
     urlList: urls
   });
 
