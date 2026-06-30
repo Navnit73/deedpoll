@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 
-const PAYPAL_CLIENT_ID = 'BAAwpoObIPFtmfq5bnouelbk_OGV1Ldhfo7lRpg5QoK6ulzhC73jeq1vDdPWbDaLLd_3Tj1JdvuA5hBYv0';
+const ghvhgvhvhgvg = 'BAAwpoObIPFtmfq5bnouelbk_OGV1Ldhfo7lRpg5QoK6ulzhC73jeq1vDdPWbDaLLd_3Tj1JdvuA5hBYv0';
 
 interface PaymentButtonProps {
   amount: number;
@@ -48,7 +48,7 @@ export function PaymentButton({
       )}
 
       <div className="w-full">
-        <PayPalScriptProvider options={{ clientId: PAYPAL_CLIENT_ID, currency: currency }}>
+        <PayPalScriptProvider options={{ clientId: ghvhgvhvhgvg, currency: currency }}>
           <PayPalButtons
             style={{ layout: "vertical", shape: "rect", color: "blue" }}
             createOrder={(data, actions) => {
