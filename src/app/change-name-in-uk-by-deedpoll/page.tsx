@@ -31,10 +31,27 @@ export default function DeedPollForm() {
   useEffect(() => {
     if (window.location.hash.length > 1) {
       try {
-        const decoded = JSON.parse(atob(window.location.hash.slice(1)));
+        let decodedStr = '';
+        const b64Str = window.location.hash.slice(1);
+        try {
+          decodedStr = atob(b64Str);
+        } catch(e) {
+          decodedStr = decodeURIComponent(escape(atob(b64Str)));
+        }
+        const decoded = JSON.parse(decodedStr);
         setFormData(prev => ({ ...prev, ...decoded }));
       } catch (e) {
         console.error("Failed to parse hash", e);
+      }
+    } else {
+      try {
+        const stored = sessionStorage.getItem('deedpoll_data');
+        if (stored) {
+           const decoded = JSON.parse(stored);
+           setFormData(prev => ({ ...prev, ...decoded }));
+        }
+      } catch (e) {
+        console.error("Failed to parse session storage", e);
       }
     }
     
@@ -117,11 +134,12 @@ export default function DeedPollForm() {
 
     const dataToSave = { ...formData };
     delete (dataToSave as any).skipValidation;
-    // Safely encode to base64, supporting UTF-8 characters if any
-    const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(dataToSave))));
     
-    // Push using router instead of modifying window.location directly
-    router.push(`/preview#${b64}`);
+    // Save to sessionStorage
+    sessionStorage.setItem('deedpoll_data', JSON.stringify(dataToSave));
+    
+    // Push using router
+    router.push(`/preview`);
   };
 
   const isInvalid = (id: string) => showErrors && errors.some(e => e.field === id);

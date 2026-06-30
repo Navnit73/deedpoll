@@ -28,24 +28,31 @@ export default function PreviewPage() {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const currentHash = window.location.hash;
-      if (!currentHash || currentHash.length <= 1) {
+      let decodedStr = '';
+      
+      if (currentHash && currentHash.length > 1) {
+        setHash(currentHash);
+        try {
+          const b64Str = decodeURIComponent(currentHash.slice(1));
+          try {
+            // Try standard base64 decode
+            decodedStr = atob(b64Str);
+          } catch(e) {
+            // If it fails, maybe it was unescaped utf8?
+            decodedStr = decodeURIComponent(escape(atob(b64Str)));
+          }
+        } catch(e) {}
+      } else {
+        decodedStr = sessionStorage.getItem('deedpoll_data') || '';
+        // Note: we leave hash as '' which is fine for the "Edit Details" link
+      }
+      
+      if (!decodedStr) {
         router.push('/change-name-in-uk-by-deedpoll');
         return;
       }
-      setHash(currentHash);
-      
+
       try {
-        const b64Str = decodeURIComponent(currentHash.slice(1));
-        let decodedStr = '';
-        try {
-          // Try standard base64 decode
-          decodedStr = atob(b64Str);
-        } catch(e) {
-          // If it fails, maybe it was unescaped utf8?
-          decodedStr = decodeURIComponent(escape(atob(b64Str)));
-        }
-        
-        // Try parsing JSON
         const decoded = JSON.parse(decodedStr) as DeedPollSubmission;
         setSubmissionData(decoded);
       } catch (e) {
