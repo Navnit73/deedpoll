@@ -1,29 +1,21 @@
 "use client";
 
 import React, { useState } from 'react';
-import { useRazorpay } from '@/hooks/useRazorpay';
-import { PaymentDialog } from './PaymentDialog';
-import { PaymentDetails } from '@/types/payment';
+import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 
-const _appConfigPrimary = 'rzp_live_T7TbLBm0c2mmb5';
-const _appConfigSecondary = 'F7LDokIBPygLbgYBfPdbUx0P';
+const PAYPAL_CLIENT_ID = 'BAAwpoObIPFtmfq5bnouelbk_OGV1Ldhfo7lRpg5QoK6ulzhC73jeq1vDdPWbDaLLd_3Tj1JdvuA5hBYv0';
 
 interface PaymentButtonProps {
   amount: number;
   currency?: string;
-  buttonText?: string;
   onSuccess?: () => void;
 }
 
 export function PaymentButton({
   amount,
   currency = 'GBP',
-  buttonText = 'Pay with Razorpay',
   onSuccess,
 }: PaymentButtonProps) {
-  const { isLoading: isSdkLoading, error: sdkError, initializePayment } = useRazorpay();
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [isProcessing, setIsProcessing] = useState(false);
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
 
   const showToast = (message: string, type: 'success' | 'error' | 'info' = 'info') => {
@@ -31,88 +23,8 @@ export function PaymentButton({
     setTimeout(() => setToast(null), 5000);
   };
 
-  const handleDialogOpen = () => {
-    if (sdkError) {
-      showToast('Payment system unavailable. Please check your connection.', 'error');
-      return;
-    }
-    setIsDialogOpen(true);
-  };
-
-  const handleDialogSubmit = async (details: PaymentDetails) => {
-    setIsDialogOpen(false);
-    setIsProcessing(true);
-    
-    showToast('Initializing payment...', 'info');
-
-    const options = {
-      key: _appConfigPrimary,
-      amount: amount.toString(),
-      currency: currency,
-      name: 'Deed Poll UK',
-      description: 'Digital Deed Poll PDF',
-      image: 'https://res.cloudinary.com/dipzpwbbk/image/upload/v1782744741/android-chrome-512x512_zns7w3.png',
-      prefill: {
-        name: details.name,
-        email: details.email,
-      },
-      theme: {
-        color: '#1d70b8',
-      },
-      modal: {
-        escape: true,
-        backdropclose: false,
-        ondismiss: function() {
-          setIsProcessing(false);
-          showToast('Payment Cancelled by user', 'error');
-        }
-      },
-      handler: async function (response: any) {
-        // Read keys
-        const keyId = _appConfigPrimary;
-        const keySecret = _appConfigSecondary;
-
-        if (!keyId || !keySecret) {
-          console.warn('Missing Razorpay Keys in Environment Variables');
-        }
-
-        // Frontend-only signature mock verification utilizing the secret key
-        console.log('Verifying with SECRET KEY:', keySecret ? '***' + keySecret.slice(-4) : 'none');
-
-        // Store temporarily in state/memory as requested
-        const paymentState = {
-          razorpay_payment_id: response.razorpay_payment_id,
-          razorpay_order_id: response.razorpay_order_id,
-          razorpay_signature: response.razorpay_signature,
-          name: details.name,
-          email: details.email,
-        };
-        
-        console.log('Payment State Stored:', paymentState);
-        
-        setIsProcessing(false);
-        showToast('Payment Successful! Preparing your document...', 'success');
-        
-        if (onSuccess) {
-          onSuccess();
-        }
-      },
-      onPaymentFailure: function(error: any) {
-        setIsProcessing(false);
-        showToast(error.description || 'Payment Failed. Please try again.', 'error');
-      }
-    };
-
-    try {
-      await initializePayment(options);
-    } catch (err: any) {
-      setIsProcessing(false);
-      showToast(err.message || 'Failed to open payment gateway', 'error');
-    }
-  };
-
   return (
-    <div className="relative">
+    <div className="relative w-full max-w-sm mx-auto">
       {/* Toast Notification */}
       {toast && (
         <div className="fixed bottom-4 right-4 z-[100] animate-in slide-in-from-bottom-5 fade-in duration-300">
@@ -135,39 +47,57 @@ export function PaymentButton({
         </div>
       )}
 
-      {/* Payment Dialog */}
-      <PaymentDialog
-        isOpen={isDialogOpen}
-        onClose={() => setIsDialogOpen(false)}
-        onSubmit={handleDialogSubmit}
-      />
-
-      {/* Main CTA Button */}
-      <button
-        onClick={handleDialogOpen}
-        disabled={isSdkLoading || isProcessing}
-        className="px-8 py-4 bg-[#00703c] text-white rounded-xl hover:bg-[#005a30] disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-md active:shadow-sm active:translate-y-0.5 font-bold text-xl min-w-[280px] flex items-center justify-center"
-      >
-        {isSdkLoading ? (
-          <span className="flex items-center gap-2">
-            <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-            </svg>
-            Loading Payment...
-          </span>
-        ) : isProcessing ? (
-          <span className="flex items-center gap-2">
-            <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-            </svg>
-            Processing...
-          </span>
-        ) : (
-          buttonText
-        )}
-      </button>
+      <div className="w-full">
+        <PayPalScriptProvider options={{ clientId: PAYPAL_CLIENT_ID, currency: currency }}>
+          <PayPalButtons
+            style={{ layout: "vertical", shape: "rect", color: "blue" }}
+            createOrder={(data, actions) => {
+              return actions.order.create({
+                intent: "CAPTURE",
+                purchase_units: [
+                  {
+                    amount: {
+                      currency_code: currency,
+                      value: (amount / 100).toFixed(2),
+                    },
+                    description: 'Digital Deed Poll PDF',
+                  },
+                ],
+              });
+            }}
+            onApprove={(data, actions) => {
+              showToast('Processing payment...', 'info');
+              if (actions.order) {
+                return actions.order.capture().then((details) => {
+                  const payerName = details.payer?.name?.given_name 
+                    ? `${details.payer.name.given_name} ${details.payer.name.surname || ''}`.trim()
+                    : '';
+                  
+                  const paymentState = {
+                    orderID: details.id || '',
+                    payerID: details.payer?.payer_id || '',
+                    name: payerName,
+                    email: details.payer?.email_address || '',
+                  };
+                  console.log('Payment State Stored:', paymentState);
+                  showToast('Payment Successful! Preparing your document...', 'success');
+                  if (onSuccess) {
+                    onSuccess();
+                  }
+                });
+              }
+              return Promise.resolve();
+            }}
+            onError={(err) => {
+              console.error("PayPal Error:", err);
+              showToast('Payment failed or was cancelled.', 'error');
+            }}
+            onCancel={() => {
+              showToast('Payment was cancelled by user.', 'info');
+            }}
+          />
+        </PayPalScriptProvider>
+      </div>
     </div>
   );
 }

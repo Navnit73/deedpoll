@@ -3,10 +3,10 @@ export interface PaymentDetails {
   email: string;
 }
 
-export interface RazorpayResponse {
-  razorpay_payment_id: string;
-  razorpay_order_id?: string;
-  razorpay_signature?: string;
+export interface PayPalResponse {
+  orderID: string;
+  payerID?: string;
+  paymentID?: string;
 }
 
-export interface PaymentState extends RazorpayResponse, PaymentDetails {}
+export interface PaymentState extends PayPalResponse, PaymentDetails {}
