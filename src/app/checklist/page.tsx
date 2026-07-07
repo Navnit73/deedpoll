@@ -50,10 +50,14 @@ export default function Checklist() {
 }
 
 const checklistItems = [
-  {
-    title: '💷 Passport Office',
-    desc: `If you hold a passport, you'll need to <a href="https://www.gov.uk/renew-adult-passport" target="_blank" class="text-[#1d70b8] underline underline-offset-2 decoration-2 hover:text-[#003078]">renew your passport</a> to get it updated with your new name. You'll need to pay the renewal fee, but you may be entitled to carry-over some of the remaining months of validity of your old passport into the lifespan of your new passport. HM Passport Office will need you to send them an original deed poll (not a photocopy), but if you've followed our advice to sign multiple originals in the same sitting, this shouldn't be a problem.<br><br>As a piece of government-issued photo ID, getting your passport updated promptly can be very-helpful in demonstrating your name change to other organisations.`,
-  },
+ {
+  title: '💷 Passport Office',
+  desc: `If you hold a passport, you'll need to <a href="https://www.gov.uk/renew-adult-passport" target="_blank" class="text-[#1d70b8] underline underline-offset-2 decoration-2 hover:text-[#003078]">renew your passport</a> to get it updated with your new name. You'll need to pay the renewal fee, but you may be entitled to carry-over some of the remaining months of validity of your old passport into the lifespan of your new passport. HM Passport Office will need you to send them an original deed poll (not a photocopy), but if you've followed our advice to sign multiple originals in the same sitting, this shouldn't be a problem.<br><br>
+
+As a piece of government-issued photo ID, getting your passport updated promptly can be very helpful in demonstrating your name change to other organisations.<br><br>
+
+Before submitting your renewal application, ensure your passport photo meets official UK requirements for size, background, and biometric standards. <a href="https://www.pixpassport.com/" target="_blank" class="text-[#1d70b8] underline underline-offset-2 decoration-2 hover:text-[#003078]">PixPassport</a> provides an online passport photo maker that helps create compliant ID and visa photos. For UK applications, you can also use the dedicated <a href="https://www.pixpassport.com/uk-passport-photo-editor" target="_blank" class="text-[#1d70b8] underline underline-offset-2 decoration-2 hover:text-[#003078]">UK passport photo editor</a> to crop, resize, and prepare your passport photo online.`,
+},
   {
     title: 'DVLA (Driving Licence)',
     desc: `If you hold a driving licence, you'll need to renew your driving licence to reflect your new name. You'll need to pay a renewal fee if you <a href="https://www.gov.uk/renew-driving-licence" target="_blank" class="text-[#1d70b8] underline underline-offset-2 decoration-2 hover:text-[#003078]">apply online</a> but this is free if you <a href="https://www.gov.uk/dvlaforms" target="_blank" class="text-[#1d70b8] underline underline-offset-2 decoration-2 hover:text-[#003078]">use the DVLA D1 paper forms</a>. The DVLA will need you to send them an original deed poll (not a photocopy), but if you've followed our advice to sign multiple originals in the same sitting, this shouldn't be a problem.<br><br>As a piece of government-issued photo ID, getting your driving licence updated promptly can be very-helpful in demonstrating your name change to other organisations.`,
