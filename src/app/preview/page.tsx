@@ -106,7 +106,7 @@ export default function PreviewPage() {
             </p>
             <div className="flex justify-center mt-6">
               <PaymentButton 
-                amount={1000} 
+                amount={100} 
                 currency="GBP"
                 onSuccess={() => {
                   setIsPaid(true);
