@@ -5,6 +5,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://deedpolluk.uk';
 
 
+  const currentDate = new Date();
+
   // Core pages
   const corePages = [
     '',
@@ -16,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/video'
   ].map((route) => ({
     url: `${baseUrl}${route}`,
-
+    lastModified: currentDate,
     changeFrequency: route === '' ? 'weekly' as const : 'monthly' as const,
     priority: route === '' ? 1.0 : 0.8,
   }));
@@ -37,7 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/how-to-change-name-by-deed-poll-uk'
   ].map((route) => ({
     url: `${baseUrl}${route}`,
-  
+    lastModified: currentDate,
     changeFrequency: 'monthly' as const,
     priority: 0.8,
   }));

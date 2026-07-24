@@ -3,7 +3,8 @@
 import React, { useState } from 'react';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 
-const ghvhgvhvhgvg = 'BAAwpoObIPFtmfq5bnouelbk_OGV1Ldhfo7lRpg5QoK6ulzhC73jeq1vDdPWbDaLLd_3Tj1JdvuA5hBYv0';
+// Use live Client ID from environment variables, or fallback to 'test' for sandbox
+const clientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || 'test';
 
 interface PaymentButtonProps {
   amount: number;
@@ -48,7 +49,7 @@ export function PaymentButton({
       )}
 
       <div className="w-full">
-        <PayPalScriptProvider options={{ clientId: ghvhgvhvhgvg, currency: currency }}>
+        <PayPalScriptProvider options={{ clientId: clientId, currency: currency }}>
           <PayPalButtons
             style={{ layout: "vertical", shape: "rect", color: "blue" }}
             createOrder={(data, actions) => {

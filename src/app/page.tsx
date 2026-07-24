@@ -52,16 +52,16 @@ export default function Home() {
                 className="inline-flex flex-col sm:flex-row w-full sm:w-auto rounded-lg active:translate-y-1 transition-all overflow-hidden group border border-[#d8d8d8] sm:border-0 hover:opacity-95"
               >
                 <div className="bg-[#00703c] group-hover:bg-[#005a30] transition-colors text-white font-bold py-3 px-6 text-xl sm:text-lg flex items-center justify-center">
-                  Get Your Deed Poll
+                  Get Your Free Deed Poll
                 </div>
                 <div className="bg-[#efeee9] sm:border-y sm:border-r border-[#d8d8d8] py-2 px-6 flex flex-col justify-center items-center text-[#0b0c0c] min-w-[160px]">
-                  <span className="font-bold text-3xl leading-none tracking-tight text-[#0b0c0c]">£14.99</span>
-                  <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold mt-1">One-time payment</span>
+                  <span className="font-bold text-3xl leading-none tracking-tight text-[#00703c]">100% FREE</span>
+                  <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold mt-1">No Payment Required</span>
                 </div>
               </Link>
               <div className="text-gray-500 text-sm flex items-center gap-2 mt-4 font-medium">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-                Secure checkout. No account required.
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                Instant PDF download. No payment or account required.
               </div>
             </div>
           </div>
@@ -77,8 +77,8 @@ export default function Home() {
               <span className="text-xs sm:text-sm md:text-base">Happy Customers</span>
             </div>
             <div className="flex flex-col">
-              <strong className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1">£14.99</strong>
-              <span className="text-xs sm:text-sm md:text-base">One-Off Price</span>
+              <strong className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1">100% FREE</strong>
+              <span className="text-xs sm:text-sm md:text-base">No Hidden Fees</span>
             </div>
             <div className="flex flex-col">
               <strong className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1">2 Min</strong>
@@ -149,8 +149,8 @@ export default function Home() {
               },
               {
                 icon: <path strokeLinecap="square" strokeLinejoin="miter" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />,
-                title: "Just £14.99 — No Extras",
-                desc: "One flat fee. No subscriptions, no hidden charges. Solicitors charge £100–£200+ for the same result."
+                title: "100% Free — No Payment Needed",
+                desc: "Generate your official deed poll completely free. No subscriptions, no credit card required."
               },
               {
                 icon: <path strokeLinecap="square" strokeLinejoin="miter" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />,
@@ -409,16 +409,16 @@ export default function Home() {
               className="inline-flex flex-col sm:flex-row w-full sm:w-auto rounded-lg active:translate-y-1 transition-all overflow-hidden group border border-[#d8d8d8] sm:border-0 hover:opacity-95"
             >
               <div className="bg-[#00703c] group-hover:bg-[#005a30] transition-colors text-white font-bold py-4 px-8 text-xl sm:text-2xl flex items-center justify-center">
-                Get Your Deed Poll
+                Get Your Free Deed Poll
               </div>
               <div className="bg-[#efeee9] sm:border-y sm:border-r border-[#d8d8d8] py-3 px-8 flex flex-col justify-center items-center text-[#0b0c0c] min-w-[160px]">
-                <span className="font-bold text-3xl leading-none tracking-tight text-[#0b0c0c]">£14.99</span>
-                <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold mt-1">One-time payment</span>
+                <span className="font-bold text-3xl leading-none tracking-tight text-[#00703c]">100% FREE</span>
+                <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold mt-1">No Payment Required</span>
               </div>
             </Link>
             <div className="text-gray-500 text-sm flex items-center justify-center gap-2 mt-4 font-medium">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-              Secure checkout. No account required.
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Instant PDF download. No payment or account required.
             </div>
             <Link
               href="/faq"
@@ -464,10 +464,10 @@ export default function Home() {
               "name": "UK Deed Poll Service",
               "provider": { "@id": "https://deedpolluk.uk/#organization" },
               "areaServed": "GB",
-              "description": "Legally valid UK deed poll documents delivered as instant PDF. Accepted by the Passport Office, DVLA, HMRC, and all major banks.",
+              "description": "Legally valid UK deed poll documents delivered as instant free PDF. Accepted by the Passport Office, DVLA, HMRC, and all major banks.",
               "offers": {
                 "@type": "Offer",
-                "price": "14.99",
+                "price": "0.00",
                 "priceCurrency": "GBP"
               }
             },
