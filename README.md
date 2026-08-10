@@ -2,7 +2,7 @@
 
 ![DeedPollPro UK](https://deedpollpro.uk/og-image.jpg)
 
-> Change your name legally in the UK in minutes. Generate a legally compliant UK Deed Poll online and receive your PDF instantly.
+> Change your name legally in the UK in minutes. Generate a legally compliant UK Deed Poll online and receive your PDF instantly
 
 🌐 Website: https://deedpollpro.uk/
 
