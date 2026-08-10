@@ -1,5 +1,27 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import StructuredData from "@/components/StructuredData";
+
+export const metadata: Metadata = {
+  title: "Deed Poll UK — Change Your Name Legally Online",
+  description:
+    "Create a legally valid UK deed poll online in minutes. Change your first name, surname, or full name and update your passport, driving licence, and bank accounts.",
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-GB": "/",
+      "x-default": "/",
+    },
+  },
+  openGraph: {
+    title: "Deed Poll UK — Change Your Name Legally Online",
+    description:
+      "Create a legally valid UK deed poll online in minutes. Change your first name, surname, or full name and update your passport, driving licence, and bank accounts.",
+    url: "https://deedpolluk.uk",
+    locale: "en_GB",
+    type: "website",
+  },
+};
 
 export default function Home() {
   return (

@@ -85,6 +85,12 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
     shortcut: "/favicon-32x32.png",
   },
+
+  other: {
+    "geo.region": "GB",
+    "geo.placename": "United Kingdom",
+    "content-language": "en-GB",
+  },
 };
 
 export default function RootLayout({
@@ -140,10 +146,17 @@ export default function RootLayout({
             logo: "https://deedpolluk.uk/og-image.jpg",
             description:
               "Official UK deed poll service. Create a legally valid deed poll online to change your name in the UK.",
+            address: {
+              "@type": "PostalAddress",
+              addressCountry: "GB",
+            },
             areaServed: {
               "@type": "Country",
               name: "United Kingdom",
+              identifier: "GB",
             },
+            inLanguage: "en-GB",
+            priceRange: "£",
             serviceType: "Deed Poll",
           })}
         </Script>

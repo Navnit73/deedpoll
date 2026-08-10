@@ -15,7 +15,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/checklist',
     '/faq',
     '/my-deed-poll-was-rejected',
-    '/video'
+    '/video',
+    '/contact-us',
+    '/terms-and-conditions',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: currentDate,
