@@ -1,10 +1,9 @@
 export const dynamic = 'force-static';
 import { MetadataRoute } from 'next';
+import { getAllPosts } from '@/lib/posts';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://deedpolluk.uk';
-
-
   const currentDate = new Date();
 
   // Core pages
@@ -21,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: currentDate,
-    changeFrequency: route === '' ? 'weekly' as const : 'monthly' as const,
+    changeFrequency: route === '' ? ('weekly' as const) : ('monthly' as const),
     priority: route === '' ? 1.0 : 0.8,
   }));
 
@@ -38,7 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/how-to-change-company-name-uk',
     '/how-to-change-first-name-uk',
     '/how-to-change-last-name-uk',
-    '/how-to-change-name-by-deed-poll-uk'
+    '/how-to-change-name-by-deed-poll-uk',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: currentDate,
@@ -46,5 +45,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...corePages, ...guidePages];
+  // Dynamic Markdown CMS Posts
+  const markdownPosts = await getAllPosts();
+  const cmsPostEntries = markdownPosts.map((post) => ({
+    url: `${baseUrl}${post.urlPath}`,
+    lastModified: post.dateModified ? new Date(post.dateModified) : new Date(post.datePublished),
+    changeFrequency: 'weekly' as const,
+    priority: 0.9,
+  }));
+
+  return [...corePages, ...guidePages, ...cmsPostEntries];
 }
