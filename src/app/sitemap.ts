@@ -24,8 +24,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: route === '' ? 1.0 : 0.8,
   }));
 
-  // Guide pages
+  // Guide pages & tools
   const guidePages = [
+    '/national-insurance-and-tax-calculator-uk',
+    '/after-tax-pay-calculator-uk',
+    '/calculate-stamp-duty-england',
     '/how-to-change-your-name-uk',
     '/how-to-legally-change-your-name-uk',
     '/how-to-change-name-after-marriage-uk',

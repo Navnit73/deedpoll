@@ -11,6 +11,9 @@ export default function Footer() {
               <li><Link href="/before-you-start" className="hover:underline underline-offset-2">Before you start</Link></li>
               <li><Link href="/change-name-in-uk-by-deedpoll" className="hover:underline underline-offset-2">Create your Deed Poll</Link></li>
               <li><Link href="/checklist" className="hover:underline underline-offset-2">Name Change Checklist</Link></li>
+              <li><Link href="/calculate-stamp-duty-england" className="hover:underline underline-offset-2 font-semibold text-[#1d70b8]">Stamp Duty Calculator England</Link></li>
+              <li><Link href="/after-tax-pay-calculator-uk" className="hover:underline underline-offset-2 font-semibold text-[#00703c]">After-Tax Pay Calculator UK</Link></li>
+              <li><Link href="/national-insurance-and-tax-calculator-uk" className="hover:underline underline-offset-2 font-semibold text-[#1d70b8]">National Insurance & Tax Calculator</Link></li>
             </ul>
           </div>
           <div>

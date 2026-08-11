@@ -376,12 +376,59 @@ export default function Home() {
         </div>
       </section>
 
-      {/* BLOG / GUIDES */}
+      {/* HELPFUL GUIDES & TOOLS */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 border-t border-gray-300">
-        <span className="text-[#1d70b8] font-bold text-base sm:text-lg mb-2 block uppercase tracking-wider">Helpful Guides</span>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8">Name Change Guides & Articles</h2>
+        <span className="text-[#1d70b8] font-bold text-base sm:text-lg mb-2 block uppercase tracking-wider">Useful Tools & Guides</span>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8">Legal Guides & Financial Calculators</h2>
+        
+        {/* Featured Tools Banners */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-[#1d70b8] rounded-xl p-6 flex flex-col justify-between gap-4 shadow-sm">
+            <div>
+              <div className="inline-flex items-center gap-2 bg-[#1d70b8] text-white text-xs font-bold px-2.5 py-0.5 rounded uppercase tracking-wider mb-2">
+                Free Property Tool
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-[#0b0c0c]">
+                Calculate Stamp Duty England (SDLT)
+              </h3>
+              <p className="text-sm text-gray-700 mt-1">
+                Buying property in England or Northern Ireland? Calculate your exact Stamp Duty Land Tax with rates for home movers, first-time buyers, and additional properties.
+              </p>
+            </div>
+            <Link
+              href="/calculate-stamp-duty-england"
+              className="bg-[#1d70b8] hover:bg-[#003078] text-white font-bold px-5 py-2.5 rounded-lg text-sm transition-colors self-start flex items-center gap-2"
+            >
+              Calculate Stamp Duty →
+            </Link>
+          </div>
+
+          <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-[#00703c] rounded-xl p-6 flex flex-col justify-between gap-4 shadow-sm">
+            <div>
+              <div className="inline-flex items-center gap-2 bg-[#00703c] text-white text-xs font-bold px-2.5 py-0.5 rounded uppercase tracking-wider mb-2">
+                Free Income Tax Tool
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-[#0b0c0c]">
+                After-Tax Pay Calculator UK
+              </h3>
+              <p className="text-sm text-gray-700 mt-1">
+                Calculate your exact UK net take-home salary after Income Tax, National Insurance, pension contributions, and student loan repayments for 2025/2026.
+              </p>
+            </div>
+            <Link
+              href="/after-tax-pay-calculator-uk"
+              className="bg-[#00703c] hover:bg-[#005a30] text-white font-bold px-5 py-2.5 rounded-lg text-sm transition-colors self-start flex items-center gap-2"
+            >
+              Calculate Take-Home Pay →
+            </Link>
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {[
+            { href: "/national-insurance-and-tax-calculator-uk", label: "National Insurance & Tax Calculator UK" },
+            { href: "/after-tax-pay-calculator-uk", label: "After-Tax Pay Calculator UK" },
+            { href: "/calculate-stamp-duty-england", label: "Calculate Stamp Duty England (SDLT)" },
             { href: "/how-to-change-your-name-uk", label: "How to Change Your Name in the UK" },
             { href: "/how-to-legally-change-your-name-uk", label: "How to Legally Change Your Name" },
             { href: "/how-to-change-name-after-marriage-uk", label: "How to Change Your Name After Marriage" },
