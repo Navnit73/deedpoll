@@ -29,6 +29,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/national-insurance-and-tax-calculator-uk',
     '/after-tax-pay-calculator-uk',
     '/calculate-stamp-duty-england',
+    '/uk-mortgage-affordability-calculator',
+    '/uk-working-days-calculator',
     '/how-to-change-your-name-uk',
     '/how-to-legally-change-your-name-uk',
     '/how-to-change-name-after-marriage-uk',

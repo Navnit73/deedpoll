@@ -14,6 +14,8 @@ export default function Footer() {
               <li><Link href="/calculate-stamp-duty-england" className="hover:underline underline-offset-2 font-semibold text-[#1d70b8]">Stamp Duty Calculator England</Link></li>
               <li><Link href="/after-tax-pay-calculator-uk" className="hover:underline underline-offset-2 font-semibold text-[#00703c]">After-Tax Pay Calculator UK</Link></li>
               <li><Link href="/national-insurance-and-tax-calculator-uk" className="hover:underline underline-offset-2 font-semibold text-[#1d70b8]">National Insurance & Tax Calculator</Link></li>
+              <li><Link href="/uk-mortgage-affordability-calculator" className="hover:underline underline-offset-2 font-semibold text-[#00703c]">Mortgage Affordability Calculator UK</Link></li>
+              <li><Link href="/uk-working-days-calculator" className="hover:underline underline-offset-2 font-semibold text-[#1d70b8]">Working Days Calculator UK</Link></li>
             </ul>
           </div>
           <div>
