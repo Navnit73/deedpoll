@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import StructuredData from "@/components/StructuredData";
+import ShareWidget from "@/components/ShareWidget";
 
 export const metadata: Metadata = {
   title: "Deed Poll UK — Change Your Name Legally Online",
@@ -357,11 +358,11 @@ export default function Home() {
             </div>
             <div>
               <h3 className="text-lg sm:text-xl font-bold mb-2">Can I change my name for free?</h3>
-              <p>You can write your own deed poll by hand, but our professionally worded document at £14.99 guarantees correct legal wording and eliminates the risk of rejection by official bodies.</p>
+              <p>Yes! Our service generates a professionally formatted, fully compliant official UK Deed Poll PDF 100% free with no hidden fees, subscriptions, or credit card required.</p>
             </div>
             <div>
               <h3 className="text-lg sm:text-xl font-bold mb-2">Can I change a child's name?</h3>
-              <p>Yes, but everyone with parental responsibility must consent and sign. See our <Link href="/faq" className="text-[#1d70b8] underline underline-offset-4 hover:text-[#003078]">full FAQ</Link> for a step-by-step guide to changing a child's name.</p>
+              <p>Yes, but everyone with parental responsibility must consent. See our <Link href="/child-deed-poll-uk" className="text-[#1d70b8] underline underline-offset-4 hover:text-[#003078]">Child Deed Poll Guide</Link> for full rules and parental consent requirements.</p>
             </div>
             <div>
               <h3 className="text-lg sm:text-xl font-bold mb-2">Do I need to register it anywhere?</h3>
@@ -373,76 +374,102 @@ export default function Home() {
               View all frequently asked questions →
             </Link>
           </p>
+
+          <ShareWidget
+            title="Free UK Deed Poll Generator — Legally Valid & Instant PDF"
+            description="Create a legally valid UK deed poll online in minutes for free. Accepted by HM Passport Office, DVLA, and banks."
+            className="mt-10"
+          />
         </div>
       </section>
 
       {/* HELPFUL GUIDES & TOOLS */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 border-t border-gray-300">
-        <span className="text-[#1d70b8] font-bold text-base sm:text-lg mb-2 block uppercase tracking-wider">Useful Tools & Guides</span>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8">Legal Guides & Financial Calculators</h2>
+        <span className="text-[#1d70b8] font-bold text-base sm:text-lg mb-2 block uppercase tracking-wider">Useful Tools & Legal Generators</span>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8">Free Legal Tools & Financial Calculators</h2>
         
-        {/* Featured Tools Banners */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        {/* Featured Legal Tools Banners */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-[#1d70b8] rounded-xl p-6 flex flex-col justify-between gap-4 shadow-sm">
             <div>
               <div className="inline-flex items-center gap-2 bg-[#1d70b8] text-white text-xs font-bold px-2.5 py-0.5 rounded uppercase tracking-wider mb-2">
-                Free Property Tool
+                100% Free Tool
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-[#0b0c0c]">
-                Calculate Stamp Duty England (SDLT)
+                Name Change Letter Generator
               </h3>
               <p className="text-sm text-gray-700 mt-1">
-                Buying property in England or Northern Ireland? Calculate your exact Stamp Duty Land Tax with rates for home movers, first-time buyers, and additional properties.
+                Generate formal cover letters for DVLA, Passport Office, Banks, HMRC, NHS GP, and your employer in 1 click.
               </p>
             </div>
             <Link
-              href="/calculate-stamp-duty-england"
+              href="/name-change-letters-generator"
               className="bg-[#1d70b8] hover:bg-[#003078] text-white font-bold px-5 py-2.5 rounded-lg text-sm transition-colors self-start flex items-center gap-2"
             >
-              Calculate Stamp Duty →
+              Generate Free Letters →
             </Link>
           </div>
 
           <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-[#00703c] rounded-xl p-6 flex flex-col justify-between gap-4 shadow-sm">
             <div>
               <div className="inline-flex items-center gap-2 bg-[#00703c] text-white text-xs font-bold px-2.5 py-0.5 rounded uppercase tracking-wider mb-2">
-                Free Income Tax Tool
+                Downloadable Resource
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-[#0b0c0c]">
-                After-Tax Pay Calculator UK
+                Free Deed Poll Template (Word & PDF)
               </h3>
               <p className="text-sm text-gray-700 mt-1">
-                Calculate your exact UK net take-home salary after Income Tax, National Insurance, pension contributions, and student loan repayments for 2025/2026.
+                Official legal wording compliant with HM Passport Office, DVLA, and UK banks. Free text, Word, and PDF format.
               </p>
             </div>
             <Link
-              href="/after-tax-pay-calculator-uk"
+              href="/free-deed-poll-template-uk"
               className="bg-[#00703c] hover:bg-[#005a30] text-white font-bold px-5 py-2.5 rounded-lg text-sm transition-colors self-start flex items-center gap-2"
             >
-              Calculate Take-Home Pay →
+              View Free Template →
+            </Link>
+          </div>
+
+          <div className="bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-600 rounded-xl p-6 flex flex-col justify-between gap-4 shadow-sm">
+            <div>
+              <div className="inline-flex items-center gap-2 bg-purple-700 text-white text-xs font-bold px-2.5 py-0.5 rounded uppercase tracking-wider mb-2">
+                Interactive Tracker
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-[#0b0c0c]">
+                Name Change Checklist
+              </h3>
+              <p className="text-sm text-gray-700 mt-1">
+                Track all 16 organisations to notify with live progress saving, category filters, and printable PDF export.
+              </p>
+            </div>
+            <Link
+              href="/checklist"
+              className="bg-purple-700 hover:bg-purple-900 text-white font-bold px-5 py-2.5 rounded-lg text-sm transition-colors self-start flex items-center gap-2"
+            >
+              Open Checklist →
             </Link>
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {[
-            { href: "/national-insurance-and-tax-calculator-uk", label: "National Insurance & Tax Calculator UK" },
-            { href: "/after-tax-pay-calculator-uk", label: "After-Tax Pay Calculator UK" },
-            { href: "/calculate-stamp-duty-england", label: "Calculate Stamp Duty England (SDLT)" },
+            { href: "/change-name-on-driving-licence-dvla-uk", label: "Change Name on Driving Licence (DVLA Guide)" },
+            { href: "/child-deed-poll-uk", label: "Child Deed Poll UK & Parental Consent Guide" },
+            { href: "/deed-poll-vs-statutory-declaration-uk", label: "Deed Poll vs Statutory Declaration UK" },
             { href: "/how-to-change-your-name-uk", label: "How to Change Your Name in the UK" },
             { href: "/how-to-legally-change-your-name-uk", label: "How to Legally Change Your Name" },
+            { href: "/how-to-change-name-on-passport-uk", label: "How to Change Your Name on a Passport" },
             { href: "/how-to-change-name-after-marriage-uk", label: "How to Change Your Name After Marriage" },
             { href: "/how-to-change-surname-uk", label: "How to Change Your Surname" },
             { href: "/how-much-does-it-cost-to-change-your-name-uk", label: "How Much Does It Cost to Change Your Name?" },
             { href: "/how-to-change-childs-surname-uk", label: "How to Change a Child's Surname" },
-            { href: "/how-to-change-name-on-passport-uk", label: "How to Change Your Name on a Passport" },
             { href: "/how-to-change-name-on-birth-certificate-uk", label: "Can You Change a Name on a Birth Certificate?" },
-            { href: "/how-to-change-company-name-uk", label: "How to Change a Company Name" },
-            { href: "/how-to-change-first-name-uk", label: "How to Change Your First Name" },
-            { href: "/how-to-change-last-name-uk", label: "How to Change Your Last Name" },
-            { href: "/how-to-change-name-by-deed-poll-uk", label: "How to Change Your Name by Deed Poll" },
+            { href: "/calculate-stamp-duty-england", label: "Calculate Stamp Duty England (SDLT)" },
+            { href: "/after-tax-pay-calculator-uk", label: "After-Tax Pay Calculator UK" },
+            { href: "/national-insurance-and-tax-calculator-uk", label: "National Insurance & Tax Calculator UK" },
+            { href: "/uk-mortgage-affordability-calculator", label: "UK Mortgage Affordability Calculator" },
           ].map(({ href, label }) => (
-            <Link key={href} href={href} className="text-base sm:text-xl font-bold text-[#1d70b8] hover:underline underline-offset-4 decoration-2">
+            <Link key={href} href={href} className="text-base sm:text-lg font-bold text-[#1d70b8] hover:underline underline-offset-4 decoration-2">
               {label}
             </Link>
           ))}

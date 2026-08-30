@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import AfterTaxPayCalculator from '@/components/AfterTaxPayCalculator';
 import StructuredData from '@/components/StructuredData';
+import ShareWidget from '@/components/ShareWidget';
 
 export const metadata: Metadata = {
   title: 'After Tax Pay Calculator UK — Calculate UK Salary After Tax',
@@ -227,6 +228,12 @@ export default function AfterTaxPayCalculatorPage() {
             Create Deed Poll Free →
           </Link>
         </div>
+
+        <ShareWidget
+          title="After-Tax Pay Calculator UK — Calculate Take-Home Salary"
+          description="Free UK Salary Calculator: Income tax, National insurance, student loans, and pension deductions."
+          className="my-8"
+        />
 
         {/* FAQ SECTION */}
         <div className="mt-12">

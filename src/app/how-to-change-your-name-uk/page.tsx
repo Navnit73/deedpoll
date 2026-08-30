@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import StructuredData from '@/components/StructuredData';
+import ShareWidget from '@/components/ShareWidget';
 
 export const metadata = {
   alternates: {
@@ -330,12 +331,21 @@ export default function Page() {
               <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">Change a Name on a Birth Certificate</h3>
               <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
             </Link>
-            <Link href="/how-to-change-surname-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
-              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">How to Change Your Surname</h3>
-              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
+            <Link href="/name-change-letters-generator" className="bg-blue-50 border border-[#1d70b8] rounded-lg p-5 hover:bg-blue-100 transition-colors group">
+              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">✉️ Name Change Letters Generator</h3>
+              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Free Tool →</span>
+            </Link>
+            <Link href="/free-deed-poll-template-uk" className="bg-green-50 border border-[#00703c] rounded-lg p-5 hover:bg-green-100 transition-colors group">
+              <h3 className="font-bold text-gray-900 group-hover:text-[#00703c] transition-colors">📄 Free Deed Poll Template (Word/PDF)</h3>
+              <span className="text-[#00703c] text-sm mt-3 inline-block font-medium">Download Free →</span>
             </Link>
           </div>
         </section>
+
+        <ShareWidget
+          title="How to Change Your Name in the UK: Complete Step-by-Step Guide"
+          description="Complete 2026 UK guide to legally changing your name, updating passports, DVLA, and banks."
+        />
 
         {/* ── CTA block ── */}
         <div className="bg-[#f3f2f1] border border-gray-300 rounded-xl px-6 py-8 sm:px-10 sm:py-10 text-center">

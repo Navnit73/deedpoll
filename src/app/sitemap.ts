@@ -6,48 +6,53 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://deedpolluk.uk';
   const currentDate = new Date();
 
-  // Core pages
+  // Core pages & primary interactive tools (High Priority)
   const corePages = [
-    '',
-    '/change-name-in-uk-by-deedpoll',
-    '/before-you-start',
-    '/checklist',
-    '/faq',
-    '/my-deed-poll-was-rejected',
-    '/video',
-    '/contact-us',
-    '/terms-and-conditions',
-  ].map((route) => ({
+    { route: '', priority: 1.0, changeFrequency: 'daily' as const },
+    { route: '/change-name-in-uk-by-deedpoll', priority: 1.0, changeFrequency: 'daily' as const },
+    { route: '/name-change-letters-generator', priority: 1.0, changeFrequency: 'daily' as const },
+    { route: '/free-deed-poll-template-uk', priority: 1.0, changeFrequency: 'weekly' as const },
+    { route: '/checklist', priority: 0.9, changeFrequency: 'weekly' as const },
+    { route: '/faq', priority: 0.8, changeFrequency: 'weekly' as const },
+    { route: '/before-you-start', priority: 0.8, changeFrequency: 'monthly' as const },
+    { route: '/my-deed-poll-was-rejected', priority: 0.8, changeFrequency: 'monthly' as const },
+    { route: '/video', priority: 0.7, changeFrequency: 'monthly' as const },
+    { route: '/contact-us', priority: 0.7, changeFrequency: 'monthly' as const },
+    { route: '/terms-and-conditions', priority: 0.5, changeFrequency: 'monthly' as const },
+  ].map(({ route, priority, changeFrequency }) => ({
     url: `${baseUrl}${route}`,
     lastModified: currentDate,
-    changeFrequency: route === '' ? ('weekly' as const) : ('monthly' as const),
-    priority: route === '' ? 1.0 : 0.8,
+    changeFrequency,
+    priority,
   }));
 
   // Guide pages & tools
   const guidePages = [
-    '/national-insurance-and-tax-calculator-uk',
-    '/after-tax-pay-calculator-uk',
-    '/calculate-stamp-duty-england',
-    '/uk-mortgage-affordability-calculator',
-    '/uk-working-days-calculator',
-    '/how-to-change-your-name-uk',
-    '/how-to-legally-change-your-name-uk',
-    '/how-to-change-name-after-marriage-uk',
-    '/how-to-change-surname-uk',
-    '/how-much-does-it-cost-to-change-your-name-uk',
-    '/how-to-change-childs-surname-uk',
-    '/how-to-change-name-on-passport-uk',
-    '/how-to-change-name-on-birth-certificate-uk',
-    '/how-to-change-company-name-uk',
-    '/how-to-change-first-name-uk',
-    '/how-to-change-last-name-uk',
-    '/how-to-change-name-by-deed-poll-uk',
-  ].map((route) => ({
+    { route: '/change-name-on-driving-licence-dvla-uk', priority: 0.9 },
+    { route: '/child-deed-poll-uk', priority: 0.9 },
+    { route: '/deed-poll-vs-statutory-declaration-uk', priority: 0.9 },
+    { route: '/how-to-change-your-name-uk', priority: 0.9 },
+    { route: '/how-to-legally-change-your-name-uk', priority: 0.9 },
+    { route: '/how-to-change-name-on-passport-uk', priority: 0.9 },
+    { route: '/how-to-change-name-after-marriage-uk', priority: 0.9 },
+    { route: '/how-to-change-surname-uk', priority: 0.8 },
+    { route: '/how-much-does-it-cost-to-change-your-name-uk', priority: 0.8 },
+    { route: '/how-to-change-childs-surname-uk', priority: 0.8 },
+    { route: '/how-to-change-name-on-birth-certificate-uk', priority: 0.8 },
+    { route: '/how-to-change-first-name-uk', priority: 0.8 },
+    { route: '/how-to-change-last-name-uk', priority: 0.8 },
+    { route: '/how-to-change-name-by-deed-poll-uk', priority: 0.8 },
+    { route: '/how-to-change-company-name-uk', priority: 0.8 },
+    { route: '/calculate-stamp-duty-england', priority: 0.8 },
+    { route: '/after-tax-pay-calculator-uk', priority: 0.8 },
+    { route: '/national-insurance-and-tax-calculator-uk', priority: 0.8 },
+    { route: '/uk-mortgage-affordability-calculator', priority: 0.8 },
+    { route: '/uk-working-days-calculator', priority: 0.8 },
+  ].map(({ route, priority }) => ({
     url: `${baseUrl}${route}`,
     lastModified: currentDate,
-    changeFrequency: 'monthly' as const,
-    priority: 0.8,
+    changeFrequency: 'weekly' as const,
+    priority,
   }));
 
   // Dynamic Markdown CMS Posts

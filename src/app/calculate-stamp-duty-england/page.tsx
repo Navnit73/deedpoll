@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import StampDutyCalculator from '@/components/StampDutyCalculator';
 import StructuredData from '@/components/StructuredData';
+import ShareWidget from '@/components/ShareWidget';
 
 export const metadata: Metadata = {
   title: 'Calculate Stamp Duty England — Official SDLT Calculator 2025/2026',
@@ -209,6 +210,12 @@ export default function CalculateStampDutyEnglandPage() {
             Create Deed Poll Free →
           </Link>
         </div>
+
+        <ShareWidget
+          title="Free Stamp Duty Calculator England (SDLT) — Real-Time Rates"
+          description="Calculate exact Stamp Duty Land Tax on property in England & Northern Ireland."
+          className="my-8"
+        />
 
         {/* FAQ SECTION */}
         <div className="mt-12">

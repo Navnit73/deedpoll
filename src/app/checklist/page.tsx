@@ -1,153 +1,403 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import ShareWidget from '@/components/ShareWidget';
+import StructuredData from '@/components/StructuredData';
 
-export const metadata = {
-  title: "Deed Poll Checklist | Next Steps | Deed Poll UK",
-  description: "A comprehensive checklist of organisations to notify after changing your name.",
-  alternates: {
-    canonical: "/checklist",
-    languages: {
-      "en-GB": "/checklist",
-      "x-default": "/checklist",
-    },
+interface ChecklistItem {
+  id: string;
+  title: string;
+  category: 'government' | 'banking' | 'healthcare' | 'services';
+  fee: boolean;
+  priority: 'high' | 'medium' | 'low';
+  desc: string;
+  linkText?: string;
+  linkHref?: string;
+}
+
+const CHECKLIST_ITEMS: ChecklistItem[] = [
+  {
+    id: 'passport',
+    title: 'HM Passport Office',
+    category: 'government',
+    fee: true,
+    priority: 'high',
+    desc: 'Renew your adult British passport to reflect your new legal name. Essential photo ID to show other institutions.',
+    linkText: 'Passport renewal guide →',
+    linkHref: '/how-to-change-name-on-passport-uk'
   },
-};
+  {
+    id: 'dvla-licence',
+    title: 'DVLA (Driving Licence)',
+    category: 'government',
+    fee: false,
+    priority: 'high',
+    desc: 'Submit a D1 form by post to DVLA Swansea. Completely free of charge. Failure to update carries up to £1,000 fine.',
+    linkText: 'DVLA driving licence guide →',
+    linkHref: '/change-name-on-driving-licence-dvla-uk'
+  },
+  {
+    id: 'dvla-v5c',
+    title: 'DVLA (Vehicle Logbook V5C)',
+    category: 'government',
+    fee: false,
+    priority: 'medium',
+    desc: 'Update Section 3 of your vehicle registration certificate (V5C) and post to DVLA Swansea SA99 1BA (free).'
+  },
+  {
+    id: 'bank-accounts',
+    title: 'Banks & Building Societies',
+    category: 'banking',
+    fee: false,
+    priority: 'high',
+    desc: 'Notify current accounts, savings, and credit cards. Most high street banks accept original deed poll in branch.',
+    linkText: 'Generate bank letter →',
+    linkHref: '/name-change-letters-generator'
+  },
+  {
+    id: 'hmrc',
+    title: 'HMRC & National Insurance',
+    category: 'government',
+    fee: false,
+    priority: 'high',
+    desc: 'Update your National Insurance record, PAYE tax code, and personal tax account to ensure your wages and pension match.',
+    linkText: 'Generate HMRC letter →',
+    linkHref: '/name-change-letters-generator'
+  },
+  {
+    id: 'nhs-gp',
+    title: 'NHS GP Surgery & Dentist',
+    category: 'healthcare',
+    fee: false,
+    priority: 'high',
+    desc: 'Notify your GP surgery to update your electronic Personal Demographics Service (PDS) record across all NHS hospitals.',
+    linkText: 'Generate NHS letter →',
+    linkHref: '/name-change-letters-generator'
+  },
+  {
+    id: 'employer',
+    title: 'Employer, HR & Payroll',
+    category: 'services',
+    fee: false,
+    priority: 'high',
+    desc: 'Ensure your work payroll, P60, pension scheme, workplace email, and security badge match your new legal name.',
+    linkText: 'Generate employer letter →',
+    linkHref: '/name-change-letters-generator'
+  },
+  {
+    id: 'electoral-roll',
+    title: 'Electoral Register (Voter ID)',
+    category: 'government',
+    fee: false,
+    priority: 'medium',
+    desc: 'Register to vote with your new legal name. Keeps your credit record updated and allows you to vote with matching ID.'
+  },
+  {
+    id: 'council-tax',
+    title: 'Local Council (Council Tax & Benefits)',
+    category: 'government',
+    fee: false,
+    priority: 'medium',
+    desc: 'Notify your city or county council to update billing names on Council Tax and any local housing benefits.'
+  },
+  {
+    id: 'mortgage-loans',
+    title: 'Mortgage Lender & Personal Loans',
+    category: 'banking',
+    fee: false,
+    priority: 'medium',
+    desc: 'Inform your mortgage provider, loan companies, and student finance (SLC) with an original certified deed poll copy.'
+  },
+  {
+    id: 'pensions-investments',
+    title: 'Pensions & Investment Accounts',
+    category: 'banking',
+    fee: false,
+    priority: 'medium',
+    desc: 'Update workplace pensions, private SIPPs, ISAs, premium bonds, and stockbroker accounts.'
+  },
+  {
+    id: 'insurance-policies',
+    title: 'Insurance Providers (Car, Home, Life, Travel)',
+    category: 'services',
+    fee: false,
+    priority: 'high',
+    desc: 'Crucial: car and home insurance policies must match your legal name to ensure claims remain valid.'
+  },
+  {
+    id: 'utilities',
+    title: 'Utilities (Gas, Electricity, Water)',
+    category: 'services',
+    fee: false,
+    priority: 'low',
+    desc: 'Update billing account names with your energy supplier and regional water company.'
+  },
+  {
+    id: 'telecoms',
+    title: 'Mobile Phone & Broadband Providers',
+    category: 'services',
+    fee: false,
+    priority: 'low',
+    desc: 'Notify your mobile network operator and home internet provider to update billing records.'
+  },
+  {
+    id: 'land-registry',
+    title: 'HM Land Registry (Property Owners)',
+    category: 'government',
+    fee: false,
+    priority: 'low',
+    desc: 'If you own real estate, update your name on the property title register using Land Registry Form ID1 / AP1.'
+  },
+  {
+    id: 'will-legal',
+    title: 'Will & Power of Attorney',
+    category: 'services',
+    fee: false,
+    priority: 'medium',
+    desc: 'Ensure your Last Will and Testament, codicil, or Lasting Power of Attorney (LPA) documents reference your new name.'
+  }
+];
 
-export default function Checklist() {
+export default function ChecklistPage() {
+  const [checkedIds, setCheckedIds] = useState<string[]>([]);
+  const [activeCategory, setActiveCategory] = useState<string>('all');
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('deedpoll_checklist_completed');
+      if (saved) {
+        setCheckedIds(JSON.parse(saved));
+      }
+    } catch (e) {
+      console.error(e);
+    }
+    setIsLoaded(true);
+  }, []);
+
+  const toggleCheck = (id: string) => {
+    setCheckedIds(prev => {
+      const next = prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id];
+      try {
+        localStorage.setItem('deedpoll_checklist_completed', JSON.stringify(next));
+      } catch (e) {}
+      return next;
+    });
+  };
+
+  const handleReset = () => {
+    if (window.confirm('Reset all checklist progress?')) {
+      setCheckedIds([]);
+      try {
+        localStorage.removeItem('deedpoll_checklist_completed');
+      } catch (e) {}
+    }
+  };
+
+  const completedCount = checkedIds.length;
+  const totalCount = CHECKLIST_ITEMS.length;
+  const progressPercent = Math.round((completedCount / totalCount) * 100);
+
+  const filteredItems = activeCategory === 'all'
+    ? CHECKLIST_ITEMS
+    : CHECKLIST_ITEMS.filter(item => item.category === activeCategory);
+
+  const handlePrint = () => {
+    window.print();
+  };
+
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-      <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-8">Next Steps with your Deed Poll UK</h1>
-      <div className="text-gray-800 mb-12 text-lg space-y-4">
-        <p>
-          Congratulations! You've <Link href="/change-name-in-uk-by-deedpoll" className="text-[#1d70b8] underline underline-offset-4 decoration-2">created your deed poll</Link>; your name has legally been changed!
-          What next?
-        </p>
-        <p>
-          There are lots of people you'll need to contact to tell them about your name change. Here's a list to help
-          you get started: it's arranged so that some of the most-important are at the top. Probably not all of them will
-          apply to you. Those which might involve paying a fee to a government department are marked with: 💷.
-        </p>
-      </div>
+    <div className="bg-white min-h-screen">
+      <StructuredData
+        data={{
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "HowTo",
+              "name": "UK Name Change Checklist & Action Plan",
+              "description": "Complete checklist of all 16 organisations to notify after executing a UK Deed Poll.",
+              "step": CHECKLIST_ITEMS.map((item, idx) => ({
+                "@type": "HowToStep",
+                "position": idx + 1,
+                "name": `Notify ${item.title}`,
+                "text": item.desc
+              }))
+            }
+          ]
+        }}
+      />
 
-      <div className="space-y-6">
-        {checklistItems.map((item, index) => (
-          <div key={index} className="flex items-start gap-4 p-4 border border-gray-300 bg-gray-50">
-            <div className="pt-1">
-              <input type="checkbox" id={`checklist-${index}`} className="w-6 h-6 text-[#1d70b8] border-gray-400 border-2" />
-            </div>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16">
+        
+        {/* Breadcrumb */}
+        <nav aria-label="Breadcrumb" className="mb-6 text-sm text-gray-500">
+          <ol className="flex items-center gap-2">
+            <li><Link href="/" className="hover:text-[#1d70b8] underline">Home</Link></li>
+            <li>›</li>
+            <li className="text-gray-900 font-semibold">Name Change Checklist</li>
+          </ol>
+        </nav>
+
+        {/* Title */}
+        <div className="border-b-2 border-gray-200 pb-6 mb-8">
+          <span className="inline-block bg-blue-100 text-[#1d70b8] font-bold text-xs uppercase px-3 py-1 rounded-full mb-3">
+            Interactive Tracking Tool
+          </span>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0b0c0c] tracking-tight">
+            UK Name Change Checklist: Who to Notify
+          </h1>
+          <p className="mt-3 text-lg sm:text-xl text-gray-700 leading-relaxed">
+            Track your progress across all 16 UK organisations. Your ticked items are automatically saved in your browser so you can return anytime.
+          </p>
+        </div>
+
+        {/* Live Progress Bar Widget */}
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-[#1d70b8] rounded-xl p-6 mb-8 shadow-sm">
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-3">
             <div>
-              <label htmlFor={`checklist-${index}`} className="text-xl font-bold text-[#0b0c0c] cursor-pointer block mb-2">
-                {item.title}
-              </label>
-              {item.desc && (
-                <div className="text-gray-700 text-lg" dangerouslySetInnerHTML={{ __html: item.desc }} />
+              <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">Your Progress:</span>
+              <h2 className="text-2xl font-extrabold text-[#0b0c0c]">
+                {completedCount} of {totalCount} completed ({progressPercent}%)
+              </h2>
+            </div>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={handlePrint}
+                className="bg-white border border-gray-300 hover:bg-gray-50 text-gray-800 font-bold text-xs px-3.5 py-2 rounded-lg transition-all shadow-sm"
+              >
+                🖨️ Print / PDF
+              </button>
+              {completedCount > 0 && (
+                <button
+                  onClick={handleReset}
+                  className="text-xs text-red-600 hover:underline font-semibold"
+                >
+                  Reset
+                </button>
               )}
             </div>
           </div>
-        ))}
+
+          {/* Visual Progress Track */}
+          <div className="w-full bg-gray-200 h-4 rounded-full overflow-hidden">
+            <div
+              className="bg-[#00703c] h-full transition-all duration-500 ease-out"
+              style={{ width: `${progressPercent}%` }}
+            />
+          </div>
+
+          {completedCount === totalCount && (
+            <div className="mt-4 p-3 bg-green-100 border border-green-400 rounded-lg text-sm text-green-900 font-bold text-center">
+              🎉 Congratulations! You have updated your name with all UK organisations!
+            </div>
+          )}
+        </div>
+
+        {/* Category Filters */}
+        <div className="flex flex-wrap gap-2 mb-6">
+          {[
+            { id: 'all', label: 'All Items (16)' },
+            { id: 'government', label: 'Government & ID (6)' },
+            { id: 'banking', label: 'Banking & Finance (3)' },
+            { id: 'healthcare', label: 'Healthcare (1)' },
+            { id: 'services', label: 'Work & Utilities (6)' },
+          ].map(cat => (
+            <button
+              key={cat.id}
+              onClick={() => setActiveCategory(cat.id)}
+              className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all ${
+                activeCategory === cat.id
+                  ? 'bg-[#1d70b8] text-white shadow-sm'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Checklist List */}
+        <div className="space-y-4 mb-12">
+          {filteredItems.map(item => {
+            const isChecked = checkedIds.includes(item.id);
+            return (
+              <div
+                key={item.id}
+                onClick={() => toggleCheck(item.id)}
+                className={`p-5 rounded-xl border-2 transition-all cursor-pointer flex items-start gap-4 ${
+                  isChecked
+                    ? 'bg-green-50/60 border-green-500 shadow-sm'
+                    : 'bg-white border-gray-300 hover:border-gray-400'
+                }`}
+              >
+                <div className="pt-0.5">
+                  <input
+                    type="checkbox"
+                    checked={isChecked}
+                    onChange={() => {}} // handled by parent div onClick
+                    className="w-6 h-6 text-[#00703c] rounded border-gray-400 focus:ring-[#00703c] cursor-pointer"
+                  />
+                </div>
+                <div className="flex-1">
+                  <div className="flex flex-wrap items-center justify-between gap-2 mb-1">
+                    <h3 className={`text-lg font-bold ${isChecked ? 'line-through text-gray-500' : 'text-[#0b0c0c]'}`}>
+                      {item.title}
+                    </h3>
+                    <div className="flex items-center gap-2">
+                      {item.fee ? (
+                        <span className="text-[11px] bg-amber-100 text-amber-900 font-bold px-2 py-0.5 rounded">
+                          💷 Gov Renewal Fee
+                        </span>
+                      ) : (
+                        <span className="text-[11px] bg-green-100 text-green-900 font-bold px-2 py-0.5 rounded">
+                          Free Update
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <p className={`text-sm ${isChecked ? 'text-gray-400' : 'text-gray-700'}`}>
+                    {item.desc}
+                  </p>
+                  {item.linkHref && (
+                    <div className="mt-2" onClick={e => e.stopPropagation()}>
+                      <Link
+                        href={item.linkHref}
+                        className="text-xs font-bold text-[#1d70b8] hover:underline underline-offset-2 inline-flex items-center gap-1"
+                      >
+                        {item.linkText}
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Letter Generator Callout */}
+        <div className="bg-gray-100 border-2 border-gray-300 rounded-xl p-6 sm:p-8 mb-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div>
+            <h3 className="text-xl font-bold text-[#0b0c0c]">Need cover letters for your envelope?</h3>
+            <p className="text-sm text-gray-700 mt-1 max-w-lg">
+              Use our free Name Change Letter Generator to create official cover letters for DVLA, Passport Office, Banks, HMRC, and employers in 1 click.
+            </p>
+          </div>
+          <Link
+            href="/name-change-letters-generator"
+            className="whitespace-nowrap bg-[#1d70b8] hover:bg-[#003078] text-white font-bold px-5 py-3 rounded-lg text-sm transition-transform active:scale-95 shadow-sm"
+          >
+            Open Letter Generator →
+          </Link>
+        </div>
+
+        {/* Share Widget */}
+        <ShareWidget
+          title="Interactive UK Name Change Checklist — Who to Notify"
+          description="Interactive tracker with all 16 UK organisations to notify after changing your name."
+        />
+
       </div>
     </div>
   );
 }
-
-const checklistItems = [
- {
-  title: '💷 Passport Office',
-  desc: `If you hold a passport, you'll need to <a href="https://www.gov.uk/renew-adult-passport" target="_blank" class="text-[#1d70b8] underline underline-offset-2 decoration-2 hover:text-[#003078]">renew your passport</a> to get it updated with your new name. You'll need to pay the renewal fee, but you may be entitled to carry-over some of the remaining months of validity of your old passport into the lifespan of your new passport. HM Passport Office will need you to send them an original deed poll (not a photocopy), but if you've followed our advice to sign multiple originals in the same sitting, this shouldn't be a problem.<br><br>
-
-As a piece of government-issued photo ID, getting your passport updated promptly can be very helpful in demonstrating your name change to other organisations.<br><br>
-
-Before submitting your renewal application, ensure your passport photo meets official UK requirements for size, background, and biometric standards. <a href="https://www.pixpassport.com/" target="_blank" class="text-[#1d70b8] underline underline-offset-2 decoration-2 hover:text-[#003078]">PixPassport</a> provides an online passport photo maker that helps create compliant ID and visa photos. For UK applications, you can also use the dedicated <a href="https://www.pixpassport.com/uk-passport-photo-editor" target="_blank" class="text-[#1d70b8] underline underline-offset-2 decoration-2 hover:text-[#003078]">UK passport photo editor</a> to crop, resize, and prepare your passport photo online.`,
-},
-  {
-    title: 'DVLA (Driving Licence)',
-    desc: `If you hold a driving licence, you'll need to renew your driving licence to reflect your new name. You'll need to pay a renewal fee if you <a href="https://www.gov.uk/renew-driving-licence" target="_blank" class="text-[#1d70b8] underline underline-offset-2 decoration-2 hover:text-[#003078]">apply online</a> but this is free if you <a href="https://www.gov.uk/dvlaforms" target="_blank" class="text-[#1d70b8] underline underline-offset-2 decoration-2 hover:text-[#003078]">use the DVLA D1 paper forms</a>. The DVLA will need you to send them an original deed poll (not a photocopy), but if you've followed our advice to sign multiple originals in the same sitting, this shouldn't be a problem.<br><br>As a piece of government-issued photo ID, getting your driving licence updated promptly can be very-helpful in demonstrating your name change to other organisations.`,
-  },
-  {
-    title: 'Police',
-    desc: `Most people do not need to contact the police about their name change. But if you're part of an ongoing investigation or especially if you're a registered sex offender, violent offender, or terrorist offender, it could be a criminal offence to fail to inform your local prescribed police station of the change.`,
-  },
-  {
-    title: 'Other Photo ID',
-    desc: `Have other widely-respected photo ID, like a CitizenCard or PASS Card? They're worth getting updated promptly for the same reasons as those above. These agencies will often require sight of an original deed poll, too.`,
-  },
-  {
-    title: 'DVLA (Vehicle Logbooks)',
-    desc: `If you own/are the registered keeper of a vehicle, you'll need to <a href="https://www.gov.uk/change-name-v5c" target="_blank" class="text-[#1d70b8] underline underline-offset-2 decoration-2 hover:text-[#003078]">get the vehicle log book (V5C) updated</a>. This is free.`,
-  },
-  {
-    title: 'Bank',
-    desc: `To ensure that you're able to accept payments in your new name, you'll need to contact your bank. Most people have no problem getting this sorted, but a word of warning: some banks have historically made it difficult for people who've changed their name using what they consider a "home made" deed poll: if you have trouble with your bank, <a href="/my-deed-poll-was-rejected" class="text-[#1d70b8] underline underline-offset-2 decoration-2 hover:text-[#003078]">we've got some tips for you</a>.`,
-  },
-  {
-    title: 'Credit Card Providers',
-    desc: `If you've got a credit card, let your credit card provider know. Credit card companies tend to be faster and more-cooperative about name changes than banks. They might require sight of an original deed poll.`,
-  },
-  {
-    title: 'Other Financial Providers',
-    desc: `If you have a mortgage (other than with your bank), a loan, or any other kind of financial product, you'll need to contact your provider and let them know about the change. They might require sight of an original deed poll.`,
-  },
-  {
-    title: 'State Benefits',
-    desc: `If you're in receipt of state benefits, you'll need to contact the relevant agencies to let them know. There are online guides for reporting name changes <a href="https://www.gov.uk/jobseekers-allowance/report-a-change-of-circumstances" target="_blank" class="text-[#1d70b8] underline underline-offset-2 decoration-2 hover:text-[#003078]">for Jobseeker's Allowance</a>, <a href="https://www.gov.uk/universal-credit/changes-of-circumstances" target="_blank" class="text-[#1d70b8] underline underline-offset-2 decoration-2 hover:text-[#003078]">for Universal Credit</a>, <a href="https://www.gov.uk/carers-allowance-report-change" target="_blank" class="text-[#1d70b8] underline underline-offset-2 decoration-2 hover:text-[#003078]">for Carer's Allowance</a>, and <a href="https://www.gov.uk/contact-pension-service/report-changes" target="_blank" class="text-[#1d70b8] underline underline-offset-2 decoration-2 hover:text-[#003078]">for the state pension</a>, for example.`,
-  },
-  {
-    title: 'Insurance Companies',
-    desc: `Property insurance, car insurance, life insurance, medical insurance, travel insurance, and so on. Having your correct name on file is important if you have to make a claim.`,
-  },
-  {
-    title: 'Employer',
-    desc: `If you're employed, you'll need to ensure that your employer has your correct name. Employers are generally pretty-understanding and often it's sufficient to show somebody from HR your deed poll or a photocopy of it. Make sure they update the payroll systems so that - once you've updated your name with your bank - it doesn't ring any alarm bells when your paycheque gets processed!`,
-  },
-  {
-    title: 'HMRC',
-    desc: `If you're self-employed, you'll need to <a href="https://www.gov.uk/tell-hmrc-change-of-details" target="_blank" class="text-[#1d70b8] underline underline-offset-2 decoration-2 hover:text-[#003078]">tell HMRC about your name change</a>. If you're employed and paid via PAYE, your employer may be able to update HMRC for you. If you're not employed, you might need to contact HMRC yourself to ensure that your National Insurance record is correctly updated.`,
-  },
-  {
-    title: 'School, College, or University',
-    desc: `If you're in education, make sure you get your name correctly updated with your school, college, or university. Many educators have a policy of not re-issuing qualifications and certificates in a different name, so if you want your new name on your qualification, ensure they're told about it before you sit any exams!`,
-  },
-  {
-    title: 'Utility Companies',
-    desc: `If you pay an electricity, gas, water, or broadband bill, you'll need to let your supplier know about the change. So long as you're still paying them, they don't usually mind if they're not high on your priority list. But having a utility bill with your new name on it can provide you with a helpful proof-of-address, should you need one.`,
-  },
-  {
-    title: 'Local Authority',
-    desc: `Your local authority is responsible for collecting Council Tax and maintaining the Electoral Roll, both of which benefit from having your correct name. You're likely to have to send a copy of your deed poll.`,
-  },
-  {
-    title: 'Doctor & Dentist',
-    desc: `Let your GP and your dentist know about the change. They might need to see a copy of your deed poll. Your GP can update your NHS record, but it can take a while to be reflected everywhere.`,
-  },
-  {
-    title: 'Friends and Family',
-    desc: `Often the easiest people to update, but worth remembering, especially if you've made only minor changes to your name (e.g. adding or removing middle names or adjusting the spelling of a name) that you might otherwise fail to mention. These kinds of details can be important if, for example, you're mentioned in a will or other legal document.`,
-  },
-  {
-    title: '💷 Land Registry',
-    desc: `If you own land, it's worth making sure that the Land Registry has your correct name, which may be important in the event of a dispute. <a href="https://www.gov.uk/government/publications/change-the-register-ap1" target="_blank" class="text-[#1d70b8] underline underline-offset-2 decoration-2 hover:text-[#003078]">There's a form to fill out</a> and a small fee to pay.`,
-  },
-  {
-    title: 'Investments',
-    desc: `If you have a private pension, investments, premium bonds or similar, tell them about the change. They'll let you know if they need sight of your deed poll.`,
-  },
-  {
-    title: 'Professional bodies, memberships, clubs, and societies',
-    desc: ``,
-  },
-  {
-    title: 'Online Accounts',
-    desc: `Time to log in to those e-commerce sites and make sure they put the right name on your parcels.`,
-  },
-  {
-    title: 'Social Media',
-    desc: `Most social media platforms make it easy to change your name, but some - especially Facebook and LinkedIn - can require that you provide proof of your name change: this is easiest if you've arranged for your photo ID to be updated first!`,
-  },
-  {
-    title: 'TV Licensing',
-    desc: ``,
-  },
-  {
-    title: 'Store Cards and Rewards Schemes',
-    desc: `Usually very simple to update, but some supermarkets can be a little fussy about exactly how they want to be told about name changes.`,
-  },
-];

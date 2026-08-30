@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { generateDeedPoll, DeedPollSubmission } from '@/lib/generateDeedPoll';
+import ShareWidget from '@/components/ShareWidget';
 
 export default function PreviewPage() {
   const router = useRouter();
@@ -118,7 +119,32 @@ export default function PreviewPage() {
           Congratulations; that's all you need to do to legally change your name! You can now send copies to your bank, the DVLA, and the Passport Office.
         </p>
 
-        <div className="bg-gray-100 p-8 border-l-[8px] border-[#1d70b8] flex flex-col md:flex-row items-center gap-6 justify-between">
+        {/* Free Letter Generator CTA */}
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-[#1d70b8] rounded-xl p-6 sm:p-8 mb-8 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div>
+            <span className="bg-[#1d70b8] text-white text-xs font-bold px-2.5 py-1 rounded uppercase tracking-wider inline-block mb-2">
+              Next Step: Free Tool
+            </span>
+            <h3 className="text-2xl font-bold text-[#0b0c0c]">Generate Your Official Notification Letters</h3>
+            <p className="text-sm sm:text-base text-gray-700 mt-1 max-w-xl">
+              Create tailored formal cover letters for the <strong>DVLA, Passport Office, Banks, HMRC, NHS, and Employer</strong> in 1 click.
+            </p>
+          </div>
+          <Link
+            href="/name-change-letters-generator"
+            className="whitespace-nowrap bg-[#1d70b8] hover:bg-[#003078] text-white font-bold px-6 py-3.5 rounded-lg text-base sm:text-lg transition-transform active:scale-95 shadow-md flex-shrink-0"
+          >
+            Generate Letters Now →
+          </Link>
+        </div>
+
+        {/* Share Widget */}
+        <ShareWidget
+          title="I just created my official UK Deed Poll for free in 2 minutes!"
+          description="Free legally valid UK deed poll generator accepted by HM Passport Office, DVLA, and banks."
+        />
+
+        <div className="bg-gray-100 p-8 border-l-[8px] border-[#1d70b8] flex flex-col md:flex-row items-center gap-6 justify-between mt-8">
           <div>
             <h3 className="font-bold text-2xl mb-2">Made a mistake?</h3>
             <p className="text-lg text-gray-700">You can easily go back and correct your details. Your information is saved.</p>
