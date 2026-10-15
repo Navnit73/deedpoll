@@ -1,6 +1,6 @@
 export const dynamic = 'force-static';
 import { MetadataRoute } from 'next';
-import { getAllPosts } from '@/lib/posts';
+import { getAllCategories, getAllPosts } from '@/lib/posts';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://deedpolluk.uk';
@@ -18,6 +18,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { route: '/my-deed-poll-was-rejected', priority: 0.8, changeFrequency: 'monthly' as const },
     { route: '/video', priority: 0.7, changeFrequency: 'monthly' as const },
     { route: '/contact-us', priority: 0.7, changeFrequency: 'monthly' as const },
+    { route: '/about-us', priority: 0.6, changeFrequency: 'monthly' as const },
+    { route: '/privacy-policy', priority: 0.5, changeFrequency: 'monthly' as const },
     { route: '/terms-and-conditions', priority: 0.5, changeFrequency: 'monthly' as const },
   ].map(({ route, priority, changeFrequency }) => ({
     url: `${baseUrl}${route}`,
@@ -64,5 +66,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.9,
   }));
 
-  return [...corePages, ...guidePages, ...cmsPostEntries];
+  const categoryEntries = (await getAllCategories()).map((c) => ({
+    url: `${baseUrl}/${c.name}`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }));
+
+  return [...corePages, ...guidePages, ...categoryEntries, ...cmsPostEntries];
 }

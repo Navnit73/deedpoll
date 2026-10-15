@@ -133,8 +133,28 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/name-change" className="hover:underline font-medium">
+                  All Name Change Guides
+                </Link>
+              </li>
+              <li>
+                <Link href="/tax-money" className="hover:underline font-medium">
+                  UK Tax &amp; Money Guides
+                </Link>
+              </li>
+              <li>
+                <Link href="/about-us" className="hover:underline">
+                  About Us
+                </Link>
+              </li>
+              <li>
                 <Link href="/contact-us" className="hover:underline">
                   Contact Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy-policy" className="hover:underline">
+                  Privacy Policy
                 </Link>
               </li>
               <li>
@@ -175,7 +195,7 @@ export default function Footer() {
           </p>
           <div className="flex gap-4">
             <Link href="/terms-and-conditions" className="hover:underline">Terms of Service</Link>
-            <Link href="/faq#security" className="hover:underline">Privacy Policy</Link>
+            <Link href="/privacy-policy" className="hover:underline">Privacy Policy</Link>
             <Link href="/contact-us" className="hover:underline">Support</Link>
           </div>
         </div>

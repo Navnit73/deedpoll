@@ -1,13 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
-import { Post } from '@/lib/posts';
+import { Post, getCategoryLabel } from '@/lib/posts';
 
 interface MarkdownPostProps {
   post: Post;
+  relatedPosts?: Post[];
   siteUrl?: string;
 }
 
-export default function MarkdownPost({ post, siteUrl = 'https://deedpolluk.uk' }: MarkdownPostProps) {
+export default function MarkdownPost({ post, relatedPosts = [], siteUrl = 'https://deedpolluk.uk' }: MarkdownPostProps) {
   const fullUrl = `${siteUrl}${post.urlPath}`;
 
   // Article JSON-LD Schema
@@ -67,7 +68,7 @@ export default function MarkdownPost({ post, siteUrl = 'https://deedpolluk.uk' }
     breadcrumbItems.push({
       '@type': 'ListItem',
       position: 2,
-      name: post.category.charAt(0).toUpperCase() + post.category.slice(1),
+      name: getCategoryLabel(post.category),
       item: `${siteUrl}/${post.category}`,
     });
     breadcrumbItems.push({
@@ -125,10 +126,13 @@ export default function MarkdownPost({ post, siteUrl = 'https://deedpolluk.uk' }
               </li>
               {post.category && (
                 <>
-                  <li className="capitalize">
-                    <span className="text-blue-100 font-semibold">
-                      {post.category}
-                    </span>
+                  <li>
+                    <Link
+                      href={`/${post.category}`}
+                      className="text-blue-100 font-semibold hover:underline underline-offset-2 hover:text-white"
+                    >
+                      {getCategoryLabel(post.category)}
+                    </Link>
                   </li>
                   <li aria-hidden="true" className="select-none text-blue-200">
                     ›
@@ -168,6 +172,11 @@ export default function MarkdownPost({ post, siteUrl = 'https://deedpolluk.uk' }
               </svg>
               <span>Published {post.datePublished}</span>
             </div>
+            {post.dateModified && post.dateModified !== post.datePublished && (
+              <div className="flex items-center gap-1.5">
+                <span>Last updated {post.dateModified}</span>
+              </div>
+            )}
             <div className="flex items-center gap-1.5">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -236,6 +245,26 @@ export default function MarkdownPost({ post, siteUrl = 'https://deedpolluk.uk' }
                 </details>
               ))}
             </div>
+          </section>
+        )}
+
+        {/* RELATED GUIDES */}
+        {relatedPosts.length > 0 && (
+          <section className="mt-14 pt-10 border-t-2 border-gray-200">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-[#0b0c0c]">Related Guides</h2>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {relatedPosts.map((related) => (
+                <li key={related.urlPath}>
+                  <Link
+                    href={related.urlPath}
+                    className="block h-full border border-gray-300 rounded-md p-5 hover:border-[#1d70b8] hover:bg-[#f3f2f1] transition-colors"
+                  >
+                    <span className="block font-bold text-[#1d70b8] mb-2">{related.title}</span>
+                    <span className="block text-sm text-gray-700">{related.metaDescription}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </section>
         )}
 

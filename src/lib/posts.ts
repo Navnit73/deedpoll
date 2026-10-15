@@ -7,6 +7,26 @@ import gfm from 'remark-gfm';
 
 const postsDirectory = path.join(process.cwd(), 'content/posts');
 
+export const CATEGORY_INFO: Record<string, { label: string; description: string }> = {
+  'name-change': {
+    label: 'Name Change Guides',
+    description:
+      'Practical, step-by-step guides to changing your name in the UK, from deed polls to updating your bank, HMRC and every other record.',
+  },
+  'tax-money': {
+    label: 'UK Tax & Money Guides',
+    description:
+      'Plain-English guides to UK Income Tax, National Insurance, payslips, pensions, Council Tax and dealing with HMRC.',
+  },
+};
+
+export function getCategoryLabel(category: string): string {
+  return (
+    CATEGORY_INFO[category]?.label ||
+    category.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
+  );
+}
+
 export interface FAQItem {
   question: string;
   answer: string;
@@ -147,4 +167,12 @@ export async function getRootPosts(): Promise<Post[]> {
 export async function getCategorizedPosts(): Promise<Post[]> {
   const allPosts = await getAllPosts();
   return allPosts.filter((p) => Boolean(p.category));
+}
+
+export async function getRelatedPosts(post: Post, limit = 4): Promise<Post[]> {
+  const allPosts = await getAllPosts();
+  const others = allPosts.filter((p) => p.urlPath !== post.urlPath);
+  const sameCategory = others.filter((p) => p.category === post.category);
+  const rest = others.filter((p) => p.category !== post.category);
+  return [...sameCategory, ...rest].slice(0, limit);
 }
