@@ -8,8 +8,9 @@ import ShareWidget from '@/components/ShareWidget';
 import { PaymentButton } from '@/components/payment/PaymentButton';
 import { PaymentState } from '@/types/payment';
 
-const PRICE_PENCE = 1499;
-const PRICE_LABEL = '£14.99';
+// TESTING: temporary 10p price for live PayPal testing. Restore to 1499 / '£14.99' before launch.
+const PRICE_PENCE = 10;
+const PRICE_LABEL = '£0.10';
 const PAID_STORAGE_KEY = 'deedpoll_paid_order';
 
 export default function PreviewPage() {
