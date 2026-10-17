@@ -206,14 +206,14 @@ export default function ChangeNameDrivingLicencePage() {
           <div>
             <h3 className="text-2xl font-bold text-[#0b0c0c]">Need your legal deed poll first?</h3>
             <p className="text-sm sm:text-base text-gray-700 mt-1 max-w-xl">
-              Create your official UK Deed Poll in under 2 minutes completely free. Download the PDF instantly and send it to the DVLA.
+              Create your official UK Deed Poll in under 2 minutes and preview it free. Download the PDF instantly for £14.99 and send it to the DVLA.
             </p>
           </div>
           <Link
             href="/change-name-in-uk-by-deedpoll"
             className="whitespace-nowrap bg-[#00703c] hover:bg-[#005a30] text-white font-bold px-6 py-3.5 rounded-lg text-base sm:text-lg transition-transform active:scale-95 shadow-md flex-shrink-0"
           >
-            Create Free Deed Poll PDF →
+            Create Your Deed Poll PDF →
           </Link>
         </div>
 

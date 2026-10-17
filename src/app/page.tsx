@@ -75,16 +75,12 @@ export default function Home() {
                 className="inline-flex flex-col sm:flex-row w-full sm:w-auto rounded-lg active:translate-y-1 transition-all overflow-hidden group border border-[#d8d8d8] sm:border-0 hover:opacity-95"
               >
                 <div className="bg-[#00703c] group-hover:bg-[#005a30] transition-colors text-white font-bold py-3 px-6 text-xl sm:text-lg flex items-center justify-center">
-                  Get Your Free Deed Poll
-                </div>
-                <div className="bg-[#efeee9] sm:border-y sm:border-r border-[#d8d8d8] py-2 px-6 flex flex-col justify-center items-center text-[#0b0c0c] min-w-[160px]">
-                  <span className="font-bold text-3xl leading-none tracking-tight text-[#00703c]">100% FREE</span>
-                  <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold mt-1">No Payment Required</span>
+                  Create Your Deed Poll
                 </div>
               </Link>
               <div className="text-gray-500 text-sm flex items-center gap-2 mt-4 font-medium">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                Instant PDF download. No payment or account required.
+                Free preview. One-off £14.99 to download the PDF. No account or subscription.
               </div>
             </div>
           </div>
@@ -100,8 +96,8 @@ export default function Home() {
               <span className="text-xs sm:text-sm md:text-base">Happy Customers</span>
             </div>
             <div className="flex flex-col">
-              <strong className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1">100% FREE</strong>
-              <span className="text-xs sm:text-sm md:text-base">No Hidden Fees</span>
+              <strong className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1">£14.99</strong>
+              <span className="text-xs sm:text-sm md:text-base">One-Off · Free Preview</span>
             </div>
             <div className="flex flex-col">
               <strong className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1">2 Min</strong>
@@ -120,7 +116,7 @@ export default function Home() {
         <span className="text-[#1d70b8] font-bold text-base sm:text-lg mb-2 block uppercase tracking-wider">How it works</span>
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">Get Your New Name in Three Steps</h2>
         <p className="text-base sm:text-xl mb-8 sm:mb-12 max-w-3xl">
-          No solicitor. No court. No waiting. Fill in the form, download your deed poll,
+          No solicitor. No court. No waiting. Fill in the form, preview your deed poll for free, download it,
           and start updating your records today.
         </p>
 
@@ -137,8 +133,8 @@ export default function Home() {
             <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#1d70b8] text-white flex items-center justify-center font-bold text-xl sm:text-2xl mb-4 sm:mb-6">2</div>
             <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Download Your Deed Poll</h3>
             <p className="text-base sm:text-lg">
-              We generate your legally worded deed poll instantly and send a
-              professionally formatted PDF straight to your inbox.
+              We generate your legally worded deed poll instantly. Check the free
+              preview, then download the professionally formatted PDF for a one-off £14.99.
             </p>
           </div>
           <div className="bg-gray-50 p-6 sm:p-8 border-t-4 border-[#1d70b8]">
@@ -172,8 +168,8 @@ export default function Home() {
               },
               {
                 icon: <path strokeLinecap="square" strokeLinejoin="miter" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />,
-                title: "100% Free — No Payment Needed",
-                desc: "Generate your official deed poll completely free. No subscriptions, no credit card required."
+                title: "Free Preview Before You Pay",
+                desc: "See your deed poll free before you pay. Downloading the finished PDF is a one-off £14.99 — no subscription."
               },
               {
                 icon: <path strokeLinecap="square" strokeLinejoin="miter" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />,
@@ -187,8 +183,8 @@ export default function Home() {
               },
               {
                 icon: <path strokeLinecap="square" strokeLinejoin="miter" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />,
-                title: "Re-Download Anytime",
-                desc: "We save your deed poll to your account. Need extra copies later? Download them at any time, for free."
+                title: "Edit and Re-Download",
+                desc: "No account needed. Your details stay in your browser, so you can edit them and re-download your deed poll in the same session."
               },
             ].map(({ icon, title, desc }) => (
               <div key={title} className="bg-white p-5 sm:p-6">
@@ -358,7 +354,7 @@ export default function Home() {
             </div>
             <div>
               <h3 className="text-lg sm:text-xl font-bold mb-2">Can I change my name for free?</h3>
-              <p>Yes! Our service generates a professionally formatted, fully compliant official UK Deed Poll PDF 100% free with no hidden fees, subscriptions, or credit card required.</p>
+              <p>Yes. Writing your own unenrolled deed poll costs nothing — you can copy our <Link href="/free-deed-poll-template-uk" className="text-[#1d70b8] underline underline-offset-4 hover:text-[#003078]">free deed poll template</Link> wording into Word yourself. If you&apos;d like a professionally formatted PDF, our generator lets you preview your deed poll free, then download the finished PDF for a one-off £14.99, with no subscription.</p>
             </div>
             <div>
               <h3 className="text-lg sm:text-xl font-bold mb-2">Can I change a child's name?</h3>
@@ -376,8 +372,8 @@ export default function Home() {
           </p>
 
           <ShareWidget
-            title="Free UK Deed Poll Generator — Legally Valid & Instant PDF"
-            description="Create a legally valid UK deed poll online in minutes for free. Accepted by HM Passport Office, DVLA, and banks."
+            title="UK Deed Poll Generator — Free Preview & Instant PDF"
+            description="Create a legally valid UK deed poll online in minutes. Preview it free, then download the PDF for £14.99. Accepted by HM Passport Office, DVLA, and banks."
             className="mt-10"
           />
         </div>
@@ -386,7 +382,7 @@ export default function Home() {
       {/* HELPFUL GUIDES & TOOLS */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 border-t border-gray-300">
         <span className="text-[#1d70b8] font-bold text-base sm:text-lg mb-2 block uppercase tracking-wider">Useful Tools & Legal Generators</span>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8">Free Legal Tools & Financial Calculators</h2>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8">Legal Tools & Free Financial Calculators</h2>
         
         {/* Featured Legal Tools Banners */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -416,10 +412,10 @@ export default function Home() {
                 Downloadable Resource
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-[#0b0c0c]">
-                Free Deed Poll Template (Word & PDF)
+                Free Deed Poll Template (Copy into Word)
               </h3>
               <p className="text-sm text-gray-700 mt-1">
-                Official legal wording compliant with HM Passport Office, DVLA, and UK banks. Free text, Word, and PDF format.
+                Official legal wording compliant with HM Passport Office, DVLA, and UK banks. Free to copy and paste into Word.
               </p>
             </div>
             <Link
@@ -505,16 +501,12 @@ export default function Home() {
               className="inline-flex flex-col sm:flex-row w-full sm:w-auto rounded-lg active:translate-y-1 transition-all overflow-hidden group border border-[#d8d8d8] sm:border-0 hover:opacity-95"
             >
               <div className="bg-[#00703c] group-hover:bg-[#005a30] transition-colors text-white font-bold py-4 px-8 text-xl sm:text-2xl flex items-center justify-center">
-                Get Your Free Deed Poll
-              </div>
-              <div className="bg-[#efeee9] sm:border-y sm:border-r border-[#d8d8d8] py-3 px-8 flex flex-col justify-center items-center text-[#0b0c0c] min-w-[160px]">
-                <span className="font-bold text-3xl leading-none tracking-tight text-[#00703c]">100% FREE</span>
-                <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold mt-1">No Payment Required</span>
+                Create Your Deed Poll
               </div>
             </Link>
             <div className="text-gray-500 text-sm flex items-center justify-center gap-2 mt-4 font-medium">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              Instant PDF download. No payment or account required.
+              Free preview. One-off £14.99 to download the PDF. No account or subscription.
             </div>
             <Link
               href="/faq"
@@ -560,10 +552,10 @@ export default function Home() {
               "name": "UK Deed Poll Service",
               "provider": { "@id": "https://deedpolluk.uk/#organization" },
               "areaServed": "GB",
-              "description": "Legally valid UK deed poll documents delivered as instant free PDF. Accepted by the Passport Office, DVLA, HMRC, and all major banks.",
+              "description": "Legally valid UK deed poll documents delivered as an instant PDF, with a free preview before you pay. Accepted by the Passport Office, DVLA, HMRC, and all major banks.",
               "offers": {
                 "@type": "Offer",
-                "price": "0.00",
+                "price": "14.99",
                 "priceCurrency": "GBP"
               }
             },

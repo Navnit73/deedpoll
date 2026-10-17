@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
+import { PaymentState } from '@/types/payment';
 
 // Use live Client ID from environment variables, or fallback to 'test' for sandbox
 const clientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || 'test';
@@ -9,12 +10,16 @@ const clientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || 'test';
 interface PaymentButtonProps {
   amount: number;
   currency?: string;
-  onSuccess?: () => void;
+  description?: string;
+  disabled?: boolean;
+  onSuccess?: (payment: PaymentState) => void;
 }
 
 export function PaymentButton({
   amount,
   currency = 'GBP',
+  description = 'Digital Deed Poll PDF',
+  disabled = false,
   onSuccess,
 }: PaymentButtonProps) {
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
@@ -48,10 +53,18 @@ export function PaymentButton({
         </div>
       )}
 
+      {clientId === 'test' && (
+        <p className="mb-3 p-3 border-2 border-amber-500 bg-amber-50 text-amber-900 text-sm font-bold">
+          PayPal sandbox mode: no real money will be taken. Set NEXT_PUBLIC_PAYPAL_CLIENT_ID to go live.
+        </p>
+      )}
+
       <div className="w-full">
         <PayPalScriptProvider options={{ clientId: clientId, currency: currency }}>
           <PayPalButtons
             style={{ layout: "vertical", shape: "rect", color: "blue" }}
+            disabled={disabled}
+            forceReRender={[amount, currency, disabled]}
             createOrder={(data, actions) => {
               return actions.order.create({
                 intent: "CAPTURE",
@@ -61,7 +74,7 @@ export function PaymentButton({
                       currency_code: currency,
                       value: (amount / 100).toFixed(2),
                     },
-                    description: 'Digital Deed Poll PDF',
+                    description,
                   },
                 ],
                 application_context: {
@@ -77,16 +90,19 @@ export function PaymentButton({
                     ? `${details.payer.name.given_name} ${details.payer.name.surname || ''}`.trim()
                     : '';
                   
-                  const paymentState = {
+                  const paymentState: PaymentState = {
                     orderID: details.id || '',
                     payerID: details.payer?.payer_id || '',
                     name: payerName,
                     email: details.payer?.email_address || '',
                   };
-                  console.log('Payment State Stored:', paymentState);
                   showToast('Payment Successful! Preparing your document...', 'success');
+                  if (details.status !== 'COMPLETED') {
+                    showToast('Payment was not completed. You have not been charged.', 'error');
+                    return;
+                  }
                   if (onSuccess) {
-                    onSuccess();
+                    onSuccess(paymentState);
                   }
                 });
               }

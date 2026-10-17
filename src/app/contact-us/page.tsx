@@ -41,7 +41,7 @@ export default function ContactUs() {
         
         <h2 className="text-2xl font-bold mt-8 mb-4">Postal Address</h2>
         <p>
-          As a free online service, we do not maintain a public office for physical correspondence. All communications should be directed to the email address provided above.
+          As an online-only service, we do not maintain a public office for physical correspondence. All communications should be directed to the email address provided above.
         </p>
       </div>
     </div>

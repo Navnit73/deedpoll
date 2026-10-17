@@ -20,7 +20,7 @@ export default function AboutUs() {
 
       <div className="prose prose-lg text-gray-800 space-y-6">
         <p>
-          Deed Poll UK is an independent, free resource for people in the United Kingdom who want to change their name or
+          Deed Poll UK is an independent resource for people in the United Kingdom who want to change their name or
           get to grips with everyday tax and money admin. We are not a law firm and we are not connected to HM Passport
           Office, DVLA, HMRC or any other government body.
         </p>
@@ -28,8 +28,9 @@ export default function AboutUs() {
         <h2 className="text-2xl font-bold mt-8 mb-4">What we offer</h2>
         <ul className="list-disc pl-6 space-y-2">
           <li>
-            A <Link href="/change-name-in-uk-by-deedpoll" className="text-[#1d70b8] underline underline-offset-2">free deed poll generator</Link>{" "}
-            that creates a printable unenrolled deed poll in your browser.
+            A <Link href="/change-name-in-uk-by-deedpoll" className="text-[#1d70b8] underline underline-offset-2">deed poll generator</Link>{" "}
+            that creates a printable unenrolled deed poll in your browser. You can preview it for free; downloading the
+            finished PDF costs a one-off £14.99.
           </li>
           <li>
             A <Link href="/name-change-letters-generator" className="text-[#1d70b8] underline underline-offset-2">letter generator</Link>{" "}
@@ -69,7 +70,7 @@ export default function AboutUs() {
 
         <h2 className="text-2xl font-bold mt-8 mb-4">How the site is funded</h2>
         <p>
-          The tools and guides are free to use. The site is supported by optional payments and by advertising. Adverts
+          Our other tools, calculators and guides are free to use. The site is funded by deed poll downloads and by advertising. Adverts
           never affect what we write. See our{" "}
           <Link href="/privacy-policy" className="text-[#1d70b8] underline underline-offset-2">privacy policy</Link> for
           how cookies and ads work on this site.

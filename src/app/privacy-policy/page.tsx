@@ -47,7 +47,7 @@ export default function PrivacyPolicy() {
 
         <h2 className="text-2xl font-bold mt-8 mb-4">3. Advertising</h2>
         <p>
-          We may display adverts provided by Google AdSense to help keep the site free. Third-party vendors, including
+          We may display adverts provided by Google AdSense to help fund the site and keep our guides and tools free. Third-party vendors, including
           Google, use cookies to serve ads based on your previous visits to this and other websites. Google&apos;s use of
           advertising cookies enables it and its partners to serve ads based on your visits to this site and/or other
           sites on the internet.
@@ -70,7 +70,7 @@ export default function PrivacyPolicy() {
 
         <h2 className="text-2xl font-bold mt-8 mb-4">4. Payments</h2>
         <p>
-          Optional payments are handled by PayPal. Your card or PayPal account details are entered on PayPal&apos;s systems
+          Payments for deed poll downloads are handled by PayPal. Your card or PayPal account details are entered on PayPal&apos;s systems
           and never reach us. PayPal processes that information under its own privacy policy.
         </p>
 

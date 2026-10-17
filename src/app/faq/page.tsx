@@ -308,7 +308,7 @@ export default function FAQ() {
           <p className="mt-4">
             Most sites will charge you a fee, in exchange for which they'll print your deed poll for you: they usually don't
             do much more than this, except perhaps provide a "money-back guarantee" if your deed poll is rejected by HM Passport
-            Office or by the DVLA. This site is free and therefore doesn't need to offer a money-back guarantee!
+            Office or by the DVLA. This site lets you check a free preview of your deed poll before you pay a one-off £14.99 to download it, so you know exactly what you&apos;re getting.
           </p>
           <p className="mt-4">But if you're prefer, here are some other options:</p>
           <ul className="list-disc pl-6 space-y-2 mt-4">
@@ -446,9 +446,10 @@ export default function FAQ() {
             format it in your preferred choice of font.
           </p>
           <p className="mt-4">
-            This website can still help you come up with the wording you need. Just <Link href="/change-name-in-uk-by-deedpoll" className="text-[#1d70b8] underline underline-offset-2">fill out the form</Link> as
-            usual and click the "Show Text" button. You'll see the full wording of your deed poll, which you can copy-and-paste
-            into your favourite word processor, copy out by hand, type on a typewriter, or whatever.
+            This website can still help you come up with the wording you need. Our{" "}
+            <Link href="/free-deed-poll-template-uk" className="text-[#1d70b8] underline underline-offset-2">free deed poll template</Link> gives
+            you the full legal wording, which you can copy-and-paste into your favourite word processor, copy out by hand, type on a
+            typewriter, or whatever.
           </p>
           <p className="mt-4">
             Note that you will still need to ensure that the paper you use
@@ -462,12 +463,14 @@ export default function FAQ() {
       <h2 id="deedpolluk-org-uk" className="text-3xl font-bold mb-6 pt-4 scroll-mt-20 border-t border-[#b1b4b6]">deedpolluk.uk</h2>
       
       <div className="space-y-4 mb-12">
-        <FaqItem id="really-free" summary="Is this site really free?">
+        <FaqItem id="really-free" summary="Is this site free?">
           <p>
-            <strong>Yes, completely.</strong>
-            You don't have to pay anything to use this site. It's not trying to sell you anything.
-            It doesn't even host any advertisements! <a href="#security" className="text-[#1d70b8] underline underline-offset-2">It doesn't track you</a>.
-            It doesn't sell your data to third parties. <strong>It's genuinely completely secure.</strong>
+            <strong>Mostly, yes.</strong> Filling in the deed poll form and viewing a watermarked preview is free, as are our guides, name change
+            letter generator, checklist and calculators. Downloading the finished, unwatermarked deed poll PDF costs a
+            one-off £14.99, with no subscription. If you&apos;d rather not pay, you can write your own deed poll using our
+            {' '}<Link href="/free-deed-poll-template-uk" className="text-[#1d70b8] underline underline-offset-2">free deed poll template</Link> wording.
+            The site is also supported by advertising. <a href="#security" className="text-[#1d70b8] underline underline-offset-2">Your deed poll details stay in your browser</a>,
+            and we don&apos;t sell your data to third parties.
           </p>
           <p className="mt-4">
             If you find that the site is valuable to you and you'd like to give something back, you're welcome to
@@ -510,7 +513,7 @@ export default function FAQ() {
           <p>
             Yes. The deed poll generator on this site runs entirely in your browser: nothing - not your name or anything
             else - gets sent across the Internet to our server. This is different to virtually every other deeds poll service we've
-            ever seen. So as well as being free, this site also respects your privacy.
+            ever seen. So as well as offering a free preview, this site also respects your privacy.
           </p>
           <p className="mt-4">
             But you don't have to take our word for it. <a href="#technology" className="text-[#1d70b8] underline underline-offset-2">The technology that powers this site</a>
@@ -534,7 +537,7 @@ export default function FAQ() {
             However, based solely on the number of people who have specifically taken the
             time to email me or speak publicly about their experience of using the site, there are definintely
             in the thousands and and almost certainly in the tens, maybe even hundreds, of thousadnds of
-            people who've benefitted from this fast, free and easy way to change their name.
+            people who've benefitted from this fast and easy way to change their name.
           </p>
         </FaqItem>
 

@@ -102,7 +102,7 @@ export default function DeedPollVsStatutoryDeclarationPage() {
             Quick Verdict: Which should you choose?
           </h2>
           <p className="text-sm sm:text-base leading-relaxed">
-            For <strong>99% of UK residents</strong> changing their first name or surname, an <strong>unenrolled Deed Poll</strong> is the standard, simplest, and most cost-effective method (free online). You only need a Statutory Declaration if specifically requested by a foreign embassy, professional regulatory board, or immigration authority.
+            For <strong>99% of UK residents</strong> changing their first name or surname, an <strong>unenrolled Deed Poll</strong> is the standard, simplest, and most cost-effective method (free if you write it yourself). You only need a Statutory Declaration if specifically requested by a foreign embassy, professional regulatory board, or immigration authority.
           </p>
         </div>
 
@@ -134,7 +134,7 @@ export default function DeedPollVsStatutoryDeclarationPage() {
                 </tr>
                 <tr>
                   <td className="p-4 font-bold text-gray-900">Cost</td>
-                  <td className="p-4 bg-blue-50/50 text-[#00703c] font-bold">100% Free online</td>
+                  <td className="p-4 bg-blue-50/50 text-[#00703c] font-bold">Free (DIY) or £14.99 via our generator</td>
                   <td className="p-4">£5–£20 oath swearing fee + solicitor time</td>
                 </tr>
                 <tr>
@@ -188,14 +188,14 @@ export default function DeedPollVsStatutoryDeclarationPage() {
           <div>
             <h3 className="text-2xl font-bold text-[#0b0c0c]">Need a legal name change today?</h3>
             <p className="text-sm sm:text-base text-gray-700 mt-1 max-w-xl">
-              Create your official UK Deed Poll for free. Generate your instant PDF and start updating your passport and driving licence immediately.
+              Create your official UK Deed Poll and preview it free. Download your instant PDF for £14.99 and start updating your passport and driving licence immediately.
             </p>
           </div>
           <Link
             href="/change-name-in-uk-by-deedpoll"
             className="whitespace-nowrap bg-[#00703c] hover:bg-[#005a30] text-white font-bold px-6 py-3.5 rounded-lg text-base sm:text-lg transition-transform active:scale-95 shadow-md flex-shrink-0"
           >
-            Create Free Deed Poll →
+            Create Your Deed Poll →
           </Link>
         </div>
 

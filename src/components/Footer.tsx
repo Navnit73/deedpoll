@@ -8,15 +8,15 @@ export default function Footer() {
         {/* Main 4-Column Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           
-          {/* Col 1: Free Tools */}
+          {/* Col 1: Legal Tools */}
           <div>
             <h2 className="text-base font-bold uppercase tracking-wider text-gray-700 mb-4">
-              Free Legal Tools
+              Legal Tools
             </h2>
             <ul className="space-y-2.5 text-sm">
               <li>
                 <Link href="/change-name-in-uk-by-deedpoll" className="text-[#00703c] font-bold hover:underline">
-                  ⚡ Free Deed Poll Generator (PDF)
+                  ⚡ Deed Poll Generator (Free Preview)
                 </Link>
               </li>
               <li>
@@ -31,7 +31,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/free-deed-poll-template-uk" className="hover:underline font-medium">
-                  📄 Deed Poll Template (Word & PDF)
+                  📄 Free Deed Poll Template (Word)
                 </Link>
               </li>
               <li>
@@ -101,6 +101,36 @@ export default function Footer() {
               <li>
                 <Link href="/how-much-does-it-cost-to-change-your-name-uk" className="hover:underline">
                   How Much Does It Cost to Change Name?
+                </Link>
+              </li>
+              <li>
+                <Link href="/how-long-does-it-take-to-change-your-name-uk" className="hover:underline">
+                  How Long Does a Name Change Take?
+                </Link>
+              </li>
+              <li>
+                <Link href="/documents-needed-for-name-change-uk" className="hover:underline">
+                  Documents Needed for a Name Change
+                </Link>
+              </li>
+              <li>
+                <Link href="/name-change-solicitor-uk" className="hover:underline">
+                  Do You Need a Solicitor?
+                </Link>
+              </li>
+              <li>
+                <Link href="/how-to-change-middle-name-uk" className="hover:underline">
+                  Change Your Middle Name
+                </Link>
+              </li>
+              <li>
+                <Link href="/can-i-change-my-name-to-anything-uk" className="hover:underline">
+                  Can I Change My Name to Anything?
+                </Link>
+              </li>
+              <li>
+                <Link href="/what-is-a-legal-name-uk" className="hover:underline">
+                  What Is a Legal Name?
                 </Link>
               </li>
             </ul>
@@ -191,7 +221,7 @@ export default function Footer() {
         {/* Bottom copyright */}
         <div className="border-t border-[#b1b4b6] pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-600 gap-4">
           <p>
-            © {new Date().getFullYear()} Deed Poll UK (deedpolluk.uk). 100% Free Legal Resource for British Citizens.
+            © {new Date().getFullYear()} Deed Poll UK (deedpolluk.uk). Free Name Change Guides & Tools for British Citizens.
           </p>
           <div className="flex gap-4">
             <Link href="/terms-and-conditions" className="hover:underline">Terms of Service</Link>

@@ -39,8 +39,8 @@ export default function Header() {
             href="/change-name-in-uk-by-deedpoll"
             className="bg-[#00703c] hover:bg-[#005a30] text-white px-4 py-2 rounded font-bold text-sm transition-colors shadow-sm flex items-center gap-1.5"
           >
-            <span>Create Free Deed Poll</span>
-            <span className="text-[10px] bg-emerald-800 text-emerald-100 px-1.5 py-0.5 rounded font-extrabold uppercase">100% Free</span>
+            <span>Create Your Deed Poll</span>
+            <span className="text-[10px] bg-emerald-800 text-emerald-100 px-1.5 py-0.5 rounded font-extrabold uppercase">Free Preview</span>
           </Link>
         </nav>
 
@@ -86,8 +86,8 @@ export default function Header() {
               onClick={() => setIsMobileMenuOpen(false)}
               className="bg-[#00703c] text-white text-center py-2.5 px-4 rounded-lg flex items-center justify-center gap-2"
             >
-              <span>Create Free Deed Poll</span>
-              <span className="text-[10px] bg-emerald-800 text-emerald-100 px-1.5 py-0.5 rounded font-extrabold">FREE</span>
+              <span>Create Your Deed Poll</span>
+              <span className="text-[10px] bg-emerald-800 text-emerald-100 px-1.5 py-0.5 rounded font-extrabold">Free Preview</span>
             </Link>
             <Link
               href="/name-change-letters-generator"
@@ -108,7 +108,7 @@ export default function Header() {
               onClick={() => setIsMobileMenuOpen(false)}
               className="hover:text-blue-300 py-1.5 border-b border-gray-800"
             >
-              📄 Free Deed Poll Template (Word/PDF)
+              📄 Free Deed Poll Template (Copy into Word)
             </Link>
             <Link
               href="/child-deed-poll-uk"

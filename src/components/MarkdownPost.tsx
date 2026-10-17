@@ -199,7 +199,7 @@ export default function MarkdownPost({ post, relatedPosts = [], siteUrl = 'https
             href="/change-name-in-uk-by-deedpoll"
             className="inline-flex items-center justify-center bg-[#00703c] hover:bg-[#005a30] text-white font-bold px-5 py-2.5 rounded transition-colors text-sm whitespace-nowrap"
           >
-            Get Free Deed Poll →
+            Create Your Deed Poll →
           </Link>
         </div>
 
@@ -274,13 +274,13 @@ export default function MarkdownPost({ post, relatedPosts = [], siteUrl = 'https
             Change Your Name Legally in Minutes
           </h2>
           <p className="text-lg text-blue-100 mb-6 max-w-2xl mx-auto">
-            100% Free, legally valid across the UK. Accepted by Passport Office, DVLA, HMRC, and all banks.
+            Free preview, then £14.99 to download. Legally valid across the UK. Accepted by Passport Office, DVLA, HMRC, and all banks.
           </p>
           <Link
             href="/change-name-in-uk-by-deedpoll"
             className="inline-flex items-center justify-center bg-[#ffdd00] hover:bg-yellow-400 text-[#0b0c0c] font-extrabold text-lg px-8 py-3.5 rounded shadow transition-all active:translate-y-0.5"
           >
-            Create Your Free Deed Poll Now →
+            Create Your Deed Poll Now →
           </Link>
         </div>
       </div>

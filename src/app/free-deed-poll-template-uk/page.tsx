@@ -4,9 +4,9 @@ import StructuredData from '@/components/StructuredData';
 import ShareWidget from '@/components/ShareWidget';
 
 export const metadata: Metadata = {
-  title: "Free Deed Poll Template UK (Word & PDF Download) — Official Legal Wording",
+  title: "Free Deed Poll Template UK (Copy into Word) — Official Legal Wording",
   description:
-    "Download our 100% free UK deed poll template in Word and PDF format. Fully compliant with HM Passport Office, DVLA, and UK banks. Complete wording & witness guide.",
+    "Copy our free UK deed poll template wording into Word and print it yourself. Fully compliant with HM Passport Office, DVLA, and UK banks. Complete wording & witness guide.",
   alternates: {
     canonical: "/free-deed-poll-template-uk",
     languages: {
@@ -15,18 +15,18 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Free Deed Poll Template UK (Word & PDF Download) — Official Legal Wording",
+    title: "Free Deed Poll Template UK (Copy into Word) — Official Legal Wording",
     description:
-      "Download our 100% free UK deed poll template in Word and PDF format. Fully compliant with HM Passport Office, DVLA, and UK banks. Complete wording & witness guide.",
+      "Copy our free UK deed poll template wording into Word and print it yourself. Fully compliant with HM Passport Office, DVLA, and UK banks. Complete wording & witness guide.",
     url: "https://deedpolluk.uk/free-deed-poll-template-uk",
     type: "article",
     locale: "en_GB",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free Deed Poll Template UK (Word & PDF Download)",
+    title: "Free Deed Poll Template UK (Copy into Word)",
     description:
-      "Download our 100% free UK deed poll template in Word and PDF format. Fully compliant with HM Passport Office, DVLA, and UK banks.",
+      "Copy our free UK deed poll template wording into Word and print it yourself. Fully compliant with HM Passport Office, DVLA, and UK banks.",
   }
 };
 
@@ -133,10 +133,10 @@ Occupation: [SECOND WITNESS OCCUPATION]`;
             UK Legal Document Resource
           </span>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#0b0c0c]">
-            Free UK Deed Poll Template (Word & PDF)
+            Free UK Deed Poll Template (Copy into Word)
           </h1>
           <p className="mt-4 text-lg sm:text-xl text-gray-700 leading-relaxed">
-            Looking for a <strong>free deed poll template</strong> in the UK? Use the legally validated wording below or use our free instant PDF generator to create your ready-to-print deed poll in 2 minutes.
+            Looking for a <strong>free deed poll template</strong> in the UK? Copy the legally validated wording below for free, or use our instant PDF generator to create your ready-to-print deed poll in 2 minutes (free preview, £14.99 to download).
           </p>
         </div>
 
@@ -148,14 +148,14 @@ Occupation: [SECOND WITNESS OCCUPATION]`;
             </span>
             <h2 className="text-2xl font-bold text-[#0b0c0c]">Want an instantly formatted PDF?</h2>
             <p className="text-sm sm:text-base text-gray-700 mt-1 max-w-xl">
-              Skip copy-pasting into Word. Our free automated system formats the legal text, validates names, and gives you a download-ready official PDF in under 2 minutes.
+              Skip copy-pasting into Word. Our automated system formats the legal text, validates names, and shows you a free preview. Download the finished official PDF for a one-off £14.99.
             </p>
           </div>
           <Link
             href="/change-name-in-uk-by-deedpoll"
             className="whitespace-nowrap bg-[#00703c] hover:bg-[#005a30] text-white font-bold px-6 py-3.5 rounded-lg text-base sm:text-lg transition-transform active:scale-95 shadow-md flex-shrink-0"
           >
-            Generate Free Deed Poll PDF →
+            Create Your Deed Poll PDF →
           </Link>
         </div>
 
@@ -216,7 +216,7 @@ Occupation: [SECOND WITNESS OCCUPATION]`;
 
         {/* Share Widget */}
         <ShareWidget
-          title="Free UK Deed Poll Template (Word & PDF Download) — Legally Valid"
+          title="Free UK Deed Poll Template (Copy into Word) — Legally Valid"
           description="Free legal UK deed poll template accepted by Passport Office, DVLA, and banks."
         />
 

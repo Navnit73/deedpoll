@@ -336,8 +336,8 @@ export default function Page() {
               <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Free Tool →</span>
             </Link>
             <Link href="/free-deed-poll-template-uk" className="bg-green-50 border border-[#00703c] rounded-lg p-5 hover:bg-green-100 transition-colors group">
-              <h3 className="font-bold text-gray-900 group-hover:text-[#00703c] transition-colors">📄 Free Deed Poll Template (Word/PDF)</h3>
-              <span className="text-[#00703c] text-sm mt-3 inline-block font-medium">Download Free →</span>
+              <h3 className="font-bold text-gray-900 group-hover:text-[#00703c] transition-colors">📄 Free Deed Poll Template (Copy into Word)</h3>
+              <span className="text-[#00703c] text-sm mt-3 inline-block font-medium">Copy Free Wording →</span>
             </Link>
           </div>
         </section>

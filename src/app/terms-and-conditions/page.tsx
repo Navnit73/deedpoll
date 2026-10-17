@@ -24,30 +24,44 @@ export default function TermsAndConditions() {
 
         <h2 className="text-2xl font-bold mt-8 mb-4">1. No Legal Advice</h2>
         <p>
-          The information and services provided on this website are for general informational purposes only and do not constitute legal advice. We provide a free tool to generate a deed poll document based on the information you input, but we do not guarantee its acceptance by any specific organisation, government body, or institution. If you require legal advice regarding changing your name or any other matter, you should consult a qualified legal professional.
+          The information and services provided on this website are for general informational purposes only and do not constitute legal advice. We provide a tool to generate a deed poll document based on the information you input, but we do not guarantee its acceptance by any specific organisation, government body, or institution. If you require legal advice regarding changing your name or any other matter, you should consult a qualified legal professional.
         </p>
 
         <h2 className="text-2xl font-bold mt-8 mb-4">2. Use of the Service</h2>
         <p>
-          This service is provided free of charge. The deed poll generation happens entirely within your web browser. We do not store, track, or transmit your personal data (such as your name or address) to our servers. You are solely responsible for the accuracy of the information you enter into the generator.
+          Filling in the form and viewing a preview of your deed poll is free. Downloading the finished deed poll PDF is a paid service, as set out in section 3 below. The deed poll generation happens entirely within your web browser. We do not store, track, or transmit your personal data (such as your name or address) to our servers. You are solely responsible for the accuracy of the information you enter into the generator.
         </p>
 
-        <h2 className="text-2xl font-bold mt-8 mb-4">3. Disclaimer of Warranties</h2>
+        <h2 className="text-2xl font-bold mt-8 mb-4">3. Price, Payment and Refunds</h2>
+        <p>
+          Previewing your deed poll is free. Downloading the finished, unwatermarked deed poll PDF costs £14.99. This is a one-off payment, not a subscription. The price shown at checkout is the total you pay.
+        </p>
+        <p>
+          Payment is processed by PayPal. We do not see or store your card or PayPal account details.
+        </p>
+        <p>
+          Your deed poll PDF is digital content that is supplied immediately after payment. Before you pay, we will ask you to agree to immediate supply and to acknowledge that, under the Consumer Contracts (Information, Cancellation and Additional Charges) Regulations 2013, you lose your 14-day right to cancel once the download is made available to you.
+        </p>
+        <p>
+          This does not affect your statutory rights. If your file is faulty or not as described, you are still entitled to a repair or replacement or, where that is not possible, a refund under the Consumer Rights Act 2015. To raise a problem, please <Link href="/contact-us" className="text-[#1d70b8] underline underline-offset-2">contact us</Link>.
+        </p>
+
+        <h2 className="text-2xl font-bold mt-8 mb-4">4. Disclaimer of Warranties</h2>
         <p>
           The website and its contents are provided "as is" and "as available" without any representations or warranties, express or implied. We do not warrant that the website will be constantly available, or available at all; nor do we warrant that the information on this website is complete, true, accurate, or non-misleading.
         </p>
 
-        <h2 className="text-2xl font-bold mt-8 mb-4">4. Limitation of Liability</h2>
+        <h2 className="text-2xl font-bold mt-8 mb-4">5. Limitation of Liability</h2>
         <p>
           Deed Poll UK and its creators will not be liable to you (whether under the law of contact, the law of torts, or otherwise) in relation to the contents of, or use of, or otherwise in connection with, this website, for any indirect, special, or consequential loss; or for any business losses, loss of revenue, income, profits, or anticipated savings, loss of contracts or business relationships, loss of reputation or goodwill, or loss or corruption of information or data.
         </p>
 
-        <h2 className="text-2xl font-bold mt-8 mb-4">5. Revisions</h2>
+        <h2 className="text-2xl font-bold mt-8 mb-4">6. Revisions</h2>
         <p>
           We may revise these terms and conditions from time to time. The revised terms and conditions will apply to the use of this website from the date of the publication of the revised terms and conditions on this website. Please check this page regularly to ensure you are familiar with the current version.
         </p>
 
-        <h2 className="text-2xl font-bold mt-8 mb-4">6. Contact Us</h2>
+        <h2 className="text-2xl font-bold mt-8 mb-4">7. Contact Us</h2>
         <p>
           If you have any questions about these Terms and Conditions, please <Link href="/contact-us" className="text-[#1d70b8] underline underline-offset-2">contact us</Link>.
         </p>
