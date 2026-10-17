@@ -1,11 +1,22 @@
 "use client";
 
 import React, { useState } from 'react';
-import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
+import { PayPalScriptProvider, PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
 import { PaymentState } from '@/types/payment';
 
 // Use live Client ID from environment variables, or fallback to 'test' for sandbox
 const clientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || 'test';
+
+// Shown when the PayPal SDK fails to load, e.g. an invalid client ID or a blocked script.
+function ScriptLoadError() {
+  const [{ isRejected }] = usePayPalScriptReducer();
+  if (!isRejected) return null;
+  return (
+    <p className="p-3 border-2 border-red-600 bg-red-50 text-red-800 text-sm font-bold">
+      Payment is temporarily unavailable. Please refresh the page or try again later.
+    </p>
+  );
+}
 
 interface PaymentButtonProps {
   amount: number;
@@ -61,6 +72,7 @@ export function PaymentButton({
 
       <div className="w-full">
         <PayPalScriptProvider options={{ clientId: clientId, currency: currency }}>
+          <ScriptLoadError />
           <PayPalButtons
             style={{ layout: "vertical", shape: "rect", color: "blue" }}
             disabled={disabled}
@@ -96,11 +108,11 @@ export function PaymentButton({
                     name: payerName,
                     email: details.payer?.email_address || '',
                   };
-                  showToast('Payment Successful! Preparing your document...', 'success');
                   if (details.status !== 'COMPLETED') {
                     showToast('Payment was not completed. You have not been charged.', 'error');
                     return;
                   }
+                  showToast('Payment Successful! Preparing your document...', 'success');
                   if (onSuccess) {
                     onSuccess(paymentState);
                   }
