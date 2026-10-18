@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { PayPalScriptProvider, PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
 import { PaymentState } from '@/types/payment';
 
@@ -35,9 +35,18 @@ export function PaymentButton({
 }: PaymentButtonProps) {
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
 
+  const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const expectedValue = (amount / 100).toFixed(2);
+
+  useEffect(() => () => {
+    if (toastTimer.current) clearTimeout(toastTimer.current);
+  }, []);
+
   const showToast = (message: string, type: 'success' | 'error' | 'info' = 'info') => {
+    // Clear the previous timer so it can't hide a newer toast early.
+    if (toastTimer.current) clearTimeout(toastTimer.current);
     setToast({ message, type });
-    setTimeout(() => setToast(null), 5000);
+    toastTimer.current = setTimeout(() => setToast(null), 5000);
   };
 
   return (
@@ -77,6 +86,10 @@ export function PaymentButton({
             style={{ layout: "vertical", shape: "rect", color: "blue" }}
             disabled={disabled}
             forceReRender={[amount, currency, disabled]}
+            onClick={(data, actions) => {
+              // The disabled prop only greys the button out; block the click as well.
+              return disabled ? actions.reject() : actions.resolve();
+            }}
             createOrder={(data, actions) => {
               return actions.order.create({
                 intent: "CAPTURE",
@@ -84,7 +97,7 @@ export function PaymentButton({
                   {
                     amount: {
                       currency_code: currency,
-                      value: (amount / 100).toFixed(2),
+                      value: expectedValue,
                     },
                     description,
                   },
@@ -94,31 +107,47 @@ export function PaymentButton({
                 },
               });
             }}
-            onApprove={(data, actions) => {
+            onApprove={async (data, actions) => {
+              if (!actions.order) return;
               showToast('Processing payment...', 'info');
-              if (actions.order) {
-                return actions.order.capture().then((details) => {
-                  const payerName = details.payer?.name?.given_name 
-                    ? `${details.payer.name.given_name} ${details.payer.name.surname || ''}`.trim()
-                    : '';
-                  
-                  const paymentState: PaymentState = {
-                    orderID: details.id || '',
-                    payerID: details.payer?.payer_id || '',
-                    name: payerName,
-                    email: details.payer?.email_address || '',
-                  };
-                  if (details.status !== 'COMPLETED') {
-                    showToast('Payment was not completed. You have not been charged.', 'error');
-                    return;
-                  }
-                  showToast('Payment Successful! Preparing your document...', 'success');
-                  if (onSuccess) {
-                    onSuccess(paymentState);
-                  }
-                });
+
+              let details;
+              try {
+                details = await actions.order.capture();
+              } catch (err) {
+                // PayPal recommends restarting checkout when the card or funding source is declined,
+                // so the buyer can pick another way to pay.
+                if (String(err).includes('INSTRUMENT_DECLINED')) {
+                  showToast('Your payment method was declined. Please try another card or account.', 'error');
+                  return actions.restart();
+                }
+                console.error('PayPal capture error:', err);
+                showToast('Payment could not be completed. You have not been charged.', 'error');
+                return;
               }
-              return Promise.resolve();
+
+              const capture = details.purchase_units?.[0]?.payments?.captures?.[0];
+              const captureOk = capture?.status === 'COMPLETED' || capture?.status === 'PENDING';
+              const amountOk = capture?.amount?.value === expectedValue && capture?.amount?.currency_code === currency;
+
+              if (details.status !== 'COMPLETED' || !captureOk || !amountOk) {
+                console.error('PayPal capture not accepted:', details.status, capture?.status, capture?.amount);
+                showToast('Payment was not completed. You have not been charged.', 'error');
+                return;
+              }
+
+              const payerName = details.payer?.name?.given_name
+                ? `${details.payer.name.given_name} ${details.payer.name.surname || ''}`.trim()
+                : '';
+
+              const paymentState: PaymentState = {
+                orderID: details.id || data.orderID,
+                payerID: details.payer?.payer_id || '',
+                name: payerName,
+                email: details.payer?.email_address || '',
+              };
+              showToast('Payment Successful! Preparing your document...', 'success');
+              onSuccess?.(paymentState);
             }}
             onError={(err) => {
               console.error("PayPal Error:", err);

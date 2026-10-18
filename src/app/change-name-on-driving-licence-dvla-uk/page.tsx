@@ -206,7 +206,7 @@ export default function ChangeNameDrivingLicencePage() {
           <div>
             <h3 className="text-2xl font-bold text-[#0b0c0c]">Need your legal deed poll first?</h3>
             <p className="text-sm sm:text-base text-gray-700 mt-1 max-w-xl">
-              Create your official UK Deed Poll in under 2 minutes and preview it free. Download the PDF instantly for £14.99 and send it to the DVLA.
+              Create your official UK Deed Poll in under 2 minutes and preview it free. Download the PDF instantly for £9.99 and send it to the DVLA.
             </p>
           </div>
           <Link

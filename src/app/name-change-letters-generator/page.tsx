@@ -600,7 +600,7 @@ export default function LetterGeneratorPage() {
 
             <div className="mt-8 bg-blue-100/60 border border-blue-300 rounded-lg p-4 text-xs text-gray-800">
               <p className="font-bold mb-1">💡 Need a Deed Poll first?</p>
-              <p className="mb-2">If you haven't generated your legal deed poll yet, you can create it and see a free preview in 2 minutes, then download the official PDF for £14.99.</p>
+              <p className="mb-2">If you haven't generated your legal deed poll yet, you can create it and see a free preview in 2 minutes, then download the official PDF for £9.99.</p>
               <Link
                 href="/change-name-in-uk-by-deedpoll"
                 className="inline-block font-bold text-[#1d70b8] hover:underline underline-offset-2"

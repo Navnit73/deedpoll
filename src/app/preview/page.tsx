@@ -8,14 +8,38 @@ import ShareWidget from '@/components/ShareWidget';
 import { PaymentButton } from '@/components/payment/PaymentButton';
 import { PaymentState } from '@/types/payment';
 
-// TESTING: temporary 10p price for live PayPal testing. Restore to 1499 / '£14.99' before launch.
-const PRICE_PENCE = 10;
-const PRICE_LABEL = '£0.10';
+const PRICE_PENCE = 999;
+const PRICE_LABEL = '£9.99';
 const PAID_STORAGE_KEY = 'deedpoll_paid_order';
+
+type PaidOrder = { orderId: string; oldName: string };
+
+// A payment covers one person's deed poll: the old name it was bought for. Witnesses, address,
+// date and the new name can still be corrected for free, but a different person needs a new purchase.
+const normaliseName = (name: string) => name.trim().replace(/\s+/g, ' ').toLowerCase();
+
+function readPaidOrder(): PaidOrder | null {
+  try {
+    const stored = sessionStorage.getItem(PAID_STORAGE_KEY);
+    if (!stored) return null;
+    const parsed = JSON.parse(stored) as PaidOrder;
+    return parsed && parsed.orderId && typeof parsed.oldName === 'string' ? parsed : null;
+  } catch {
+    return null;
+  }
+}
+
+function dataUriToBlobUrl(dataUri: string): string {
+  const [header, base64] = dataUri.split(',');
+  const mime = header.match(/data:([^;]+)/)?.[1] || 'application/pdf';
+  const bytes = Uint8Array.from(atob(base64), (c) => c.charCodeAt(0));
+  return URL.createObjectURL(new Blob([bytes], { type: mime }));
+}
 
 export default function PreviewPage() {
   const router = useRouter();
   const [pdfDataUri, setPdfDataUri] = useState<string | null>(null);
+  const [pdfUrl, setPdfUrl] = useState<string | null>(null);
   const [htmlPreview, setHtmlPreview] = useState<string>('');
   const [pdfTooLong, setPdfTooLong] = useState(false);
   const [title, setTitle] = useState('Your Deed Poll');
@@ -53,16 +77,14 @@ export default function PreviewPage() {
       }
 
       try {
-        const paidOrder = sessionStorage.getItem(PAID_STORAGE_KEY);
-        if (paidOrder) {
-          setOrderId(paidOrder);
-          setIsPaid(true);
-        }
-      } catch {}
-
-      try {
         const decoded = JSON.parse(decodedStr) as DeedPollSubmission;
         setSubmissionData(decoded);
+
+        const paidOrder = readPaidOrder();
+        if (paidOrder && paidOrder.oldName === normaliseName(decoded.oldName || '')) {
+          setOrderId(paidOrder.orderId);
+          setIsPaid(true);
+        }
       } catch (e) {
         console.error("Failed to parse submission data", e);
       }
@@ -84,15 +106,24 @@ export default function PreviewPage() {
     }
   }, [submissionData, isPaid]);
 
+  // Chrome blocks opening data: URLs in a new tab, so serve the PDF from a blob URL instead.
+  useEffect(() => {
+    if (!pdfDataUri) return;
+    const url = dataUriToBlobUrl(pdfDataUri);
+    setPdfUrl(url);
+    return () => URL.revokeObjectURL(url);
+  }, [pdfDataUri]);
+
   const handlePaymentSuccess = (payment: PaymentState) => {
     try {
-      sessionStorage.setItem(PAID_STORAGE_KEY, payment.orderID);
+      const paidOrder: PaidOrder = { orderId: payment.orderID, oldName: normaliseName(submissionData?.oldName || '') };
+      sessionStorage.setItem(PAID_STORAGE_KEY, JSON.stringify(paidOrder));
     } catch {}
     setOrderId(payment.orderID);
     setIsPaid(true);
   };
 
-  if (!pdfDataUri) {
+  if (!pdfDataUri || !pdfUrl) {
     return <div className="max-w-6xl mx-auto px-4 py-32 text-center text-2xl font-bold text-gray-600 animate-pulse">Generating your legally valid deed poll...</div>;
   }
 
@@ -122,10 +153,10 @@ export default function PreviewPage() {
             </p>
           )}
           <div className="flex flex-wrap justify-center gap-4">
-            <a href={pdfDataUri} download="deed-poll.pdf" className="bg-[#00703c] hover:bg-[#005a30] text-white font-bold py-4 px-8 transition-colors text-xl">
+            <a href={pdfUrl} download="deed-poll.pdf" className="bg-[#00703c] hover:bg-[#005a30] text-white font-bold py-4 px-8 transition-colors text-xl">
               Download PDF
             </a>
-            <a href={pdfDataUri} target="_blank" rel="noopener noreferrer" className="bg-white border-2 border-[#1d70b8] text-[#1d70b8] hover:bg-gray-50 font-bold py-4 px-8 transition-colors text-xl">
+            <a href={pdfUrl} target="_blank" rel="noopener noreferrer" className="bg-white border-2 border-[#1d70b8] text-[#1d70b8] hover:bg-gray-50 font-bold py-4 px-8 transition-colors text-xl">
               Open PDF
             </a>
             <Link href="/checklist" className="bg-[#1d70b8] hover:bg-[#003078] text-white font-bold py-4 px-8 transition-colors text-xl">
@@ -133,7 +164,7 @@ export default function PreviewPage() {
             </Link>
           </div>
           <p className="text-sm text-gray-600">
-            You can edit your details and download again at no extra cost until you close this browser tab.
+            You can correct your details and download again at no extra cost until you close this browser tab.
           </p>
         </div>
       ) : pdfTooLong ? (
@@ -184,7 +215,7 @@ export default function PreviewPage() {
 
       {/* PDF View embedded */}
       <div className="max-w-4xl mx-auto border-4 border-gray-300 shadow-xl mb-16 aspect-[1/1.414] w-full bg-gray-100">
-        <iframe src={pdfDataUri} className="w-full h-full" title="PDF Preview" />
+        <iframe src={pdfUrl} className="w-full h-full" title="PDF Preview" />
       </div>
 
       <div className="max-w-4xl mx-auto mb-16">

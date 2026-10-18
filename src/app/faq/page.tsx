@@ -308,7 +308,7 @@ export default function FAQ() {
           <p className="mt-4">
             Most sites will charge you a fee, in exchange for which they'll print your deed poll for you: they usually don't
             do much more than this, except perhaps provide a "money-back guarantee" if your deed poll is rejected by HM Passport
-            Office or by the DVLA. This site lets you check a free preview of your deed poll before you pay a one-off £14.99 to download it, so you know exactly what you&apos;re getting.
+            Office or by the DVLA. This site lets you check a free preview of your deed poll before you pay a one-off £9.99 to download it, so you know exactly what you&apos;re getting.
           </p>
           <p className="mt-4">But if you're prefer, here are some other options:</p>
           <ul className="list-disc pl-6 space-y-2 mt-4">
@@ -467,7 +467,7 @@ export default function FAQ() {
           <p>
             <strong>Mostly, yes.</strong> Filling in the deed poll form and viewing a watermarked preview is free, as are our guides, name change
             letter generator, checklist and calculators. Downloading the finished, unwatermarked deed poll PDF costs a
-            one-off £14.99, with no subscription. If you&apos;d rather not pay, you can write your own deed poll using our
+            one-off £9.99, with no subscription. If you&apos;d rather not pay, you can write your own deed poll using our
             {' '}<Link href="/free-deed-poll-template-uk" className="text-[#1d70b8] underline underline-offset-2">free deed poll template</Link> wording.
             The site is also supported by advertising. <a href="#security" className="text-[#1d70b8] underline underline-offset-2">Your deed poll details stay in your browser</a>,
             and we don&apos;t sell your data to third parties.

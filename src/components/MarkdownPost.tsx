@@ -274,7 +274,7 @@ export default function MarkdownPost({ post, relatedPosts = [], siteUrl = 'https
             Change Your Name Legally in Minutes
           </h2>
           <p className="text-lg text-blue-100 mb-6 max-w-2xl mx-auto">
-            Free preview, then £14.99 to download. Legally valid across the UK. Accepted by Passport Office, DVLA, HMRC, and all banks.
+            Free preview, then £9.99 to download. Legally valid across the UK. Accepted by Passport Office, DVLA, HMRC, and all banks.
           </p>
           <Link
             href="/change-name-in-uk-by-deedpoll"

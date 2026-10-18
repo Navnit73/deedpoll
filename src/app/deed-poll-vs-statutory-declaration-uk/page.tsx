@@ -134,7 +134,7 @@ export default function DeedPollVsStatutoryDeclarationPage() {
                 </tr>
                 <tr>
                   <td className="p-4 font-bold text-gray-900">Cost</td>
-                  <td className="p-4 bg-blue-50/50 text-[#00703c] font-bold">Free (DIY) or £14.99 via our generator</td>
+                  <td className="p-4 bg-blue-50/50 text-[#00703c] font-bold">Free (DIY) or £9.99 via our generator</td>
                   <td className="p-4">£5–£20 oath swearing fee + solicitor time</td>
                 </tr>
                 <tr>
@@ -188,7 +188,7 @@ export default function DeedPollVsStatutoryDeclarationPage() {
           <div>
             <h3 className="text-2xl font-bold text-[#0b0c0c]">Need a legal name change today?</h3>
             <p className="text-sm sm:text-base text-gray-700 mt-1 max-w-xl">
-              Create your official UK Deed Poll and preview it free. Download your instant PDF for £14.99 and start updating your passport and driving licence immediately.
+              Create your official UK Deed Poll and preview it free. Download your instant PDF for £9.99 and start updating your passport and driving licence immediately.
             </p>
           </div>
           <Link

@@ -30,7 +30,7 @@ export default function AboutUs() {
           <li>
             A <Link href="/change-name-in-uk-by-deedpoll" className="text-[#1d70b8] underline underline-offset-2">deed poll generator</Link>{" "}
             that creates a printable unenrolled deed poll in your browser. You can preview it for free; downloading the
-            finished PDF costs a one-off £14.99.
+            finished PDF costs a one-off £9.99.
           </li>
           <li>
             A <Link href="/name-change-letters-generator" className="text-[#1d70b8] underline underline-offset-2">letter generator</Link>{" "}
