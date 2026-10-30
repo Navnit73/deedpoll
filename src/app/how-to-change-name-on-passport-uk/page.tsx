@@ -1,6 +1,12 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 
-export const metadata = {
+const PAGE_URL = "https://deedpolluk.uk/how-to-change-name-on-passport-uk";
+const PAGE_TITLE = "How to Change Your Name on a UK Passport (2026): Cost, Time & Documents";
+const PAGE_DESCRIPTION =
+  "Change your name on your UK passport after marriage, divorce or deed poll. See the documents you need, the £102 fee, processing times and how to apply online.";
+
+export const metadata: Metadata = {
   alternates: {
     canonical: "/how-to-change-name-on-passport-uk",
     languages: {
@@ -8,107 +14,165 @@ export const metadata = {
       "x-default": "/how-to-change-name-on-passport-uk",
     },
   },
-  title: "How to Change Your Name on a Passport in the UK | 2026 Guide",
-  description:
-    "Find out how to change your name on your UK passport — after marriage, deed poll, or divorce. Fees, timescales, and what documents to send. Step-by-step guide.",
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
   openGraph: {
-    title: "How to Change Your Name on a Passport in the UK | 2026 Guide",
-    description: "Find out how to change your name on your UK passport — after marriage, deed poll, or divorce. Fees, timescales, and what documents to send. Step-by-step guide.",
-    url: "https://deedpolluk.uk/how-to-change-name-on-passport-uk",
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    url: PAGE_URL,
+    locale: "en_GB",
+    type: "article",
   },
   twitter: {
-    title: "How to Change Your Name on a Passport in the UK | 2026 Guide",
-    description: "Find out how to change your name on your UK passport — after marriage, deed poll, or divorce. Fees, timescales, and what documents to send. Step-by-step guide.",
-  }
+    card: "summary_large_image",
+    title: "UK Passport Name Change: Requirements, Cost and Time",
+    description: PAGE_DESCRIPTION,
+  },
 };
 
-const reasons = [
+const tableOfContents = [
+  ["#do-you-need-a-new-passport", "Do you need a new passport?"],
+  ["#requirements", "UK passport name change requirements"],
+  ["#steps", "How to change your name on your passport"],
+  ["#cost", "How much it costs"],
+  ["#time", "How long it takes"],
+  ["#online", "Changing your name on your passport online"],
+  ["#address", "Changing the address on your passport"],
+  ["#mistakes", "Mistakes that delay your application"],
+  ["#faq", "FAQs"],
+];
+
+const requirements = [
   {
+    id: "marriage",
     label: "Most common",
     labelColour: "bg-green-100 text-green-800",
-    title: "After marriage",
-    body: "Your marriage certificate is sufficient. No deed poll is needed unless you want a non-standard name combination.",
+    title: "After Marriage or Civil Partnership",
+    intro: "Use your marriage or civil partnership certificate as proof. You do not need a deed poll for a standard married name.",
+    documents: [
+      "Your marriage or civil partnership certificate",
+      "Your current passport",
+    ],
   },
   {
-    label: "Personal change",
-    labelColour: "bg-blue-100 text-blue-800",
-    title: "After a deed poll",
-    body: "If you've changed your name for personal reasons, your signed deed poll is the evidence HM Passport Office requires.",
-  },
-  {
-    label: "After separation",
+    id: "divorce",
+    label: "Returning to a previous name",
     labelColour: "bg-purple-100 text-purple-800",
-    title: "After divorce",
-    body: "Your decree absolute or final order lets you revert to a previous name. No deed poll needed for a straightforward reversion.",
+    title: "After Divorce or Separation",
+    intro: "If you are going back to a previous surname, such as your maiden name, send all of the following:",
+    documents: [
+      "Your birth certificate",
+      "A signed statement saying you have returned to your previous surname for all purposes",
+      "A document showing you are using the name, such as a bank statement",
+      "Your marriage or civil partnership certificate showing both names",
+    ],
   },
   {
-    label: "Gender recognition",
+    id: "deed-poll",
+    label: "Any other change",
+    labelColour: "bg-blue-100 text-blue-800",
+    title: "After a Deed Poll",
+    intro: "For any other change of name, including double-barrelled or new first names, send your deed poll with:",
+    documents: [
+      "Your signed and witnessed deed poll",
+      "Proof of any previous name changes",
+      "Evidence that you use your new name, such as a payslip or a council letter",
+    ],
+  },
+  {
+    id: "gender",
+    label: "Gender change",
     labelColour: "bg-orange-100 text-orange-800",
-    title: "Gender recognition",
-    body: "A Gender Recognition Certificate allows you to update both your name and your passport's gender marker at the same time.",
+    title: "After a Change of Gender",
+    intro: "Send one of the following, plus your deed poll if your name has also changed:",
+    documents: [
+      "A Gender Recognition Certificate",
+      "A new birth or adoption certificate showing your acquired gender",
+      "A letter from your doctor or consultant confirming the change is likely to be permanent",
+    ],
   },
 ];
 
 const steps = [
   {
     title: "Gather your supporting documents",
-    body: "Depending on your reason for changing your name, you'll need one of the following: your marriage certificate, your decree absolute or final order, your deed poll (signed and witnessed), or a Gender Recognition Certificate. Have certified copies ready — HM Passport Office will keep them.",
+    body: "Collect the evidence that matches your reason for changing your name (see the requirements above). HM Passport Office needs originals and returns them separately from your new passport.",
   },
   {
-    title: "Complete the passport application form",
-    body: "Apply online at GOV.UK or download a paper form (form C1 for adults). If you're renewing at the same time — which is the most common approach — complete a renewal application. If your current passport was issued fewer than 9 months ago and you're only changing your name (not renewing), you may be able to apply for a free replacement.",
+    title: "Start your application",
+    body: "Apply online through GOV.UK. To use a paper form instead, pick one up from a Post Office that offers Check and Send, or call the Passport Adviceline. You cannot download the paper form.",
   },
   {
-    title: "Provide a new passport photo",
-    body: "You'll need a new photo that meets the current HM Passport Office specifications: plain light grey or cream background, taken within the last month, no glasses, and no headwear except for religious reasons. Many post offices and pharmacies offer compliant passport photos.",
+    title: "Enter your new name exactly",
+    body: "Fill in and sign the application in the name you want printed on your passport. Spell it exactly as it appears on your marriage certificate or deed poll.",
   },
   {
-    title: "Send your current passport",
-    body: "You must include your existing passport with your application — it will be cancelled and returned to you once your new one is issued. Use a tracked postal service; HM Passport Office recommends Special Delivery.",
+    title: "Add a new passport photo",
+    body: "Upload a digital photo for an online application, or include 2 printed photos with a paper form. You do not need a countersignature just because your name has changed.",
   },
   {
-    title: "Pay the application fee",
-    body: "A standard adult passport renewal costs £88.50 online or £100 by post (2026 rates). If your previous passport was issued fewer than 9 months ago, a name-change replacement may be free — check GOV.UK for current eligibility.",
+    title: "Pay the fee",
+    body: "An adult passport costs £102 online or £115.50 by post. Time left on your old passport does not carry over to the new one.",
   },
   {
-    title: "Wait for your new passport",
-    body: "The standard online service typically takes up to 10 weeks. If you have imminent travel, the 1-week fast-track service (in-person appointment at a Passport Office) is available for an additional fee. Check current availability at GOV.UK.",
+    title: "Post your old passport and documents",
+    body: "Send your current passport and supporting documents to HM Passport Office. Use a tracked service such as Royal Mail Special Delivery.",
   },
 ];
 
-const timelines = [
-  ["Standard online service", "Up to 10 weeks", "£88.50"],
-  ["Standard postal (paper form)", "Up to 10 weeks", "£100.00"],
-  ["1-week fast-track (appointment)", "Approx. 1 week", "£177.00"],
-  ["Name change under 9 months old", "Up to 10 weeks", "Free"],
+const fees = [
+  ["Adult (16+) online", "£102.00", "£116.00"],
+  ["Adult (16+) paper form", "£115.50", "£129.50"],
+  ["Child (under 16) online", "£66.50", "£80.50"],
+  ["Child (under 16) paper form", "£80.00", "£94.00"],
+  ["1 Week Fast Track (adult)", "£192.00", "£206.00"],
+  ["1 Day Premium (adult renewal)", "£239.50", "£253.50"],
 ];
 
 const faqs = [
   {
     q: "How do I change my name on my UK passport?",
-    a: "Apply for a passport renewal at GOV.UK, enclosing your evidence of name change — either a marriage certificate, decree absolute, or signed deed poll — along with a new passport photo and your current passport. The standard service takes up to 10 weeks.",
-  },
-  {
-    q: "How do I change my name on my passport after marriage in the UK?",
-    a: "Include your marriage certificate with a standard passport renewal application. HM Passport Office accepts a marriage certificate as sufficient proof — no deed poll is required. Apply online at GOV.UK for the fastest processing.",
-  },
-  {
-    q: "Can I travel while waiting for my new passport after a name change?",
-    a: "No. Once you submit your current passport with your application, you cannot use it to travel. If you have upcoming travel, apply for the 1-week fast-track service (subject to appointment availability) or delay your name-change application until after you return.",
+    a: "Apply for a new passport online at GOV.UK in your new name. Then post your current passport and your proof of name change, such as a marriage certificate or deed poll, to HM Passport Office. An adult application costs £102 online.",
   },
   {
     q: "How much does it cost to change your name on a UK passport?",
-    a: "The standard online adult renewal costs £88.50; by post it is £100. The 1-week fast-track service costs £177. If your passport was issued fewer than 9 months ago and you are only changing your name (not renewing), a replacement may be issued free of charge.",
+    a: "A name change costs the same as a new passport: £102 online or £115.50 by post for an adult, and £66.50 online for a child. The 1 Week Fast Track service costs £192. There is no free or reduced fee for a name change.",
   },
   {
-    q: "Do I need a deed poll to change my name on my UK passport?",
-    a: "Only if you changed your name by deed poll. If you changed your name through marriage, your marriage certificate is sufficient. If you're reverting to a previous name after divorce, your decree absolute or final order is sufficient. A deed poll is required only when none of those documents apply.",
+    q: "How long does a UK passport name change take?",
+    a: "HM Passport Office advises allowing 3 weeks for most applications from the UK. A name change can take longer because you post supporting documents. If you need to travel urgently, book the 1 Week Fast Track service.",
   },
   {
-    q: "What if HM Passport Office rejects my deed poll?",
-    a: "This is rare with a correctly executed deed poll. If it happens, first ensure your deed poll is signed by both you and an independent adult witness, and that it clearly states your old name, new name, and your intention to use the new name exclusively. If you still encounter problems, contact the Passport Adviceline on 0300 222 0000.",
+    q: "What are the UK passport name change requirements?",
+    a: "You need your current passport, a new photo and proof of your name change. That means a marriage or civil partnership certificate, a deed poll with evidence you use the new name, or divorce documents with a signed statement, depending on your reason.",
+  },
+  {
+    q: "How do I change my name on my passport after marriage?",
+    a: "Apply for a new passport in your married name and send your marriage certificate as proof. You do not need a deed poll. You can even apply up to 3 months before your wedding using the ‘passports for newly weds and civil partners’ form, signed by your registrar or minister.",
+  },
+  {
+    q: "Do I have to change my passport after getting married?",
+    a: "No. If you keep your name after marriage, your passport stays valid. You only need a new passport if you start using a new name, and the name on your passport must match your travel bookings.",
+  },
+  {
+    q: "Can I change my name on my passport online?",
+    a: "Yes. You can apply online at GOV.UK, which is cheaper and faster than applying by post. You still need to post your old passport and supporting documents after you submit the online application.",
+  },
+  {
+    q: "Do I need a deed poll to change my name on my passport?",
+    a: "Only if your new name does not come from a marriage, civil partnership or divorce. A marriage certificate covers a standard married name or a double-barrelled surname. For any other change, you need a deed poll plus evidence you use your new name.",
+  },
+  {
+    q: "Do I need to update the address on my passport?",
+    a: "No. UK passports do not show your address, so you do not need a new passport when you move. Just enter your current address next time you apply.",
+  },
+  {
+    q: "Can I travel while my passport name change is being processed?",
+    a: "No. Once you post your passport, you cannot travel on it. Do not book travel until your new passport arrives, because the passport number will change and your booking name must match your passport.",
   },
 ];
+
+const sectionHeading = "scroll-mt-24 text-2xl sm:text-3xl font-bold mb-5 border-b-2 border-gray-100 pb-3";
 
 export default function Page() {
   return (
@@ -127,36 +191,37 @@ export default function Page() {
 
         {/* ── H1 ── */}
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight mb-4">
-          How to Change Your Name on a UK Passport: Complete 2026 Guide
+          How to Change Your Name on a UK Passport (2026 Guide)
         </h1>
 
         <div className="text-sm text-gray-500 mb-8 flex flex-col gap-1">
           <p><strong>Written by</strong> Deed Poll UK Editorial Team</p>
-          <p><strong>Reviewed</strong> June 2026 · 7-minute read</p>
+          <p><strong>Updated</strong> October 2026 · 8-minute read · Fees checked against GOV.UK</p>
         </div>
 
-        {/* ── Intro callout ── */}
+        {/* ── Quick answer ── */}
         <div className="border-l-4 border-[#1d70b8] bg-blue-50 px-5 py-4 mb-8 rounded-r-md">
+          <p className="font-bold text-gray-900 mb-2">Quick answer</p>
           <p className="text-base sm:text-lg leading-relaxed text-gray-800">
-            Need to <strong>change your name on your UK passport</strong>? Whether you've recently married, changed your name by deed poll, or reverted to a previous name after divorce, you'll need to apply to HM Passport Office for a new passport. This guide explains exactly what to send, what it costs, and how long it takes — so you don't have to guess.
+            To <strong>change your name on a UK passport</strong>, apply for a new passport in your new
+            name at GOV.UK and send proof of the change, such as a marriage certificate or deed poll. It
+            costs <strong>£102 online</strong> (£115.50 by post), and you should allow at least{' '}
+            <strong>3 weeks</strong>, or longer while HM Passport Office checks your documents.
           </p>
         </div>
 
         {/* ── Important notice ── */}
         <div className="bg-red-50 border border-red-200 rounded-md px-5 py-4 mb-8 text-sm sm:text-base text-red-900">
-          <strong>Planning to travel soon?</strong> Once you submit your current passport, you cannot use it to travel until your new one arrives. If you have upcoming trips, apply well in advance or book a fast-track appointment.
+          <strong>Travelling soon?</strong> You cannot travel once you post your passport. Your new
+          passport also has a new number, so do not book travel until it arrives. If you need it
+          urgently, book the 1 Week Fast Track service.
         </div>
 
         {/* ── On-page nav ── */}
         <nav aria-label="On this page" className="bg-gray-50 border border-gray-200 rounded-lg p-5 mb-10">
           <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-3">On this page</p>
-          <ol className="space-y-2 text-sm sm:text-base text-[#1d70b8]">
-            {[
-              ["#reasons", "Reasons for changing your passport name"],
-              ["#steps",   "Step-by-step application guide"],
-              ["#fees",    "Fees and processing times"],
-              ["#faq",     "Frequently asked questions"],
-            ].map(([href, label]) => (
+          <ol className="space-y-2 text-sm sm:text-base text-[#1d70b8] list-decimal pl-5">
+            {tableOfContents.map(([href, label]) => (
               <li key={href}>
                 <a href={href} className="hover:underline underline-offset-2">{label}</a>
               </li>
@@ -165,47 +230,110 @@ export default function Page() {
         </nav>
 
         {/* ══════════════════════════════════════
-            H2 — Reasons
+            H2 — Do you need a new passport?
         ══════════════════════════════════════ */}
-        <section id="reasons" className="mb-12">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-5 border-b-2 border-gray-100 pb-3">
-            Reasons for Changing Your Name on a UK Passport
+        <section id="do-you-need-a-new-passport" className="scroll-mt-24 mb-12">
+          <h2 className={sectionHeading}>
+            Do You Need a New Passport After a Name Change?
+          </h2>
+          <p className="text-gray-700 mb-4 leading-relaxed">
+            Yes. If you start using a new name, you need a new passport to travel or to prove your
+            identity. The name on your passport must match the name on your plane tickets and bookings.
+          </p>
+          <p className="text-gray-700 mb-3 leading-relaxed">You <strong>do not</strong> need a new passport if you:</p>
+          <ul className="list-disc pl-6 space-y-1.5 text-gray-700 mb-4">
+            <li>get married or divorced but keep your current name</li>
+            <li>move house or change your contact details</li>
+            <li>add or change a title, such as Dr or Mrs</li>
+          </ul>
+          <p className="text-gray-700 leading-relaxed">
+            Your new passport lasts 10 years. Any time left on your old passport does not carry over.
+          </p>
+        </section>
+
+        {/* ══════════════════════════════════════
+            H2 — Requirements
+        ══════════════════════════════════════ */}
+        <section id="requirements" className="scroll-mt-24 mb-12">
+          <h2 className={sectionHeading}>
+            UK Passport Name Change Requirements
           </h2>
           <p className="text-gray-700 mb-6 leading-relaxed">
-            HM Passport Office accepts several different documents as evidence of a name change. The document you'll need depends on why your name has changed:
+            Every application needs your current passport and a new photo. The proof of name change
+            depends on why your name changed.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-            {reasons.map((r) => (
-              <div key={r.title} className="border border-gray-200 rounded-lg p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
-                <span className={`self-start text-xs font-semibold px-2 py-1 rounded-full ${r.labelColour}`}>
+          <div className="space-y-5 mb-6">
+            {requirements.map((r) => (
+              <div key={r.id} id={r.id} className="scroll-mt-24 border border-gray-200 rounded-lg p-5">
+                <span className={`inline-block text-xs font-semibold px-2 py-1 rounded-full mb-3 ${r.labelColour}`}>
                   {r.label}
                 </span>
-                <h3 className="text-base font-bold text-gray-900">{r.title}</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">{r.body}</p>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{r.title}</h3>
+                <p className="text-sm sm:text-base text-gray-700 mb-3 leading-relaxed">{r.intro}</p>
+                <ul className="list-disc pl-5 space-y-1 text-sm sm:text-base text-gray-700">
+                  {r.documents.map((doc) => (
+                    <li key={doc}>{doc}</li>
+                  ))}
+                </ul>
+
+                {r.id === "marriage" && (
+                  <div className="mt-4 bg-gray-50 border border-gray-200 rounded-md p-4">
+                    <h4 className="font-bold text-gray-900 mb-1">Applying Before Your Wedding</h4>
+                    <p className="text-sm text-gray-700 leading-relaxed">
+                      You can apply for a passport in your married name up to <strong>3 months
+                      before</strong> your ceremony. Send the “passports for newly weds and civil
+                      partners” form, signed by the registrar or minister who will marry you. You
+                      cannot use the new passport until the day of your wedding.
+                    </p>
+                  </div>
+                )}
+
+                {r.id === "deed-poll" && (
+                  <div className="mt-4 bg-gray-50 border border-gray-200 rounded-md p-4">
+                    <h4 className="font-bold text-gray-900 mb-1">What Counts as Evidence of Use?</h4>
+                    <p className="text-sm text-gray-700 leading-relaxed">
+                      Update a couple of records first, then send one as proof. A payslip, bank
+                      statement, council letter or updated driving licence all show you use your new
+                      name.
+                    </p>
+                  </div>
+                )}
               </div>
             ))}
           </div>
 
+          <h3 className="text-lg font-bold text-gray-900 mb-2">Small Changes, Such as Spelling or Middle Names</h3>
+          <p className="text-gray-700 mb-6 leading-relaxed">
+            To correct a spelling or add or remove a middle name, send 2 documents that show you use
+            the new version, such as a driving licence and a bank statement.
+          </p>
+
           <div className="bg-amber-50 border border-amber-200 rounded-md px-5 py-4 text-sm text-amber-900">
-            <strong>Haven't changed your name yet?</strong> If you need a deed poll before you can update your passport, our service lets you create a legally valid deed poll in minutes — then come back to this guide.
+            <strong>Not married or divorced?</strong> You need a deed poll before HM Passport Office
+            will change your name.{' '}
+            <Link href="/change-name-in-uk-by-deedpoll" className="underline font-semibold">
+              Create your deed poll online
+            </Link>{' '}
+            in minutes, then come back to this guide.
           </div>
         </section>
 
         {/* ══════════════════════════════════════
             H2 — Steps
         ══════════════════════════════════════ */}
-        <section id="steps" className="mb-12">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-5 border-b-2 border-gray-100 pb-3">
-            Step-by-Step: How to Change Your Name on a UK Passport
+        <section id="steps" className="scroll-mt-24 mb-12">
+          <h2 className={sectionHeading}>
+            How to Change Your Name on Your Passport: Step by Step
           </h2>
           <p className="text-gray-700 mb-7 leading-relaxed">
-            Follow these six steps to apply for a new passport in your changed name. The process is the same whether you apply online or by post — online is faster and cheaper.
+            Follow these 6 steps whether you are renewing your passport and changing your name together,
+            or updating a passport that still has years left on it.
           </p>
 
           <ol className="space-y-6">
             {steps.map((step, i) => (
-              <li key={i} className="flex gap-5">
+              <li key={step.title} className="flex gap-5">
                 <div
                   aria-hidden="true"
                   className="flex-shrink-0 w-9 h-9 rounded-full bg-[#1d70b8] text-white font-bold flex items-center justify-center text-sm mt-0.5"
@@ -222,58 +350,136 @@ export default function Page() {
         </section>
 
         {/* ══════════════════════════════════════
-            H2 — Fees & timeline table
+            H2 — Cost
         ══════════════════════════════════════ */}
-        <section id="fees" className="mb-12">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-5 border-b-2 border-gray-100 pb-3">
-            UK Passport Name Change: Fees and Processing Times
+        <section id="cost" className="scroll-mt-24 mb-12">
+          <h2 className={sectionHeading}>
+            How Much Does a Passport Name Change Cost?
           </h2>
           <p className="text-gray-700 mb-6 leading-relaxed">
-            Processing times and fees vary depending on the service you choose. All fees are current as of June 2026 — always confirm the latest fees at GOV.UK before applying.
+            A name change costs the same as any new passport. There is no free or discounted fee for
+            changing your name, even after marriage. These are the current GOV.UK fees.
           </p>
 
-          <div className="overflow-x-auto rounded-lg border border-gray-200 mb-6">
+          <div className="overflow-x-auto rounded-lg border border-gray-200 mb-4">
             <table className="w-full text-sm sm:text-base border-collapse">
+              <caption className="sr-only">UK passport name change fees</caption>
               <thead>
                 <tr className="bg-[#1d70b8] text-white">
-                  <th className="text-left px-4 py-3 font-semibold">Service</th>
-                  <th className="text-left px-4 py-3 font-semibold">Timescale</th>
-                  <th className="text-left px-4 py-3 font-semibold">Fee (adult)</th>
+                  <th scope="col" className="text-left px-4 py-3 font-semibold">Service</th>
+                  <th scope="col" className="text-left px-4 py-3 font-semibold">Standard 34 pages</th>
+                  <th scope="col" className="text-left px-4 py-3 font-semibold">Frequent traveller 54 pages</th>
                 </tr>
               </thead>
               <tbody>
-                {timelines.map(([service, time, fee], i) => (
+                {fees.map(([service, standard, frequent], i) => (
                   <tr key={service} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
-                    <td className="px-4 py-3 border-b border-gray-100 font-medium text-gray-800">{service}</td>
-                    <td className="px-4 py-3 border-b border-gray-100 text-gray-600">{time}</td>
-                    <td className="px-4 py-3 border-b border-gray-100 text-gray-600">{fee}</td>
+                    <th scope="row" className="text-left px-4 py-3 border-b border-gray-100 font-medium text-gray-800">{service}</th>
+                    <td className="px-4 py-3 border-b border-gray-100 text-gray-600">{standard}</td>
+                    <td className="px-4 py-3 border-b border-gray-100 text-gray-600">{frequent}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
+          <p className="text-sm text-gray-500 mb-4">
+            Fees checked October 2026. Always confirm the latest fees on GOV.UK before you apply.
+          </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {[
-              { icon: "📬", label: "Apply online", body: "Fastest and cheapest. Apply at GOV.UK and track your application in real time." },
-              { icon: "📮", label: "Apply by post", body: "Download form C1, include all documents, and send via Royal Mail Special Delivery." },
-              { icon: "🏢", label: "Fast-track in person", body: "Book an appointment at a Passport Office. Available for urgent travel needs." },
-            ].map((card) => (
-              <div key={card.label} className="border border-gray-200 rounded-lg p-4 text-center">
-                <div className="text-2xl mb-2">{card.icon}</div>
-                <h3 className="font-bold text-sm text-gray-900 mb-1">{card.label}</h3>
-                <p className="text-xs text-gray-600 leading-relaxed">{card.body}</p>
-              </div>
-            ))}
+          <h3 className="text-lg font-bold text-gray-900 mb-2">Cost of Changing Your Name on a Passport After Marriage</h3>
+          <p className="text-gray-700 leading-relaxed">
+            After marriage, you pay the standard fee: £102 online or £115.50 by post. Your marriage
+            certificate is free to use as evidence, so you do not need to pay for a deed poll.
+          </p>
+        </section>
+
+        {/* ══════════════════════════════════════
+            H2 — Time
+        ══════════════════════════════════════ */}
+        <section id="time" className="scroll-mt-24 mb-12">
+          <h2 className={sectionHeading}>
+            How Long Does a UK Passport Name Change Take?
+          </h2>
+
+          <h3 className="text-lg font-bold text-gray-900 mb-2">Standard Service</h3>
+          <p className="text-gray-700 mb-5 leading-relaxed">
+            HM Passport Office advises allowing <strong>3 weeks</strong> for most UK applications.
+            Name changes can take longer because staff need to receive and check your posted
+            documents. Paper applications take longer than online ones.
+          </p>
+
+          <h3 className="text-lg font-bold text-gray-900 mb-3">Urgent Services</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+            <div className="border border-gray-200 rounded-lg p-4">
+              <h4 className="font-bold text-gray-900 mb-1">1 Week Fast Track – £192</h4>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                Attend an appointment at a passport office, which can be as soon as the next day. A
+                courier delivers your passport within 1 week. This works for name changes.
+              </p>
+            </div>
+            <div className="border border-gray-200 rounded-lg p-4">
+              <h4 className="font-bold text-gray-900 mb-1">1 Day Premium – £239.50</h4>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                Collect your passport 4 hours after your appointment. This service covers adult
+                renewals only, so check you are eligible before booking.
+              </p>
+            </div>
           </div>
+        </section>
+
+        {/* ══════════════════════════════════════
+            H2 — Online
+        ══════════════════════════════════════ */}
+        <section id="online" className="scroll-mt-24 mb-12">
+          <h2 className={sectionHeading}>
+            Can You Change Your Name on Your Passport Online?
+          </h2>
+          <p className="text-gray-700 mb-4 leading-relaxed">
+            Yes. Applying online at GOV.UK is the cheapest and fastest way to change your name on a
+            British passport. You fill in the form, upload a digital photo and pay online.
+          </p>
+          <p className="text-gray-700 leading-relaxed">
+            You still post your old passport and original documents afterwards. HM Passport Office
+            tells you where to send them when you finish the application.
+          </p>
+        </section>
+
+        {/* ══════════════════════════════════════
+            H2 — Address
+        ══════════════════════════════════════ */}
+        <section id="address" className="scroll-mt-24 mb-12">
+          <h2 className={sectionHeading}>
+            Do You Need to Change the Address on Your Passport?
+          </h2>
+          <p className="text-gray-700 leading-relaxed">
+            No. UK passports do not show your address, so moving house does not affect your passport.
+            You do not need to tell HM Passport Office. Just enter your current address next time you
+            renew or change your name.
+          </p>
+        </section>
+
+        {/* ══════════════════════════════════════
+            H2 — Mistakes
+        ══════════════════════════════════════ */}
+        <section id="mistakes" className="scroll-mt-24 mb-12">
+          <h2 className={sectionHeading}>
+            Common Mistakes That Delay a Passport Name Change
+          </h2>
+          <ul className="list-disc pl-6 space-y-2 text-gray-700">
+            <li><strong>Booking travel too early.</strong> Your passport number changes, and your ticket name must match your passport.</li>
+            <li><strong>Sending a deed poll without evidence of use.</strong> Include a payslip, bank statement or council letter in your new name.</li>
+            <li><strong>Mismatched spelling.</strong> Make sure your application matches your certificate or deed poll exactly.</li>
+            <li><strong>An unsigned or unwitnessed deed poll.</strong> You and 2 adult witnesses must all sign it.</li>
+            <li><strong>Forgetting visas.</strong> Unexpired visas in your old passport may stop being valid, so check with the embassy.</li>
+          </ul>
         </section>
 
         {/* ══════════════════════════════════════
             H2 — FAQ
         ══════════════════════════════════════ */}
-        <section id="faq" className="mb-14">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-6 border-b-2 border-gray-100 pb-3">
-            Frequently Asked Questions
+        <section id="faq" className="scroll-mt-24 mb-14">
+          <h2 className={sectionHeading}>
+            Passport Name Change FAQs
           </h2>
 
           <div className="space-y-5">
@@ -298,7 +504,9 @@ export default function Page() {
               {
               "@context": "https://schema.org",
               "@type": "Article",
-              "headline": "How to Change Your Name on a UK Passport: Complete 2026 Guide",
+              "headline": "How to Change Your Name on a UK Passport (2026 Guide)",
+              "description": PAGE_DESCRIPTION,
+              "inLanguage": "en-GB",
               "author": {
                 "@type": "Organization",
                 "name": "Deed Poll UK Editorial Team"
@@ -313,11 +521,27 @@ export default function Page() {
               },
               "image": "https://deedpolluk.uk/og-image.jpg",
               "datePublished": "2026-06-01T08:00:00+00:00",
-              "dateModified": "2026-06-01T08:00:00+00:00",
+              "dateModified": "2026-10-30T08:00:00+00:00",
               "mainEntityOfPage": {
                 "@type": "WebPage",
-                "@id": "https://deedpolluk.uk/how-to-change-name-on-passport-uk"
+                "@id": PAGE_URL
               }
+            },
+              {
+              "@context": "https://schema.org",
+              "@type": "HowTo",
+              "name": "How to change your name on a UK passport",
+              "estimatedCost": {
+                "@type": "MonetaryAmount",
+                "currency": "GBP",
+                "value": "102"
+              },
+              step: steps.map((step, i) => ({
+                "@type": "HowToStep",
+                position: i + 1,
+                name: step.title,
+                text: step.body,
+              })),
             },
               {
               "@context": "https://schema.org",
@@ -333,7 +557,7 @@ export default function Page() {
                   "@type": "ListItem",
                   "position": 2,
                   "name": "Change Name on Passport",
-                  "item": "https://deedpolluk.uk/how-to-change-name-on-passport-uk"
+                  "item": PAGE_URL
                 }
               ]
             },
@@ -350,7 +574,7 @@ export default function Page() {
           }}
         />
 
-        
+
         {/* ══════════════════════════════════════
             H2 — Related Guides
         ══════════════════════════════════════ */}
@@ -359,13 +583,13 @@ export default function Page() {
             Related Guides
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            
+
             <Link href="/how-to-change-company-name-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
               <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">How to Change a Company Name</h3>
               <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
             </Link>
             <Link href="/how-to-change-childs-surname-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
-              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">How to Change a Child's Surname</h3>
+              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">How to Change a Child&apos;s Surname</h3>
               <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
             </Link>
             <Link href="/how-much-does-it-cost-to-change-your-name-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
@@ -384,7 +608,9 @@ export default function Page() {
             Create your deed poll in minutes
           </h2>
           <p className="text-sm sm:text-base text-gray-600 max-w-md mx-auto mb-7 leading-relaxed">
-            Before you can update your passport, you need a valid deed poll. Our online service generates a correctly formatted document you can sign today and submit to HM Passport Office immediately.
+            Changing your name for any reason other than marriage or divorce? HM Passport Office needs
+            a deed poll. Create a correctly worded deed poll online, sign it today and start your
+            passport application.
           </p>
           <Link
             href="/change-name-in-uk-by-deedpoll"

@@ -26,6 +26,41 @@ interface LetterOrg {
   }) => string;
 }
 
+const FAQS = [
+  {
+    q: 'What is a cover letter for a name change?',
+    a: 'A name change cover letter is a short letter you send with your deed poll or marriage certificate. It tells an organisation your old name, your new name and your account or reference number, and asks it to update its records.',
+  },
+  {
+    q: 'Do I need a cover letter for a name change?',
+    a: 'It is not a legal requirement, but it speeds things up. A clear letter tells staff exactly what to change and where to send your documents back, so your request is less likely to be delayed or lost.',
+  },
+  {
+    q: 'What should a name change letter include?',
+    a: 'Include the date, your new name and address, your old name, your account or reference number, a clear request to update your records, a list of enclosed documents and your signature in your new name.',
+  },
+  {
+    q: 'Should I send an original deed poll or a photocopy?',
+    a: 'HM Passport Office, the DVLA and most banks want an original signed deed poll. Sign and witness several originals at the same time, keep one safe, and send the others with your letters.',
+  },
+  {
+    q: 'Which organisation should I write to first?',
+    a: 'Start with HM Passport Office or the DVLA. Once you have photo ID in your new name, banks, employers and other organisations update your records more readily.',
+  },
+  {
+    q: 'Is it free to change the name on my driving licence?',
+    a: 'Yes. The DVLA does not charge to change the name on your driving licence.',
+  },
+  {
+    q: 'Is this a deed poll template?',
+    a: 'No. This tool creates the cover letters you send with your deed poll. To make the deed poll itself, use our free deed poll template or create one online.',
+  },
+  {
+    q: 'Can I use this for a company name change notification letter?',
+    a: 'This generator is for personal name changes. To rename a limited company, you file a change with Companies House and then write to customers and suppliers. See our guide to changing a company name.',
+  },
+];
+
 const ORGANISATIONS: LetterOrg[] = [
   {
     id: 'dvla',
@@ -468,24 +503,11 @@ export default function LetterGeneratorPage() {
             },
             {
               "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "How do I notify organisations after changing my name by deed poll?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Send a formal written notification letter enclosing your original deed poll and existing ID to each organisation such as DVLA, HM Passport Office, HMRC, and your bank."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Is there a fee to change name on my UK driving licence?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "No. Changing your name on a UK driving licence with DVLA by postal D1 form is completely free."
-                  }
-                }
-              ]
+              "mainEntity": FAQS.map(({ q, a }) => ({
+                "@type": "Question",
+                "name": q,
+                "acceptedAnswer": { "@type": "Answer", "text": a }
+              }))
             }
           ]
         }}
@@ -504,13 +526,13 @@ export default function LetterGeneratorPage() {
         {/* Title Header */}
         <div className="border-b-2 border-gray-200 pb-8 mb-10">
           <span className="inline-flex items-center gap-1.5 bg-green-100 text-[#00703c] font-bold text-xs uppercase px-3 py-1 rounded-full mb-3">
-            ✓ 100% Free Interactive Legal Utility
+            ✓ Free · No sign-up
           </span>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0b0c0c] tracking-tight">
-            UK Name Change Notification Letter Generator
+            Name Change Letter Generator: Free Cover Letters for Your Deed Poll
           </h1>
           <p className="mt-3 text-lg sm:text-xl text-gray-700 max-w-3xl">
-            Enter your details once below to generate tailored, legally worded cover letters for the <strong>DVLA, Passport Office, Banks, HMRC, NHS, and Employers</strong>. Copy, print, or download instantly.
+            Enter your details once to create a ready-to-send name change cover letter for the <strong>DVLA, HM Passport Office, banks, HMRC, the NHS and your employer</strong>. Copy or print each letter and post it with your deed poll.
           </p>
         </div>
 
@@ -600,7 +622,7 @@ export default function LetterGeneratorPage() {
 
             <div className="mt-8 bg-blue-100/60 border border-blue-300 rounded-lg p-4 text-xs text-gray-800">
               <p className="font-bold mb-1">💡 Need a Deed Poll first?</p>
-              <p className="mb-2">If you haven't generated your legal deed poll yet, you can create it and see a free preview in 2 minutes, then download the official PDF for £9.99.</p>
+              <p className="mb-2">If you haven&apos;t generated your legal deed poll yet, you can create it and see a free preview in 2 minutes, then download the official PDF for £9.99.</p>
               <Link
                 href="/change-name-in-uk-by-deedpoll"
                 className="inline-block font-bold text-[#1d70b8] hover:underline underline-offset-2"
@@ -718,7 +740,7 @@ export default function LetterGeneratorPage() {
         {/* Informational SEO Guide & FAQ */}
         <div className="mt-16 max-w-4xl mx-auto text-gray-800 space-y-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-[#0b0c0c] border-b-2 border-gray-100 pb-3">
-            How to Use This Name Change Letter Generator
+            How to Write a Name Change Letter in 3 Steps
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm">
             <div className="bg-gray-50 p-5 rounded-lg border border-gray-200">
@@ -738,23 +760,56 @@ export default function LetterGeneratorPage() {
             </div>
           </div>
 
+          <h2 className="text-2xl sm:text-3xl font-bold text-[#0b0c0c] border-b-2 border-gray-100 pb-3 pt-4">
+            What Is a Name Change Cover Letter?
+          </h2>
+          <p className="text-base sm:text-lg">
+            A name change cover letter is a short, formal letter you send with your deed poll or marriage certificate. It tells an organisation who you were, who you are now and which account to update. A clear letter means staff know exactly what to do, so your records change faster and your documents come back to you.
+          </p>
+
+          <h3 className="text-xl font-bold text-[#0b0c0c]">What to include in a name change letter</h3>
+          <ul className="list-disc pl-5 space-y-1.5 text-base">
+            <li>The date and your new name and address</li>
+            <li>Your old name, exactly as it appears on the account</li>
+            <li>Your account, customer or reference number</li>
+            <li>A clear request to update your records</li>
+            <li>A list of the documents you have enclosed</li>
+            <li>A request to return your original documents</li>
+            <li>Your signature in your new name</li>
+          </ul>
+          <p className="text-base">
+            Our generator fills in all of these for you and adds the right enclosures for each organisation.
+          </p>
+
+          <h3 className="text-xl font-bold text-[#0b0c0c]">Which organisations the generator covers</h3>
+          <p className="text-base">
+            You can create a tailored letter for the DVLA, HM Passport Office, banks and building societies, HMRC, your GP, your employer, your council and your utility and insurance providers. For a full list of who to tell, see our{" "}
+            <Link href="/checklist" className="text-[#1d70b8] hover:underline">name change checklist</Link>.
+          </p>
+
+          <h3 className="text-xl font-bold text-[#0b0c0c]">Need the deed poll itself?</h3>
+          <p className="text-base">
+            These letters go with your deed poll; they do not replace it. To make one, use our{" "}
+            <Link href="/free-deed-poll-template-uk" className="text-[#1d70b8] hover:underline">free deed poll template</Link>{" "}
+            or{" "}
+            <Link href="/change-name-in-uk-by-deedpoll" className="text-[#1d70b8] hover:underline">create your deed poll online</Link>.
+          </p>
+
           <h2 className="text-2xl sm:text-3xl font-bold text-[#0b0c0c] pt-4">
-            Frequently Asked Questions
+            Name Change Letter FAQs
           </h2>
           <div className="space-y-4 text-sm sm:text-base">
-            <div className="border border-gray-200 rounded-lg p-5 bg-white">
-              <h3 className="font-bold text-lg mb-2 text-[#0b0c0c]">Do all organisations require a cover letter?</h3>
-              <p className="text-gray-700">While some bodies like banks have counter forms, including a formal cover letter provides clear written instruction, states your old and new names unambiguously, and ensures your documents are processed faster without administrative delays.</p>
-            </div>
-            <div className="border border-gray-200 rounded-lg p-5 bg-white">
-              <h3 className="font-bold text-lg mb-2 text-[#0b0c0c]">Should I send original deed polls or photocopies?</h3>
-              <p className="text-gray-700">Government bodies (HM Passport Office, DVLA) and major banks insist on receiving an original signed deed poll. Because you can execute multiple original copies when signing, keep one safe at home and send the others to official bodies.</p>
-            </div>
-            <div className="border border-gray-200 rounded-lg p-5 bg-white">
-              <h3 className="font-bold text-lg mb-2 text-[#0b0c0c]">Which organisation should I update first?</h3>
-              <p className="text-gray-700">We recommend updating the <strong>DVLA (Driving Licence)</strong> or <strong>HM Passport Office</strong> first. Having updated official government photo ID makes updating your banks, mortgage providers, and employers seamless.</p>
-            </div>
+            {FAQS.map(({ q, a }) => (
+              <div key={q} className="border border-gray-200 rounded-lg p-5 bg-white">
+                <h3 className="font-bold text-lg mb-2 text-[#0b0c0c]">{q}</h3>
+                <p className="text-gray-700">{a}</p>
+              </div>
+            ))}
           </div>
+          <p className="text-sm text-gray-500">
+            Renaming a business instead? Read{" "}
+            <Link href="/how-to-change-company-name-uk" className="text-[#1d70b8] hover:underline">how to change a company name in the UK</Link>.
+          </p>
         </div>
 
       </div>

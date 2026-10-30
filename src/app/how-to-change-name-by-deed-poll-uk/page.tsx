@@ -1,6 +1,13 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
+import StructuredData from '@/components/StructuredData';
 
-export const metadata = {
+const PAGE_URL = "https://deedpolluk.uk/how-to-change-name-by-deed-poll-uk";
+const PAGE_TITLE = "How to Change Your Name by Deed Poll UK (2026): Free & Online Options";
+const PAGE_DESCRIPTION =
+  "Change your name by deed poll in the UK in 4 steps. Learn the wording, witness rules, unenrolled vs enrolled deed polls, costs, and how to update your passport and records.";
+
+export const metadata: Metadata = {
   alternates: {
     canonical: "/how-to-change-name-by-deed-poll-uk",
     languages: {
@@ -8,194 +15,326 @@ export const metadata = {
       "x-default": "/how-to-change-name-by-deed-poll-uk",
     },
   },
-  title: "How to Change Your Name by Deed Poll UK | Free & Paid Options 2026",
-  description:
-    "Learn how to change your name by deed poll in the UK — including free DIY options, online deed poll services, and how to enrol at the Royal Courts of Justice. Complete 2026 guide.",
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
   openGraph: {
-    title: "How to Change Your Name by Deed Poll UK | Free & Paid Options 2026",
-    description: "Learn how to change your name by deed poll in the UK — including free DIY options, online deed poll services, and how to enrol at the Royal Courts of Justice. Complete 2026 guide.",
-    url: "https://deedpolluk.uk/how-to-change-name-by-deed-poll-uk",
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    url: PAGE_URL,
+    locale: "en_GB",
+    type: "article",
   },
   twitter: {
-    title: "How to Change Your Name by Deed Poll UK | Free & Paid Options 2026",
-    description: "Learn how to change your name by deed poll in the UK — including free DIY options, online deed poll services, and how to enrol at the Royal Courts of Justice. Complete 2026 guide.",
-  }
+    card: "summary_large_image",
+    title: "How to Change Your Name by Deed Poll in the UK",
+    description: PAGE_DESCRIPTION,
+  },
 };
+
+const tableOfContents = [
+  ["#what-is-a-deed-poll", "What is a deed poll?"],
+  ["#how-to-change-your-name", "How to change your name by deed poll"],
+  ["#unenrolled-vs-enrolled", "Unenrolled vs enrolled deed poll"],
+  ["#cost", "How much a deed poll costs"],
+  ["#wording", "What a deed poll must include"],
+  ["#enrol", "How to enrol a deed poll"],
+  ["#after", "What to do after your deed poll"],
+  ["#apostille", "Deed poll apostille"],
+  ["#scotland", "Change of name deed in Scotland"],
+  ["#restrictions", "Names you cannot choose"],
+  ["#faq", "FAQs"],
+];
+
+const steps = [
+  {
+    title: "Choose your new name",
+    body: "Decide on your full new name, including any first, middle and last names. You can change one part or all of it.",
+  },
+  {
+    title: "Create your deed poll",
+    body: "Write your own using the correct wording, or use an online deed poll service to generate a correctly worded document.",
+  },
+  {
+    title: "Sign it in front of 2 witnesses",
+    body: "Sign in your old and new names while 2 adult witnesses watch. Each witness then signs and adds their full name and address.",
+  },
+  {
+    title: "Update your records",
+    body: "Send your deed poll to the Passport Office, DVLA, your bank, employer, GP and other organisations to switch your records to your new name.",
+  },
+];
+
+const comparison = [
+  ["What it is", "A private document you sign and keep", "A deed poll registered with the High Court"],
+  ["Cost", "Free to £30", "£53.05 court fee, plus the deed poll"],
+  ["Time", "Same day", "Several months"],
+  ["Public record?", "No", "Yes, published in The Gazette"],
+  ["Accepted by HMPO, DVLA and banks?", "Yes", "Yes"],
+  ["Best for", "Most adults", "People who want a court-held public record"],
+];
+
+const costs = [
+  ["DIY deed poll from a template", "Free", "You print and check the wording yourself"],
+  ["Online deed poll service", "From £9.99", "Correct wording, formatted PDF, ready to sign"],
+  ["Solicitor", "£50 to £200+", "Useful for complex cases, but not required"],
+  ["High Court enrolment", "£53.05", "Optional; adds the change to the public record"],
+];
+
+const faqs = [
+  {
+    q: "How do I change my name by deed poll in the UK?",
+    a: "Create a deed poll with the correct wording, sign it in your old and new names in front of 2 adult witnesses, and have them sign it too. Your deed poll takes effect straight away. Then use it to update your passport, driving licence, bank and other records.",
+  },
+  {
+    q: "Can I get a free deed poll in the UK?",
+    a: "Yes. You can write your own unenrolled deed poll at no cost, as long as it uses the correct legal wording and you sign it in front of 2 witnesses. Some organisations prefer a professionally formatted document, so many people use a low-cost online service instead.",
+  },
+  {
+    q: "What is an unenrolled deed poll on GOV.UK?",
+    a: "An unenrolled deed poll is a deed poll you make yourself and do not register with the court. GOV.UK confirms you can make one if you are 16 or over. HM Passport Office, the DVLA and most banks accept it as proof of your new name.",
+  },
+  {
+    q: "Is a change of name deed the same as a deed poll?",
+    a: "Yes. ‘Change of name deed’, ‘deed of change of name’ and ‘deed poll’ all describe the same legal document. ‘Deed of change of name’ is also the usual term in Scotland.",
+  },
+  {
+    q: "Do I need a solicitor to change my name by deed poll?",
+    a: "No. UK law does not require a solicitor. You can make your own deed poll or use an online service, and it carries the same legal weight. You only need a solicitor to sign some of the forms if you choose to enrol your deed poll with the High Court.",
+  },
+  {
+    q: "Who can witness a deed poll?",
+    a: "You need 2 witnesses aged 18 or over. Choose people who are not close relatives and do not live at your address, because some organisations reject deed polls witnessed by family members. A friend, colleague or neighbour is fine.",
+  },
+  {
+    q: "What is an enrolled deed poll?",
+    a: "An enrolled deed poll is registered with the High Court and published in The Gazette, which puts your name change on the public record. It costs £53.05 and can take several months. Most people do not need one.",
+  },
+  {
+    q: "How do I change the name on the deeds of my house?",
+    a: "Send form AP1 to HM Land Registry with a copy of your deed poll or marriage certificate. Changing your name on the property register is free. HM Land Registry may also ask you to prove your identity when the change is by deed poll.",
+  },
+  {
+    q: "Can I get an apostille on my deed poll?",
+    a: "Yes. If you need to use your deed poll abroad, get a solicitor or notary to certify it first, then apply for an apostille from the FCDO Legalisation Office. The standard paper service costs £45 per document.",
+  },
+  {
+    q: "Is ‘depol’ the same as a deed poll?",
+    a: "Yes. ‘Depol’, ‘de poll’ and ‘deed pole’ are common misspellings of ‘deed poll’. They all refer to the same legal name change document.",
+  },
+];
+
+const h2 = "scroll-mt-24 text-3xl font-bold mt-12 mb-4";
+const h3 = "text-xl font-bold mt-8 mb-2";
 
 export default function Page() {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+      {/* Breadcrumb */}
+      <nav aria-label="Breadcrumb" className="mb-6 text-sm text-gray-500">
+        <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
+          <li><Link href="/" className="hover:text-[#1d70b8] underline underline-offset-2">Home</Link></li>
+          <li aria-hidden="true" className="select-none">›</li>
+          <li className="text-gray-700 font-medium">Change Name by Deed Poll</li>
+        </ol>
+      </nav>
+
       {/* H1 */}
-      <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-8">
+      <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
         How to Change Your Name by Deed Poll in the UK
       </h1>
+      <p className="text-sm text-gray-500 mb-8">
+        <strong>Updated</strong> October 2026 · Fees checked against GOV.UK · 9-minute read
+      </p>
 
-      {/* Intro */}
+      {/* Quick answer */}
       <div className="bg-[#f3f2f1] border-l-[8px] border-[#1d70b8] p-6 mb-8">
-        <p className="text-xl">
-          A deed poll is the standard legal document for changing your name in the
-          UK. It's simpler than most people expect — no court appearance, no
-          solicitor required, and no government fee if you do it yourself. This
-          guide explains everything you need to know, from what a deed poll actually
-          is to how to use one once you have it.
+        <p className="font-bold mb-2">Quick answer</p>
+        <p className="text-lg">
+          To <strong>change your name by deed poll</strong> in the UK, create a deed poll with the correct
+          legal wording, then sign it in front of <strong>2 adult witnesses</strong>. It takes effect the
+          moment you sign. You do not need a solicitor or a court, and you can make one for free.
         </p>
       </div>
 
+      {/* On this page */}
+      <nav aria-label="On this page" className="bg-gray-50 border border-gray-200 rounded-lg p-5 mb-10">
+        <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-3">On this page</p>
+        <ol className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5 list-decimal pl-5 text-[#1d70b8]">
+          {tableOfContents.map(([href, label]) => (
+            <li key={href}>
+              <a href={href} className="hover:underline underline-offset-2">{label}</a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
       <div className="prose prose-lg max-w-none text-gray-800">
 
-        {/* ── Section 1 ── */}
-        <h2 className="text-3xl font-bold mt-12 mb-4">What Is a Deed Poll?</h2>
+        {/* ── What is a deed poll ── */}
+        <h2 id="what-is-a-deed-poll" className={h2}>What Is a Deed Poll?</h2>
         <p>
-          A deed poll is a legal document in which you formally declare that you are
-          abandoning your old name and adopting a new one — and that you intend to
-          use your new name in all aspects of your life from that point forward.
+          A deed poll is a legal document that proves you have changed your name. In it, you declare that
+          you give up your old name and will use your new name for all purposes.
         </p>
         <p>
-          The word "deed" simply means a formal legal document, and "poll" is an old
-          legal term referring to a document with a straight (polled) edge, as
-          opposed to one cut in two — which would be an indenture. In practice,
-          "deed poll" just means: a document signed by one person, making a
-          one-sided commitment.
-        </p>
-        <p>
-          Despite the formal-sounding name, a deed poll carries no more complexity
-          than a signed declaration. Once it's properly worded, signed, and
-          witnessed, it's recognised by the Passport Office, the DVLA, HMRC, and
-          the vast majority of UK banks and institutions.
+          You may also see it called a <strong>change of name deed</strong> or a <strong>deed of change of
+          name</strong>. All three terms mean the same thing. HM Passport Office, the DVLA, HMRC and UK banks
+          all accept a correctly made deed poll.
         </p>
 
-        {/* ── Section 2 ── */}
-        <h2 className="text-3xl font-bold mt-12 mb-4">
-          Unenrolled vs Enrolled Deed Poll — What's the Difference?
-        </h2>
-        <p>
-          There are two types of deed poll in the UK, and understanding the
-          difference will help you choose the right route.
-        </p>
-        <p>
-          An <strong>unenrolled deed poll</strong> is a private document. You create
-          it, sign it in front of a witness, and use it to notify organisations of
-          your new name. It is not registered anywhere and does not appear on any
-          public record. This is by far the most common approach — it's free (or
-          low-cost via an online service), legally valid, and accepted across the UK
-          for passports, driving licences, and bank accounts.
-        </p>
-        <p>
-          An <strong>enrolled deed poll</strong> is registered with the Royal Courts
-          of Justice and published in the London Gazette, making it a matter of
-          public record. It costs £42.44 to enrol (at time of writing) and is
-          typically only necessary in specific circumstances — for example, if you
-          need to change the name on a property register, or if you're changing a
-          child's name and need a publicly verifiable record for future legal
-          purposes.
-        </p>
-        <p>
-          For most adults changing their own name, an unenrolled deed poll is
-          entirely sufficient.
-        </p>
-
-        {/* ── Section 3 ── */}
-        <h2 className="text-3xl font-bold mt-12 mb-4">
-          How to Create Your Own Deed Poll for Free
-        </h2>
-        <p>
-          You can write your own deed poll at home without any professional help.
-          The document must include:
-        </p>
+        <h3 className={h3}>When Do You Need a Deed Poll?</h3>
+        <p>You need a deed poll for most name changes, including when you want to:</p>
         <ul>
-          <li>Your current full name (the name you're giving up)</li>
-          <li>Your new full name (the name you're adopting)</li>
-          <li>
-            A declaration that you renounce your former name in all uses and
-            purposes
-          </li>
-          <li>
-            A declaration that you will use your new name at all times and require
-            all persons to address you by it
-          </li>
-          <li>Your signature and the date</li>
-          <li>
-            The full name, signature, address, and date of an independent adult
-            witness
-          </li>
+          <li>change your first name, middle name or surname</li>
+          <li>add, remove or reorder names</li>
+          <li>create a double-barrelled surname that does not come from marriage</li>
+          <li>change your name after divorce without your birth and marriage certificates</li>
         </ul>
         <p>
-          Gov.uk provides a template you can complete and print. Once signed and
-          witnessed, it's immediately valid. Print multiple copies — most
-          organisations will want to retain one, so having six or more to hand will
-          save you time.
-        </p>
-        <p>
-          Your witness must be over 18, must not be a family member, and must not
-          share your address. They do not need any legal qualifications — a
-          neighbour, colleague, or friend is perfectly appropriate.
+          You do <strong>not</strong> need one to take your spouse’s surname after marriage. Your marriage
+          certificate covers that. Read our{' '}
+          <Link href="/how-to-change-name-after-marriage-uk">guide to changing your name after marriage</Link>.
         </p>
 
-        {/* ── Section 4 ── */}
-        <h2 className="text-3xl font-bold mt-12 mb-4">
-          How to Use a Deed Poll Service
-        </h2>
+        {/* ── Steps ── */}
+        <h2 id="how-to-change-your-name" className={h2}>How to Change Your Name by Deed Poll: 4 Steps</h2>
+        <ol className="not-prose space-y-5 my-6">
+          {steps.map((step, i) => (
+            <li key={step.title} className="flex gap-4">
+              <span
+                aria-hidden="true"
+                className="flex-shrink-0 w-9 h-9 rounded-full bg-[#1d70b8] text-white font-bold flex items-center justify-center text-sm"
+              >
+                {i + 1}
+              </span>
+              <div>
+                <h3 className="font-bold text-lg text-gray-900 mb-1">{step.title}</h3>
+                <p className="text-gray-700">{step.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
         <p>
-          If you'd prefer not to draft the document yourself, an online deed poll
-          service will generate a correctly worded deed poll for you, ready to sign.
-          The advantages are convenience and confidence: you know the wording is
-          legally sound, and the document is typically formatted in a way that looks
-          professional when presented to banks or government departments.
+          Print several copies or keep a PDF, because some organisations ask for an original or a certified
+          copy.
         </p>
+
+        {/* ── Unenrolled vs enrolled ── */}
+        <h2 id="unenrolled-vs-enrolled" className={h2}>Unenrolled vs Enrolled Deed Poll: What&apos;s the Difference?</h2>
         <p>
-          When choosing a service, look for:
+          The UK has two types of deed poll. Most people only ever need an unenrolled one.
         </p>
+
+        <div className="not-prose overflow-x-auto rounded-lg border border-gray-200 my-6">
+          <table className="w-full text-sm sm:text-base border-collapse">
+            <caption className="sr-only">Unenrolled vs enrolled deed poll comparison</caption>
+            <thead>
+              <tr className="bg-[#1d70b8] text-white">
+                <th scope="col" className="text-left px-4 py-3"></th>
+                <th scope="col" className="text-left px-4 py-3">Unenrolled</th>
+                <th scope="col" className="text-left px-4 py-3">Enrolled</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparison.map(([label, unenrolled, enrolled], i) => (
+                <tr key={label} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                  <th scope="row" className="text-left px-4 py-3 border-b border-gray-100 font-semibold">{label}</th>
+                  <td className="px-4 py-3 border-b border-gray-100">{unenrolled}</td>
+                  <td className="px-4 py-3 border-b border-gray-100">{enrolled}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h3 className={h3}>Unenrolled Deed Poll</h3>
+        <p>
+          You make an unenrolled deed poll yourself and keep it. GOV.UK confirms anyone aged 16 or over can
+          make one. It is not on any public register, which also makes it the private choice if you are
+          changing your name for safety reasons.
+        </p>
+
+        <h3 className={h3}>Enrolled Deed Poll</h3>
+        <p>
+          An enrolled deed poll is registered with the High Court and published in The Gazette. It gives
+          you an official court record, but it costs more, takes months and makes your name change public.
+        </p>
+
+        {/* ── Cost ── */}
+        <h2 id="cost" className={h2}>How Much Does a Deed Poll Cost?</h2>
+        <p>
+          A deed poll can cost nothing at all. You pay only for convenience, professional formatting or
+          enrolment.
+        </p>
+        <div className="not-prose overflow-x-auto rounded-lg border border-gray-200 my-6">
+          <table className="w-full text-sm sm:text-base border-collapse">
+            <caption className="sr-only">UK deed poll costs by option</caption>
+            <thead>
+              <tr className="bg-[#1d70b8] text-white">
+                <th scope="col" className="text-left px-4 py-3">Option</th>
+                <th scope="col" className="text-left px-4 py-3">Cost</th>
+                <th scope="col" className="text-left px-4 py-3">What you get</th>
+              </tr>
+            </thead>
+            <tbody>
+              {costs.map(([option, cost, detail], i) => (
+                <tr key={option} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                  <th scope="row" className="text-left px-4 py-3 border-b border-gray-100 font-semibold">{option}</th>
+                  <td className="px-4 py-3 border-b border-gray-100">{cost}</td>
+                  <td className="px-4 py-3 border-b border-gray-100">{detail}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h3 className={h3}>Free Deed Poll vs Online Deed Poll</h3>
+        <p>
+          A free DIY deed poll is just as legal as a paid one. The risk is a wording or witness mistake,
+          which can lead to a rejection. An online service removes that risk and gives you a clean,
+          professional PDF. Start with our{' '}
+          <Link href="/free-deed-poll-template-uk">free deed poll template</Link> if you want to do it yourself.
+        </p>
+
+        <h3 className={h3}>Do You Need a Change of Name Deed Solicitor?</h3>
+        <p>
+          No. A solicitor can prepare your deed poll, but the law does not require one, and the document has
+          the same legal weight either way. Consider a solicitor only for complex cases, such as a
+          contested child name change. See our <Link href="/name-change-solicitor-uk">name change solicitor
+          guide</Link>.
+        </p>
+
+        {/* ── Wording ── */}
+        <h2 id="wording" className={h2}>What Must a Deed Poll Include?</h2>
+        <p>Your deed poll must contain:</p>
         <ul>
-          <li>
-            Clear confirmation that the document follows the correct legal wording
-            for England and Wales (or Scotland, if applicable — Scottish deed polls
-            follow slightly different conventions)
-          </li>
-          <li>
-            The option to download or receive multiple copies
-          </li>
-          <li>
-            Transparent pricing with no hidden renewal fees
-          </li>
-          <li>No requirement to purchase ongoing membership or subscriptions</li>
+          <li>your old full name and your new full name</li>
+          <li>a statement that you give up your old name and adopt your new name for all purposes</li>
+          <li>a statement that you will use only your new name from now on</li>
+          <li>a request that everyone addresses you by your new name</li>
+          <li>the date, and your signature in both your old and new names</li>
+          <li>the signatures, full names and addresses of 2 witnesses</li>
         </ul>
+
+        <h3 className={h3}>Witness Rules</h3>
+        <ul>
+          <li>You need <strong>2 witnesses</strong>, each aged 18 or over.</li>
+          <li>Avoid close relatives and anyone who lives at your address. Some organisations reject them.</li>
+          <li>Witnesses must watch you sign. They do not need any legal qualification.</li>
+        </ul>
+
+        <h3 className={h3}>Change of Name Deed Template</h3>
         <p>
-          A reputable service will cost anywhere from a few pounds to around £30,
-          depending on what's included. You are not paying for any kind of official
-          registration — the fee covers document generation and, sometimes, printed
-          and posted copies.
+          Use our <Link href="/free-deed-poll-template-uk">free change of name deed template</Link> for the
+          correct wording. If a deed poll has already been turned down, read{' '}
+          <Link href="/my-deed-poll-was-rejected">why deed polls get rejected</Link>.
         </p>
 
-        
-        {/* ══════════════════════════════════════
-            H2 — Related Guides
-        ══════════════════════════════════════ */}
-        <section className="mb-14 border-t-2 border-gray-100 pt-8">
-          <h2 className="text-2xl font-bold mb-6">
-            Related Guides
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            
-            <Link href="/how-to-change-company-name-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
-              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">How to Change a Company Name</h3>
-              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
-            </Link>
-            <Link href="/how-to-change-name-on-passport-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
-              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">How to Change Your Name on a Passport</h3>
-              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
-            </Link>
-            <Link href="/how-to-legally-change-your-name-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
-              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">How to Legally Change Your Name</h3>
-              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
-            </Link>
-          </div>
-        </section>
-
-        {/* ── CTA */}
+        {/* ── Mid-page CTA ── */}
         <div className="bg-gray-100 p-8 text-center border-t border-b border-gray-300 my-12 not-prose">
-          <h2 className="text-2xl font-bold mb-4">Generate your deed poll in minutes</h2>
+          <h2 className="text-2xl font-bold mb-4">Create your deed poll online in minutes</h2>
           <p className="text-gray-700 mb-6">
-            Legally worded, accepted by the Passport Office, DVLA, and UK banks.
+            Correct legal wording, accepted by the Passport Office, DVLA and UK banks. Preview it free.
           </p>
           <Link
             href="/change-name-in-uk-by-deedpoll"
@@ -205,204 +344,138 @@ export default function Page() {
           </Link>
         </div>
 
-        {/* ── Section 5 ── */}
-        <h2 className="text-3xl font-bold mt-12 mb-4">
-          How to Enrol Your Deed Poll at the Royal Courts of Justice
-        </h2>
+        {/* ── Enrol ── */}
+        <h2 id="enrol" className={h2}>How to Enrol a Deed Poll</h2>
         <p>
-          Enrolling a deed poll places it on the public record and publishes notice
-          of your name change in the London Gazette. It's an optional step for most
-          adults, but may be required in certain legal or property contexts.
-        </p>
-        <p>
-          To enrol your deed poll:
+          Enrolment is optional. If you want a court-held public record, apply to the High Court:
         </p>
         <ol>
-          <li>
-            Complete a standard deed poll (unenrolled first, as described above).
-          </li>
-          <li>
-            Fill in a deed poll enrolment application form, available from the
-            Senior Courts Costs Office.
-          </li>
-          <li>
-            Pay the enrolment fee (currently £42.44).
-          </li>
-          <li>
-            Submit the completed application and deed poll to the Senior Courts
-            Costs Office, either in person or by post.
-          </li>
+          <li>Fill in forms <strong>LOC020</strong>, <strong>LOC021</strong> and <strong>LOC027</strong>. You sign LOC020 in front of 2 witnesses, and LOC021 and LOC027 in front of a solicitor or another authorised witness.</li>
+          <li>Include your birth certificate, valid passport or certificate of naturalisation.</li>
+          <li>Pay the <strong>£53.05</strong> enrolment fee.</li>
+          <li>Send your application to the High Court, as GOV.UK directs.</li>
         </ol>
+
+        <h3 className={h3}>How Long Does Enrolment Take?</h3>
         <p>
-          Processing typically takes a few weeks. Once enrolled, you'll receive a
-          sealed copy of the deed poll and it will appear in the London Gazette.
-          Note that enrolled deed polls become publicly available records — this
-          is worth considering if you're changing your name for personal safety
-          reasons, in which case an unenrolled deed poll is the more appropriate
-          choice.
+          It can take several months. GOV.UK suggests asking for an update only after 6 months. Once
+          enrolled, your name change and address appear in The Gazette, although you can ask a judge to
+          withhold details if you have a strong reason.
         </p>
 
-        {/* ── Section 6 ── */}
-        <h2 className="text-3xl font-bold mt-12 mb-4">
-          Is a Deed Poll Legally Binding?
-        </h2>
+        <h3 className={h3}>Enrolling a Child&apos;s Deed Poll</h3>
         <p>
-          Yes — a correctly executed deed poll is legally binding in the UK. There
-          is no national register of names, and UK law has never required formal
-          registration for a name change to be valid. What matters is that:
+          For a child, you use forms LOC022, LOC023, LOC024 and LOC028, and everyone with parental
+          responsibility must agree, or you need a court order. Read our{' '}
+          <Link href="/child-deed-poll-uk">child deed poll guide</Link>.
         </p>
+
+        {/* ── After ── */}
+        <h2 id="after" className={h2}>What to Do After Changing Your Name by Deed Poll</h2>
+        <p>
+          Your deed poll proves your new name, but you still need to update each record yourself. Start
+          with the documents other organisations ask for as ID.
+        </p>
+
+        <h3 className={h3}>Update Your ID First</h3>
         <ul>
-          <li>
-            The document is correctly worded and includes the required declarations
-          </li>
-          <li>You sign it in front of an independent adult witness</li>
-          <li>Your witness also signs, providing their full name and address</li>
-          <li>You genuinely intend to use your new name going forward</li>
+          <li><Link href="/how-to-change-name-on-passport-uk">Passport</Link>: send your deed poll plus evidence that you use your new name.</li>
+          <li><Link href="/change-name-on-driving-licence-dvla-uk">Driving licence</Link>: update your name with the DVLA for free.</li>
+        </ul>
+
+        <h3 className={h3}>Then Update Everything Else</h3>
+        <ul>
+          <li>banks, building societies and credit cards</li>
+          <li>your employer, HMRC and pension providers</li>
+          <li>your GP, dentist and the electoral roll</li>
+          <li>utilities, council tax and insurance</li>
+        </ul>
+
+        <h3 className={h3}>Changing the Name on the Deeds of Your House</h3>
+        <p>
+          To update the name on your property title, send <strong>form AP1</strong> to HM Land Registry with
+          a copy of your deed poll. This is <strong>free</strong>. For deed poll changes, HM Land Registry
+          may also ask you to verify your identity.
+        </p>
+        <p>
+          See the full <Link href="/documents-needed-for-name-change-uk">list of documents to update</Link>.
+        </p>
+
+        {/* ── Apostille ── */}
+        <h2 id="apostille" className={h2}>Deed Poll Apostille: Using Your Deed Poll Abroad</h2>
+        <p>
+          Some countries ask for an apostille before they accept a UK deed poll. An apostille confirms that a
+          UK signature or seal is genuine.
+        </p>
+        <ol>
+          <li>Ask a UK solicitor or notary to certify your deed poll.</li>
+          <li>Apply to the FCDO Legalisation Office for an apostille.</li>
+          <li>Pay <strong>£45</strong> per document for the standard paper service (usually up to 25 working days), or <strong>£35</strong> for an e-Apostille.</li>
+        </ol>
+        <p>Always check with the foreign organisation first, as requirements vary by country.</p>
+
+        {/* ── Scotland ── */}
+        <h2 id="scotland" className={h2}>Change of Name Deed in Scotland</h2>
+        <p>
+          Scotland has different rules. People often call the document a <strong>deed of change of
+          name</strong>, and it must use wording that suits Scots law. If you were born or adopted in
+          Scotland, you can also record your change of name with National Records of Scotland.
+        </p>
+
+        {/* ── Restrictions ── */}
+        <h2 id="restrictions" className={h2}>What Names Can&apos;t You Choose?</h2>
+        <p>You have wide freedom, but organisations can refuse a name that:</p>
+        <ul>
+          <li>is offensive or promotes hatred or crime</li>
+          <li>uses numbers or symbols that cannot be pronounced</li>
+          <li>includes a title you do not hold, such as “Doctor” or “Sir”</li>
+          <li>is chosen to deceive or impersonate someone</li>
         </ul>
         <p>
-          All major UK government departments — including His Majesty's Passport
-          Office, the DVLA, and HMRC — accept unenrolled deed polls as proof of
-          name change. So do most UK banks, building societies, and other financial
-          institutions.
-        </p>
-        <p>
-          The key point is consistent use. Using your new name consistently across
-          all documents and interactions reinforces its legal standing. Switching
-          back and forth between your old and new name can create complications,
-          particularly with financial institutions.
+          Unusual, invented and single-word names are usually fine. Read{' '}
+          <Link href="/can-i-change-my-name-to-anything-uk">can I change my name to anything?</Link>
         </p>
 
-        {/* ── Section 7 ── */}
-        <h2 className="text-3xl font-bold mt-12 mb-4">
-          What Can't You Change Your Name to in the UK?
-        </h2>
-        <p>
-          UK law gives you considerable freedom in choosing a new name, but there
-          are some restrictions. You cannot change your name to one that:
-        </p>
-        <ul>
-          <li>
-            Is intentionally misleading — for example, adopting a professional
-            title such as "Doctor" or "Sir" as a forename or surname if you don't
-            hold that title
-          </li>
-          <li>
-            Contains numbers or symbols that cannot be pronounced
-          </li>
-          <li>
-            Is racially or otherwise offensive
-          </li>
-          <li>
-            Promotes criminal activity or hatred
-          </li>
-          <li>
-            Is designed to facilitate fraud — for example, adopting the name of a
-            known public figure to impersonate them
-          </li>
-        </ul>
-        <p>
-          In practice, these restrictions only affect a very small number of
-          requests. The vast majority of name choices — including unusual or
-          invented names, single-word names, and hyphenated surnames — are
-          perfectly acceptable. If you're unsure whether your chosen name is
-          permissible, a solicitor or deed poll service can advise you before you
-          proceed.
-        </p>
-
-        {/* ── Section 8: FAQs ── */}
-        <h2 className="text-3xl font-bold mt-12 mb-4">
-          Frequently Asked Questions
-        </h2>
-
+        {/* ── FAQ ── */}
+        <h2 id="faq" className={h2}>Deed Poll Name Change FAQs</h2>
         <div className="space-y-8">
-          <div>
-            <h3 className="text-xl font-bold mb-2">
-              Is "depol" the same as a deed poll?
-            </h3>
-            <p>
-              Yes — "depol" (sometimes also written as "de poll" or "deepoll") is
-              simply a common misspelling of "deed poll." They refer to exactly the
-              same document. If you've been searching for{' '}
-              <em>how to change name by depol UK</em> or{' '}
-              <em>how to change your name by depol UK</em>, you're looking for
-              information about deed polls — and you're in the right place.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-bold mb-2">
-              What is a deed poll used for?
-            </h3>
-            <p>
-              A deed poll is used to legally change your name in the UK. Once
-              signed and witnessed, you can use it to update your passport, driving
-              licence, bank accounts, medical records, employment records, and any
-              other official or personal document that holds your name. It's the
-              standard route for any name change that isn't covered by a marriage
-              certificate or decree absolute.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-bold mb-2">
-              Do I need a solicitor to get a deed poll?
-            </h3>
-            <p>
-              No. Solicitors can prepare a deed poll for you, but there's no legal
-              requirement to use one. You can create a valid deed poll yourself
-              using the Gov.uk template, or use an online deed poll service. The
-              document has the same legal standing either way.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-bold mb-2">
-              How long does a deed poll take to process?
-            </h3>
-            <p>
-              The deed poll itself can be created and signed in a single day.
-              Updating your official documents is the time-consuming part — a
-              passport renewal currently takes six to ten weeks, while a driving
-              licence name change with the DVLA takes two to four weeks. Banks and
-              utility companies typically update their records within one to two
-              weeks of receiving your deed poll.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-bold mb-2">
-              Can I change my name by deed poll in Scotland?
-            </h3>
-            <p>
-              Yes, though Scottish deed polls follow slightly different wording
-              conventions and the document is sometimes called a "change of name
-              deed" rather than a deed poll. The process is equally straightforward,
-              and the resulting document is accepted across the UK. If you're based
-              in Scotland, make sure any template or service you use produces a
-              document worded for Scots law.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-bold mb-2">
-              How many copies of my deed poll do I need?
-            </h3>
-            <p>
-              At minimum, six to eight copies. Some organisations — including the
-              Passport Office and certain banks — will retain a copy rather than
-              returning it. Having plenty of copies from the start means you can
-              notify multiple organisations in parallel and avoid delays caused by
-              waiting for documents to be returned.
-            </p>
-          </div>
+          {faqs.map(({ q, a }) => (
+            <div key={q}>
+              <h3 className="text-xl font-bold mb-2">{q}</h3>
+              <p>{a}</p>
+            </div>
+          ))}
         </div>
 
+        {/* ══════════════════════════════════════
+            H2 — Related Guides
+        ══════════════════════════════════════ */}
+        <section className="not-prose mt-14 mb-14 border-t-2 border-gray-100 pt-8">
+          <h2 className="text-2xl font-bold mb-6">
+            Related Guides
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <Link href="/free-deed-poll-template-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
+              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">Free Deed Poll Template</h3>
+              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
+            </Link>
+            <Link href="/how-to-change-name-on-passport-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
+              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">How to Change Your Name on a Passport</h3>
+              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
+            </Link>
+            <Link href="/deed-poll-vs-statutory-declaration-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
+              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">Deed Poll vs Statutory Declaration</h3>
+              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
+            </Link>
+          </div>
+        </section>
+
         {/* Closing CTA */}
-        <div className="bg-[#f3f2f1] border-l-[8px] border-[#00703c] p-6 mt-12">
-          <p className="text-lg font-semibold mb-2">Ready to get started?</p>
-          <p className="mb-4">
-            Our online service generates a correctly worded, legally valid deed poll
-            in minutes — accepted by the Passport Office, DVLA, HMRC, and UK banks.
+        <div className="not-prose bg-[#f3f2f1] border-l-[8px] border-[#00703c] p-6 mt-12">
+          <p className="text-lg font-semibold mb-2">Ready to change your name?</p>
+          <p className="mb-4 text-gray-800">
+            Create a correctly worded deed poll in minutes. Preview it free, then download your PDF for a
+            one-off £9.99, with no subscription.
           </p>
           <Link
             href="/change-name-in-uk-by-deedpoll"
@@ -412,6 +485,54 @@ export default function Page() {
           </Link>
         </div>
       </div>
+
+      <StructuredData
+        data={{
+          '@context': 'https://schema.org',
+          '@graph': [
+            {
+              '@type': 'Article',
+              headline: 'How to Change Your Name by Deed Poll in the UK',
+              description: PAGE_DESCRIPTION,
+              inLanguage: 'en-GB',
+              author: { '@type': 'Organization', name: 'Deed Poll UK Editorial Team' },
+              publisher: {
+                '@type': 'Organization',
+                name: 'Deed Poll UK',
+                logo: { '@type': 'ImageObject', url: 'https://deedpolluk.uk/og-image.jpg' },
+              },
+              image: 'https://deedpolluk.uk/og-image.jpg',
+              dateModified: '2026-10-30T08:00:00+00:00',
+              mainEntityOfPage: { '@type': 'WebPage', '@id': PAGE_URL },
+            },
+            {
+              '@type': 'HowTo',
+              name: 'How to change your name by deed poll in the UK',
+              step: steps.map((step, i) => ({
+                '@type': 'HowToStep',
+                position: i + 1,
+                name: step.title,
+                text: step.body,
+              })),
+            },
+            {
+              '@type': 'FAQPage',
+              mainEntity: faqs.map(({ q, a }) => ({
+                '@type': 'Question',
+                name: q,
+                acceptedAnswer: { '@type': 'Answer', text: a },
+              })),
+            },
+            {
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://deedpolluk.uk/' },
+                { '@type': 'ListItem', position: 2, name: 'Change Name by Deed Poll', item: PAGE_URL },
+              ],
+            },
+          ],
+        }}
+      />
     </div>
   );
 }

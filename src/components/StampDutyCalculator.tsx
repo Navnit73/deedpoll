@@ -36,16 +36,17 @@ export default function StampDutyCalculator() {
     let bandsConfig: { min: number; max: number; baseRate: number; label: string }[] = [];
 
     if (buyerType === 'first_time') {
-      if (price <= 625000) {
-        notes.push('First-Time Buyer Relief applied (0% on up to £425,000; 5% on £425,001–£625,000).');
+      if (price <= 500000) {
+        notes.push('First-Time Buyer Relief applied (0% on up to £300,000; 5% on £300,001–£500,000).');
         bandsConfig = [
-          { min: 0, max: 425000, baseRate: 0, label: 'Up to £425,000' },
-          { min: 425000, max: 625000, baseRate: 5, label: '£425,001 to £625,000' },
+          { min: 0, max: 300000, baseRate: 0, label: 'Up to £300,000' },
+          { min: 300000, max: 500000, baseRate: 5, label: '£300,001 to £500,000' },
         ];
       } else {
-        notes.push('Property price exceeds £625,000 — First-Time Buyer Relief is not available. Standard SDLT rates apply.');
+        notes.push('Property price exceeds £500,000 — First-Time Buyer Relief is not available. Standard SDLT rates apply.');
         bandsConfig = [
-          { min: 0, max: 250000, baseRate: 0, label: 'Up to £250,000' },
+          { min: 0, max: 125000, baseRate: 0, label: 'Up to £125,000' },
+          { min: 125000, max: 250000, baseRate: 2, label: '£125,001 to £250,000' },
           { min: 250000, max: 925000, baseRate: 5, label: '£250,001 to £925,000' },
           { min: 925000, max: 1500000, baseRate: 10, label: '£925,001 to £1,500,000' },
           { min: 1500000, max: Infinity, baseRate: 12, label: 'Over £1,500,000' },
@@ -53,7 +54,8 @@ export default function StampDutyCalculator() {
       }
     } else {
       bandsConfig = [
-        { min: 0, max: 250000, baseRate: 0, label: 'Up to £250,000' },
+        { min: 0, max: 125000, baseRate: 0, label: 'Up to £125,000' },
+        { min: 125000, max: 250000, baseRate: 2, label: '£125,001 to £250,000' },
         { min: 250000, max: 925000, baseRate: 5, label: '£250,001 to £925,000' },
         { min: 925000, max: 1500000, baseRate: 10, label: '£925,001 to £1,500,000' },
         { min: 1500000, max: Infinity, baseRate: 12, label: 'Over £1,500,000' },
