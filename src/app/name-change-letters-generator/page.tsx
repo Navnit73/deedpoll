@@ -410,6 +410,21 @@ ${newName || '[Your New Signature]'}`
   }
 ];
 
+const PAGE_URL = 'https://deedpolluk.uk/name-change-letters-generator';
+
+// The date input gives YYYY-MM-DD; UK letters use "31 October 2026".
+function formatLetterDate(isoDate: string) {
+  const [year, month, day] = isoDate.split('-').map(Number);
+  if (!year || !month || !day) return '';
+  return new Date(year, month - 1, day).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+const escapeHtml = (text: string) =>
+  text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+const inputClass =
+  'w-full border-2 border-gray-300 px-3 py-2 rounded text-base focus:border-[#1d70b8] focus:ring-2 focus:ring-blue-100 outline-none bg-white';
+
 export default function LetterGeneratorPage() {
   const [formData, setFormData] = useState({
     oldName: '',
@@ -438,7 +453,7 @@ export default function LetterGeneratorPage() {
     oldName: formData.oldName,
     newName: formData.newName,
     address: formData.address,
-    date: formData.date,
+    date: formatLetterDate(formData.date),
     refNumber: formData.refNumbers[selectedOrg.id] || '',
   });
 
@@ -458,7 +473,7 @@ export default function LetterGeneratorPage() {
     printWindow.document.write(`
       <html>
         <head>
-          <title>${selectedOrg.name} - Name Change Notification Letter</title>
+          <title>${escapeHtml(selectedOrg.name)} - Name Change Notification Letter</title>
           <style>
             body { font-family: 'Times New Roman', Times, serif; line-height: 1.6; font-size: 12pt; padding: 40px; color: #000; }
             pre { font-family: inherit; white-space: pre-wrap; word-wrap: break-word; }
@@ -466,11 +481,11 @@ export default function LetterGeneratorPage() {
           </style>
         </head>
         <body>
-          <pre>${letterText}</pre>
+          <pre>${escapeHtml(letterText)}</pre>
           <div class="enclosures">
             <strong>Enclosed Documents:</strong>
             <ul>
-              ${selectedOrg.enclosures.map(enc => `<li>${enc}</li>`).join('')}
+              ${selectedOrg.enclosures.map(enc => `<li>${escapeHtml(enc)}</li>`).join('')}
             </ul>
           </div>
           <script>
@@ -484,7 +499,6 @@ export default function LetterGeneratorPage() {
 
   return (
     <div className="bg-white min-h-screen">
-      {/* Structured Data */}
       <StructuredData
         data={{
           "@context": "https://schema.org",
@@ -492,6 +506,7 @@ export default function LetterGeneratorPage() {
             {
               "@type": "SoftwareApplication",
               "name": "UK Name Change Letter Generator",
+              "url": PAGE_URL,
               "operatingSystem": "All",
               "applicationCategory": "BusinessApplication",
               "offers": {
@@ -500,6 +515,13 @@ export default function LetterGeneratorPage() {
                 "priceCurrency": "GBP"
               },
               "description": "Free tool to generate official name change notification letters for DVLA, Passport Office, Banks, HMRC, NHS, and Employers in the UK."
+            },
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://deedpolluk.uk/" },
+                { "@type": "ListItem", "position": 2, "name": "Name Change Letter Generator", "item": PAGE_URL }
+              ]
             },
             {
               "@type": "FAQPage",
@@ -513,252 +535,227 @@ export default function LetterGeneratorPage() {
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16">
-        {/* Breadcrumb */}
-        <nav aria-label="Breadcrumb" className="mb-6 text-sm text-gray-500">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
+        <nav aria-label="Breadcrumb" className="mb-3 text-sm text-gray-500">
           <ol className="flex items-center gap-2">
             <li><Link href="/" className="hover:text-[#1d70b8] underline">Home</Link></li>
-            <li>›</li>
-            <li className="text-gray-900 font-semibold">Name Change Letter Generator</li>
+            <li aria-hidden="true">›</li>
+            <li className="text-gray-900 font-semibold" aria-current="page">Name Change Letter Generator</li>
           </ol>
         </nav>
 
-        {/* Title Header */}
-        <div className="border-b-2 border-gray-200 pb-8 mb-10">
-          <span className="inline-flex items-center gap-1.5 bg-green-100 text-[#00703c] font-bold text-xs uppercase px-3 py-1 rounded-full mb-3">
-            ✓ Free · No sign-up
-          </span>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0b0c0c] tracking-tight">
-            Name Change Letter Generator: Free Cover Letters for Your Deed Poll
+        <header className="mb-6">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0b0c0c] tracking-tight">
+            Name Change Letter Generator
           </h1>
-          <p className="mt-3 text-lg sm:text-xl text-gray-700 max-w-3xl">
-            Enter your details once to create a ready-to-send name change cover letter for the <strong>DVLA, HM Passport Office, banks, HMRC, the NHS and your employer</strong>. Copy or print each letter and post it with your deed poll.
+          <p className="mt-2 text-base sm:text-lg text-gray-700 max-w-3xl">
+            <span className="inline-block bg-green-100 text-[#00703c] font-bold text-xs uppercase px-2 py-0.5 rounded mr-2 align-middle">Free · No sign-up</span>
+            Free cover letters to send with your deed poll to the <strong>DVLA, HM Passport Office, banks, HMRC, the NHS and your employer</strong>.
           </p>
-        </div>
+        </header>
 
-        {/* Main 2-Column App Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
-          {/* Left Column: Form Details (5 cols) */}
-          <div className="lg:col-span-5 bg-gray-50 border-2 border-gray-300 rounded-xl p-6 shadow-sm">
-            <h2 className="text-xl font-bold text-[#0b0c0c] mb-4 flex items-center gap-2">
-              <span className="w-7 h-7 rounded-full bg-[#1d70b8] text-white flex items-center justify-center text-sm font-bold">1</span>
-              Your Details
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+          {/* Step 1: details. Sticky on desktop so the form stays beside the letter. */}
+          <section aria-labelledby="details-heading" className="lg:col-span-4 lg:sticky lg:top-24 bg-gray-50 border border-gray-300 rounded-lg p-4 sm:p-5">
+            <h2 id="details-heading" className="text-lg font-bold text-[#0b0c0c] mb-3 flex items-center gap-2">
+              <span className="w-6 h-6 rounded-full bg-[#1d70b8] text-white flex items-center justify-center text-xs font-bold" aria-hidden="true">1</span>
+              Your details
             </h2>
-            <p className="text-xs text-gray-600 mb-6">
-              These details automatically populate across all generated letters.
-            </p>
 
-            <div className="space-y-4">
+            <div className="space-y-3">
               <div>
-                <label className="block text-sm font-bold text-[#0b0c0c] mb-1">
-                  Former / Old Full Name <span className="text-red-600">*</span>
-                </label>
+                <label htmlFor="old-name" className="block text-sm font-bold text-[#0b0c0c] mb-1">Old full name</label>
                 <input
+                  id="old-name"
                   type="text"
+                  autoComplete="off"
                   placeholder="e.g. John Robert Smith"
                   value={formData.oldName}
                   onChange={e => setFormData({ ...formData, oldName: e.target.value })}
-                  className="w-full border-2 border-gray-300 p-2.5 rounded text-sm focus:border-[#1d70b8] focus:ring-2 focus:ring-blue-100 outline-none bg-white font-medium"
+                  className={inputClass}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-bold text-[#0b0c0c] mb-1">
-                  New Legal Full Name <span className="text-red-600">*</span>
-                </label>
+                <label htmlFor="new-name" className="block text-sm font-bold text-[#0b0c0c] mb-1">New full name</label>
                 <input
+                  id="new-name"
                   type="text"
+                  autoComplete="name"
                   placeholder="e.g. John Robert Williams"
                   value={formData.newName}
                   onChange={e => setFormData({ ...formData, newName: e.target.value })}
-                  className="w-full border-2 border-gray-300 p-2.5 rounded text-sm focus:border-[#1d70b8] focus:ring-2 focus:ring-blue-100 outline-none bg-white font-medium"
+                  className={inputClass}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-bold text-[#0b0c0c] mb-1">
-                  Current Residential Address & Postcode
-                </label>
+                <label htmlFor="address" className="block text-sm font-bold text-[#0b0c0c] mb-1">Address and postcode</label>
                 <textarea
+                  id="address"
                   rows={3}
-                  placeholder="12 High Street, Flat 4B&#10;Manchester&#10;M1 4BT"
+                  autoComplete="street-address"
+                  placeholder={'12 High Street\nManchester\nM1 4BT'}
                   value={formData.address}
                   onChange={e => setFormData({ ...formData, address: e.target.value })}
-                  className="w-full border-2 border-gray-300 p-2.5 rounded text-sm focus:border-[#1d70b8] focus:ring-2 focus:ring-blue-100 outline-none bg-white font-medium"
+                  className={inputClass}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-bold text-[#0b0c0c] mb-1">
-                  Date on Letter
-                </label>
+                <label htmlFor="letter-date" className="block text-sm font-bold text-[#0b0c0c] mb-1">Date on letter</label>
                 <input
+                  id="letter-date"
                   type="date"
                   value={formData.date}
                   onChange={e => setFormData({ ...formData, date: e.target.value })}
-                  className="w-full border-2 border-gray-300 p-2.5 rounded text-sm focus:border-[#1d70b8] focus:ring-2 focus:ring-blue-100 outline-none bg-white font-medium"
+                  className={inputClass}
                 />
-              </div>
-
-              <hr className="my-4 border-gray-200" />
-
-              <div>
-                <label className="block text-sm font-bold text-[#0b0c0c] mb-1">
-                  {selectedOrg.referenceLabel} <span className="text-gray-500 text-xs">(Optional)</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder={selectedOrg.referencePlaceholder}
-                  value={formData.refNumbers[selectedOrg.id] || ''}
-                  onChange={e => handleRefChange(selectedOrg.id, e.target.value)}
-                  className="w-full border-2 border-[#1d70b8]/40 p-2.5 rounded text-sm focus:border-[#1d70b8] focus:ring-2 focus:ring-blue-100 outline-none bg-white font-medium"
-                />
-                <p className="text-[11px] text-gray-500 mt-1">
-                  Personalizes the selected letter for {selectedOrg.name}.
-                </p>
               </div>
             </div>
 
-            <div className="mt-8 bg-blue-100/60 border border-blue-300 rounded-lg p-4 text-xs text-gray-800">
-              <p className="font-bold mb-1">💡 Need a Deed Poll first?</p>
-              <p className="mb-2">If you haven&apos;t generated your legal deed poll yet, you can create it and see a free preview in 2 minutes, then download the official PDF for £9.99.</p>
-              <Link
-                href="/change-name-in-uk-by-deedpoll"
-                className="inline-block font-bold text-[#1d70b8] hover:underline underline-offset-2"
-              >
-                Create Your Deed Poll PDF →
+            <p className="mt-4 text-sm text-gray-700">
+              No deed poll yet?{" "}
+              <Link href="/change-name-in-uk-by-deedpoll" className="font-bold text-[#1d70b8] underline underline-offset-2">
+                Create one with a free preview
               </Link>
-            </div>
-          </div>
+            </p>
+          </section>
 
-          {/* Right Column: Organisation Selector & Live Letter Preview (7 cols) */}
-          <div className="lg:col-span-7">
-            
-            {/* Organisation Selector Tabs */}
-            <div className="mb-4">
-              <span className="text-xs font-bold uppercase tracking-wider text-gray-500 block mb-2">
-                Select Recipient Organisation:
-              </span>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          {/* Steps 2 and 3: choose organisation, then the letter */}
+          <div className="lg:col-span-8 space-y-4 min-w-0">
+            <section aria-labelledby="org-heading">
+              <h2 id="org-heading" className="text-lg font-bold text-[#0b0c0c] mb-2 flex items-center gap-2">
+                <span className="w-6 h-6 rounded-full bg-[#1d70b8] text-white flex items-center justify-center text-xs font-bold" aria-hidden="true">2</span>
+                Who are you writing to?
+              </h2>
+              <div className="flex flex-wrap gap-2">
                 {ORGANISATIONS.map(org => {
                   const isActive = org.id === selectedOrg.id;
                   return (
                     <button
                       key={org.id}
+                      type="button"
+                      aria-pressed={isActive}
                       onClick={() => setSelectedOrgId(org.id)}
-                      className={`p-2.5 text-xs font-bold rounded-lg border text-left transition-all flex flex-col justify-between ${
+                      className={`px-3 py-2 text-sm font-bold rounded-full border transition-colors ${
                         isActive
-                          ? 'bg-[#1d70b8] text-white border-[#1d70b8] shadow-sm'
-                          : 'bg-white text-gray-800 border-gray-300 hover:bg-gray-100'
+                          ? 'bg-[#1d70b8] text-white border-[#1d70b8]'
+                          : 'bg-white text-gray-800 border-gray-300 hover:border-[#1d70b8] hover:text-[#1d70b8]'
                       }`}
                     >
-                      <span>{org.name}</span>
-                      <span className={`text-[10px] capitalize mt-1 ${isActive ? 'text-blue-100' : 'text-gray-500'}`}>
-                        {org.category}
-                      </span>
+                      {org.name}
                     </button>
                   );
                 })}
               </div>
-            </div>
 
-            {/* Letter Preview Box */}
-            <div className="bg-white border-2 border-gray-400 rounded-xl overflow-hidden shadow-md">
-              {/* Box Action Header */}
-              <div className="bg-gray-100 border-b border-gray-300 px-4 py-3 flex flex-wrap items-center justify-between gap-3">
-                <div className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
-                  <span className="font-bold text-sm text-[#0b0c0c]">
-                    {selectedOrg.name} — Cover Letter
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
+              <div className="mt-3 max-w-md">
+                <label htmlFor="ref-number" className="block text-sm font-bold text-[#0b0c0c] mb-1">
+                  {selectedOrg.referenceLabel.replace(/\s*\(Optional\)/i, '')} <span className="text-gray-500 font-normal">(optional)</span>
+                </label>
+                <input
+                  id="ref-number"
+                  type="text"
+                  autoComplete="off"
+                  placeholder={selectedOrg.referencePlaceholder}
+                  value={formData.refNumbers[selectedOrg.id] || ''}
+                  onChange={e => handleRefChange(selectedOrg.id, e.target.value)}
+                  className={inputClass}
+                />
+              </div>
+            </section>
+
+            <section aria-labelledby="letter-heading" className="border border-gray-300 rounded-lg overflow-hidden shadow-sm">
+              <div className="bg-gray-100 border-b border-gray-300 px-4 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <h2 id="letter-heading" className="text-lg font-bold text-[#0b0c0c] flex items-center gap-2">
+                  <span className="w-6 h-6 rounded-full bg-[#1d70b8] text-white flex items-center justify-center text-xs font-bold" aria-hidden="true">3</span>
+                  Your letter to {selectedOrg.name}
+                </h2>
+                <div className="grid grid-cols-2 sm:flex gap-2">
                   <button
+                    type="button"
                     onClick={() => copyToClipboard(letterText, selectedOrg.id)}
-                    className="inline-flex items-center gap-1.5 bg-white border border-gray-300 hover:bg-gray-50 text-[#0b0c0c] font-bold text-xs px-3 py-1.5 rounded transition-all active:scale-95"
+                    className="inline-flex items-center justify-center gap-1.5 bg-white border border-gray-300 hover:bg-gray-50 text-[#0b0c0c] font-bold text-sm px-4 py-2 rounded transition-colors"
                   >
                     {copiedId === selectedOrg.id ? (
-                      <>
-                        <span className="text-[#00703c]">✓ Copied</span>
-                      </>
+                      <span className="text-[#00703c]">✓ Copied</span>
                     ) : (
                       <>
-                        <svg className="w-3.5 h-3.5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-4 h-4 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
                         </svg>
-                        <span>Copy Text</span>
+                        <span>Copy</span>
                       </>
                     )}
                   </button>
                   <button
+                    type="button"
                     onClick={printLetter}
-                    className="inline-flex items-center gap-1.5 bg-[#00703c] hover:bg-[#005a30] text-white font-bold text-xs px-3 py-1.5 rounded transition-all active:scale-95"
+                    className="inline-flex items-center justify-center gap-1.5 bg-[#00703c] hover:bg-[#005a30] text-white font-bold text-sm px-4 py-2 rounded transition-colors"
                   >
-                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
                     </svg>
-                    <span>Print / Save PDF</span>
+                    <span>Print / PDF</span>
                   </button>
                 </div>
               </div>
 
-              {/* Letter Preview Content */}
-              <div className="p-6 sm:p-8 font-mono text-xs sm:text-sm text-gray-900 bg-white whitespace-pre-wrap leading-relaxed border-b border-gray-200 select-all overflow-x-auto">
-                {letterText}
+              <div className="bg-gray-200/60 p-3 sm:p-6">
+                <div className="bg-white shadow max-w-2xl mx-auto px-5 py-6 sm:px-10 sm:py-10 font-serif text-[15px] sm:text-base text-gray-900 whitespace-pre-wrap break-words leading-relaxed">
+                  {letterText}
+                </div>
               </div>
 
-              {/* Enclosures & Helpful Notes */}
-              <div className="bg-gray-50 p-5 text-xs text-gray-800 space-y-3">
+              <div className="bg-gray-50 border-t border-gray-300 p-4 text-sm text-gray-800 grid gap-3 sm:grid-cols-2">
                 <div>
-                  <strong className="text-[#0b0c0c] uppercase tracking-wider text-[11px] block mb-1.5">
-                    📎 What to enclose in the envelope for {selectedOrg.name}:
-                  </strong>
-                  <ul className="list-disc pl-5 space-y-1 text-gray-700">
+                  <h3 className="font-bold text-[#0b0c0c] mb-1">What to enclose</h3>
+                  <ul className="list-disc pl-5 space-y-0.5 text-gray-700">
                     {selectedOrg.enclosures.map((item, idx) => (
                       <li key={idx}>{item}</li>
                     ))}
                   </ul>
                 </div>
                 {selectedOrg.notes && (
-                  <div className="border-t border-gray-200 pt-2 text-gray-600 italic">
-                    ℹ️ <strong>Tip:</strong> {selectedOrg.notes}
+                  <div>
+                    <h3 className="font-bold text-[#0b0c0c] mb-1">Tip</h3>
+                    <p className="text-gray-700">{selectedOrg.notes}</p>
                   </div>
                 )}
               </div>
-            </div>
-
+            </section>
           </div>
         </div>
 
-        {/* Share widget */}
         <ShareWidget
           title="Free UK Name Change Letter Generator — Instant DVLA, Bank & Passport Cover Letters"
           description="Generate tailored notification letters for DVLA, Passport Office, Banks, HMRC, NHS, and employers in 1 click."
         />
 
         {/* Informational SEO Guide & FAQ */}
-        <div className="mt-16 max-w-4xl mx-auto text-gray-800 space-y-8">
+        <article className="mt-12 max-w-3xl mx-auto text-gray-800 space-y-6">
           <h2 className="text-2xl sm:text-3xl font-bold text-[#0b0c0c] border-b-2 border-gray-100 pb-3">
             How to Write a Name Change Letter in 3 Steps
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm">
-            <div className="bg-gray-50 p-5 rounded-lg border border-gray-200">
-              <span className="font-bold text-[#1d70b8] text-lg block mb-1">Step 1</span>
-              <h3 className="font-bold text-base mb-2">Fill in your names</h3>
+          <ol className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
+            <li className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+              <span className="font-bold text-[#1d70b8] block mb-1">Step 1</span>
+              <h3 className="font-bold text-base mb-1">Fill in your names</h3>
               <p>Type your old legal name, chosen new name, and address into the form. They automatically format into standard UK legal correspondence.</p>
-            </div>
-            <div className="bg-gray-50 p-5 rounded-lg border border-gray-200">
-              <span className="font-bold text-[#1d70b8] text-lg block mb-1">Step 2</span>
-              <h3 className="font-bold text-base mb-2">Select organisations</h3>
+            </li>
+            <li className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+              <span className="font-bold text-[#1d70b8] block mb-1">Step 2</span>
+              <h3 className="font-bold text-base mb-1">Select organisations</h3>
               <p>Click between DVLA, Passport Office, Banks, HMRC, and NHS to preview each custom tailored letter and required enclosures.</p>
-            </div>
-            <div className="bg-gray-50 p-5 rounded-lg border border-gray-200">
-              <span className="font-bold text-[#1d70b8] text-lg block mb-1">Step 3</span>
-              <h3 className="font-bold text-base mb-2">Print & send with deed poll</h3>
+            </li>
+            <li className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+              <span className="font-bold text-[#1d70b8] block mb-1">Step 3</span>
+              <h3 className="font-bold text-base mb-1">Print & send with deed poll</h3>
               <p>Print or copy the letter. Enclose your signed deed poll and existing ID, then post or present at your local branch.</p>
-            </div>
-          </div>
+            </li>
+          </ol>
 
           <h2 className="text-2xl sm:text-3xl font-bold text-[#0b0c0c] border-b-2 border-gray-100 pb-3 pt-4">
             What Is a Name Change Cover Letter?
@@ -784,33 +781,33 @@ export default function LetterGeneratorPage() {
           <h3 className="text-xl font-bold text-[#0b0c0c]">Which organisations the generator covers</h3>
           <p className="text-base">
             You can create a tailored letter for the DVLA, HM Passport Office, banks and building societies, HMRC, your GP, your employer, your council and your utility and insurance providers. For a full list of who to tell, see our{" "}
-            <Link href="/checklist" className="text-[#1d70b8] hover:underline">name change checklist</Link>.
+            <Link href="/checklist" className="text-[#1d70b8] underline underline-offset-2">name change checklist</Link>.
           </p>
 
           <h3 className="text-xl font-bold text-[#0b0c0c]">Need the deed poll itself?</h3>
           <p className="text-base">
             These letters go with your deed poll; they do not replace it. To make one, use our{" "}
-            <Link href="/free-deed-poll-template-uk" className="text-[#1d70b8] hover:underline">free deed poll template</Link>{" "}
+            <Link href="/free-deed-poll-template-uk" className="text-[#1d70b8] underline underline-offset-2">free deed poll template</Link>{" "}
             or{" "}
-            <Link href="/change-name-in-uk-by-deedpoll" className="text-[#1d70b8] hover:underline">create your deed poll online</Link>.
+            <Link href="/change-name-in-uk-by-deedpoll" className="text-[#1d70b8] underline underline-offset-2">create your deed poll online</Link>.
           </p>
 
           <h2 className="text-2xl sm:text-3xl font-bold text-[#0b0c0c] pt-4">
             Name Change Letter FAQs
           </h2>
-          <div className="space-y-4 text-sm sm:text-base">
+          <div className="space-y-3 text-sm sm:text-base">
             {FAQS.map(({ q, a }) => (
-              <div key={q} className="border border-gray-200 rounded-lg p-5 bg-white">
-                <h3 className="font-bold text-lg mb-2 text-[#0b0c0c]">{q}</h3>
+              <div key={q} className="border border-gray-200 rounded-lg p-4 bg-white">
+                <h3 className="font-bold text-lg mb-1 text-[#0b0c0c]">{q}</h3>
                 <p className="text-gray-700">{a}</p>
               </div>
             ))}
           </div>
           <p className="text-sm text-gray-500">
             Renaming a business instead? Read{" "}
-            <Link href="/how-to-change-company-name-uk" className="text-[#1d70b8] hover:underline">how to change a company name in the UK</Link>.
+            <Link href="/how-to-change-company-name-uk" className="text-[#1d70b8] underline underline-offset-2">how to change a company name in the UK</Link>.
           </p>
-        </div>
+        </article>
 
       </div>
     </div>
