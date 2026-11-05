@@ -82,6 +82,16 @@ export default function Home() {
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                 Free preview. One-off £9.99 to download the PDF. No account or subscription.
               </div>
+              <p className="text-sm text-gray-600 mt-3 max-w-2xl">
+                Renewing your passport in your new name? Print your photos at home with this{" "}
+                <a href="https://www.pixpassport.com/passport-photo-template-4x6" className="text-[#1d70b8] underline underline-offset-2 hover:text-[#003078]">
+                  passport photo template 4x6
+                </a>{" "}
+                or the free{" "}
+                <a href="https://www.pixpassport.com/passport-photo-print-template-generator" className="text-[#1d70b8] underline underline-offset-2 hover:text-[#003078]">
+                  passport photo print template generator
+                </a>.
+              </p>
             </div>
           </div>
         </div>

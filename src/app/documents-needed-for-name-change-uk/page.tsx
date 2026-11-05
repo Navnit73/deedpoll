@@ -146,6 +146,12 @@ export default function Page() {
             </li>
           ))}
         </ul>
+        <p className="mt-4">
+          Need a new photo for your passport application? You can take one at home with{" "}
+          <a href="https://www.pixpassport.com/" className="text-[#1d70b8] underline underline-offset-2 hover:text-[#003078]">
+            PixPassport&apos;s online passport photo tool
+          </a>.
+        </p>
       </GuideSection>
     </GuideArticle>
   );

@@ -347,6 +347,17 @@ export default function Page() {
               </li>
             ))}
           </ol>
+          <p className="text-sm sm:text-base text-gray-700 leading-relaxed mt-6">
+            <strong>Getting your photo right:</strong> photos are one of the most common reasons
+            passport applications are delayed. Check yours against the{" "}
+            <a href="https://www.pixpassport.com/uk-passport-photo-requirements-tool" className="text-[#1d70b8] underline underline-offset-2 hover:text-[#003078]">
+              UK passport photo requirements tool
+            </a>{" "}
+            before you apply, or create a compliant digital photo with this{" "}
+            <a href="https://pixpassport.uk/tool/uk-passport-photo" className="text-[#1d70b8] underline underline-offset-2 hover:text-[#003078]">
+              UK passport photo maker
+            </a>.
+          </p>
         </section>
 
         {/* ══════════════════════════════════════
