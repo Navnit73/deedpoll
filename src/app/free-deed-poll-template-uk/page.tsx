@@ -246,6 +246,26 @@ Occupation: [SECOND WITNESS OCCUPATION]`;
                 💍 Changing Your Name After Marriage Guide →
               </Link>
             </li>
+            <li>
+              <Link href="/change-name-without-deed-poll-uk" className="hover:underline flex items-center gap-2">
+                🔎 Change Your Name Without a Deed Poll →
+              </Link>
+            </li>
+            <li>
+              <Link href="/revert-to-maiden-name-uk" className="hover:underline flex items-center gap-2">
+                ↩️ Revert to Your Maiden or Birth Name →
+              </Link>
+            </li>
+            <li>
+              <Link href="/how-to-fill-in-d1-form-change-name" className="hover:underline flex items-center gap-2">
+                🚗 How to Fill In the D1 Form →
+              </Link>
+            </li>
+            <li>
+              <Link href="/deed-poll-scotland-northern-ireland" className="hover:underline flex items-center gap-2">
+                🏴 Scotland & Northern Ireland Name Change →
+              </Link>
+            </li>
           </ul>
         </section>
 

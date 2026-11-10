@@ -183,6 +183,15 @@ export default function DeedPollVsStatutoryDeclarationPage() {
           </p>
         </section>
 
+        <section className="mb-10 bg-gray-50 border border-gray-200 rounded-lg p-5">
+          <h2 className="text-lg font-bold mb-3">Related guides</h2>
+          <ul className="list-disc pl-5 space-y-1 text-[#1d70b8] underline-offset-2">
+            <li><Link href="/change-name-without-deed-poll-uk" className="underline">Change Your Name Without a Deed Poll</Link></li>
+            <li><Link href="/deed-poll-scotland-northern-ireland" className="underline">Scotland & Northern Ireland Name Change</Link></li>
+            <li><Link href="/revert-to-maiden-name-uk" className="underline">Revert to Your Maiden or Birth Name</Link></li>
+          </ul>
+        </section>
+
         {/* CTA Banner */}
         <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-[#1d70b8] rounded-xl p-6 sm:p-8 mb-10 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>

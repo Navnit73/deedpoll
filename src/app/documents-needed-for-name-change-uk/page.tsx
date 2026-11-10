@@ -54,6 +54,8 @@ export default function Page() {
       ]}
       faqs={faqs}
       related={[
+        { href: '/how-to-fill-in-d1-form-change-name', title: 'How to Fill In the D1 Form', note: 'Posting your evidence to DVLA.' },
+        { href: '/change-name-on-passport-after-divorce-uk', title: 'Passport Name Change After Divorce', note: 'Evidence for divorce and previous names.' },
         { href: '/name-change/who-to-notify-after-changing-your-name-uk', title: 'Who to Notify After a Name Change', note: 'Every organisation to tell.' },
         { href: '/deed-poll-vs-statutory-declaration-uk', title: 'Deed Poll vs Statutory Declaration', note: 'Choosing your proof document.' },
         { href: '/my-deed-poll-was-rejected', title: 'My Deed Poll Was Rejected', note: 'How to fix a refused document.' },

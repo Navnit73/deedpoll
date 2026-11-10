@@ -355,6 +355,18 @@ export default function Page() {
             Related Guides
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <Link href="/revert-to-maiden-name-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
+              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">Revert to Your Maiden or Birth Name</h3>
+              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
+            </Link>
+            <Link href="/change-name-without-deed-poll-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
+              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">Change Your Name Without a Deed Poll</h3>
+              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
+            </Link>
+            <Link href="/change-name-on-passport-after-divorce-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
+              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">Passport Name Change After Divorce</h3>
+              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
+            </Link>
             
             <Link href="/how-to-change-first-name-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
               <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">How to Change Your First Name</h3>

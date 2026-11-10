@@ -455,6 +455,18 @@ export default function Page() {
             Related Guides
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <Link href="/change-name-without-deed-poll-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
+              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">Change Your Name Without a Deed Poll</h3>
+              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
+            </Link>
+            <Link href="/deed-poll-scotland-northern-ireland" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
+              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">Scotland & Northern Ireland Name Change</h3>
+              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
+            </Link>
+            <Link href="/revert-to-maiden-name-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
+              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">Revert to Your Maiden or Birth Name</h3>
+              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
+            </Link>
             <Link href="/free-deed-poll-template-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
               <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">Free Deed Poll Template</h3>
               <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>

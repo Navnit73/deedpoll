@@ -54,6 +54,8 @@ export default function Page() {
       ]}
       faqs={faqs}
       related={[
+        { href: '/change-name-without-deed-poll-uk', title: 'Change Your Name Without a Deed Poll', note: 'When a certificate is enough.' },
+        { href: '/deed-poll-scotland-northern-ireland', title: 'Scotland & Northern Ireland Name Change', note: 'Rules outside England and Wales.' },
         { href: '/how-to-legally-change-your-name-uk', title: 'How to Legally Change Your Name', note: 'The full step-by-step process.' },
         { href: '/how-to-change-last-name-uk', title: 'How to Change Your Last Name', note: 'Surname-only changes.' },
         { href: '/what-is-a-legal-name-uk', title: 'What Is Your Legal Name?', note: 'What counts as your official name.' },

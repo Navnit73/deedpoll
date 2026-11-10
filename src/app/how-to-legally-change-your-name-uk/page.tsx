@@ -637,6 +637,18 @@ export default function Page() {
             Related Guides
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <Link href="/deed-poll-scotland-northern-ireland" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
+              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">Scotland & Northern Ireland Name Change</h3>
+              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
+            </Link>
+            <Link href="/change-name-without-deed-poll-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
+              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">Change Your Name Without a Deed Poll</h3>
+              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
+            </Link>
+            <Link href="/how-to-fill-in-d1-form-change-name" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
+              <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">How to Fill In the D1 Form</h3>
+              <span className="text-[#1d70b8] text-sm mt-3 inline-block font-medium">Read guide →</span>
+            </Link>
 
             <Link href="/how-to-change-surname-uk" className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-[#1d70b8] transition-colors group">
               <h3 className="font-bold text-gray-900 group-hover:text-[#1d70b8] transition-colors">How to Change Your Surname</h3>

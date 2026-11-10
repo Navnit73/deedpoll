@@ -56,6 +56,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { route: '/national-insurance-and-tax-calculator-uk', priority: 0.8 },
     { route: '/uk-mortgage-affordability-calculator', priority: 0.8 },
     { route: '/uk-working-days-calculator', priority: 0.8 },
+    { route: '/how-to-fill-in-d1-form-change-name', priority: 0.8 },
+    { route: '/revert-to-maiden-name-uk', priority: 0.8 },
+    { route: '/change-name-on-passport-after-divorce-uk', priority: 0.8 },
+    { route: '/change-name-without-deed-poll-uk', priority: 0.8 },
+    { route: '/deed-poll-scotland-northern-ireland', priority: 0.8 },
   ].map(({ route, priority }) => ({
     url: `${baseUrl}${route}`,
     lastModified: currentDate,

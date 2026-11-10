@@ -201,6 +201,15 @@ export default function ChangeNameDrivingLicencePage() {
           </p>
         </section>
 
+        <section className="mb-10 bg-gray-50 border border-gray-200 rounded-lg p-5">
+          <h2 className="text-lg font-bold mb-3">Related guides</h2>
+          <ul className="list-disc pl-5 space-y-1 text-[#1d70b8] underline-offset-2">
+            <li><Link href="/how-to-fill-in-d1-form-change-name" className="underline">How to Fill In the D1 Form</Link></li>
+            <li><Link href="/change-name-without-deed-poll-uk" className="underline">Change Your Name Without a Deed Poll</Link></li>
+            <li><Link href="/deed-poll-scotland-northern-ireland" className="underline">Scotland & Northern Ireland Name Change</Link></li>
+          </ul>
+        </section>
+
         {/* CTA Banner */}
         <div className="bg-gradient-to-r from-emerald-50 to-green-50 border-2 border-[#00703c] rounded-xl p-6 sm:p-8 mb-10 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>

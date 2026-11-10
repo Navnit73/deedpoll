@@ -109,6 +109,31 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/how-to-fill-in-d1-form-change-name" className="hover:underline">
+                  How to Fill In the D1 Form
+                </Link>
+              </li>
+              <li>
+                <Link href="/revert-to-maiden-name-uk" className="hover:underline">
+                  Revert to Your Maiden or Birth Name
+                </Link>
+              </li>
+              <li>
+                <Link href="/change-name-on-passport-after-divorce-uk" className="hover:underline">
+                  Passport Name Change After Divorce
+                </Link>
+              </li>
+              <li>
+                <Link href="/change-name-without-deed-poll-uk" className="hover:underline">
+                  Change Your Name Without a Deed Poll
+                </Link>
+              </li>
+              <li>
+                <Link href="/deed-poll-scotland-northern-ireland" className="hover:underline">
+                  Scotland & Northern Ireland Name Change
+                </Link>
+              </li>
+              <li>
                 <Link href="/documents-needed-for-name-change-uk" className="hover:underline">
                   Documents Needed for a Name Change
                 </Link>
