@@ -210,7 +210,7 @@ export default function Home() {
       </section>
 
       {/* SEO CONTENT */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 text-base sm:text-lg">
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 text-base sm:text-lg">
 
         <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">What Is a Deed Poll?</h2>
         <p className="mb-4">
@@ -344,7 +344,7 @@ export default function Home() {
 
       {/* FAQ */}
       <section className="bg-gray-100 py-12 md:py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12">
             <span className="text-[#1d70b8] font-bold text-base sm:text-lg mb-2 block uppercase tracking-wider">Common questions</span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Frequently Asked Questions</h2>
@@ -483,7 +483,7 @@ export default function Home() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20 text-center mt-4">
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20 text-center mt-4">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">Ready to Change Your Name?</h2>
         <p className="text-base sm:text-xl mb-8 sm:mb-10">
           Join over 50,000 people across the UK who have changed their name quickly,

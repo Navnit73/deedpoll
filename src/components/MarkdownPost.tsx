@@ -112,7 +112,7 @@ export default function MarkdownPost({ post, relatedPosts = [], siteUrl = 'https
 
       {/* HERO SECTION */}
       <section className="bg-[#1d70b8] text-white py-10 md:py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb Navigation */}
           <nav aria-label="Breadcrumb" className="mb-6 text-sm text-blue-100 font-medium">
             <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
@@ -188,7 +188,7 @@ export default function MarkdownPost({ post, relatedPosts = [], siteUrl = 'https
       </section>
 
       {/* MAIN CONTENT WRAPPER */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14">
         {/* Callout box for quick action */}
         <div className="bg-[#f3f2f1] border-l-[6px] border-[#00703c] p-5 mb-10 rounded-r-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>

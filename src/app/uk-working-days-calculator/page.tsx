@@ -68,7 +68,7 @@ export default function UkWorkingDaysCalculatorPage() {
       </section>
 
       {/* EDUCATIONAL & SEO CONTENT */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-base sm:text-lg">
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-base sm:text-lg">
         {/* WHAT IS A UK WORKING DAY */}
         <h2 className="text-2xl sm:text-3xl font-bold text-[#0b0c0c] mb-4">
           What is Defined as a Working Day in the UK?

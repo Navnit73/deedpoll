@@ -24,7 +24,7 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
 
       <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-8">
         How to Change a Child's Surname in the UK

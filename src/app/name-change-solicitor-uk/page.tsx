@@ -57,6 +57,7 @@ export default function Page() {
         { href: '/deed-poll-vs-statutory-declaration-uk', title: 'Deed Poll vs Statutory Declaration', note: 'Which document do you need?' },
         { href: '/how-to-change-childs-surname-uk', title: 'Changing a Child’s Surname', note: 'Consent rules for parents.' },
         { href: '/name-change/enrolled-vs-unenrolled-deed-poll-uk', title: 'Enrolled vs Unenrolled Deed Poll', note: 'Is enrolment worth it?' },
+        { href: '/deed-poll-apostille-uk', title: 'Deed Poll Apostille', note: 'Using your name change abroad.' },
       ]}
       formHeading="Make your deed poll yourself, no solicitor needed"
       formIntro={<>For most adults this is all you need. Fill in your details, preview the document, then sign it in front of two witnesses.</>}

@@ -4,7 +4,7 @@ import StructuredData from '@/components/StructuredData';
 import ShareWidget from '@/components/ShareWidget';
 
 export const metadata: Metadata = {
-  title: "Deed Poll vs Statutory Declaration UK: What's the Difference?",
+  title: "Deed Poll vs Statutory Declaration UK (2026): Which Do You Need?",
   description:
     "Deed Poll vs Statutory Declaration for UK name changes. Understand legal differences, costs, solicitor requirements, and which document you need for passport and DVLA.",
   alternates: {
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Deed Poll vs Statutory Declaration UK: What's the Difference?",
+    title: "Deed Poll vs Statutory Declaration UK (2026): Which Do You Need?",
     description:
       "Deed Poll vs Statutory Declaration for UK name changes. Understand legal differences, costs, solicitor requirements, and which document you need for passport and DVLA.",
     url: "https://deedpolluk.uk/deed-poll-vs-statutory-declaration-uk",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Deed Poll vs Statutory Declaration UK: What's the Difference?",
+    title: "Deed Poll vs Statutory Declaration UK (2026): Which Do You Need?",
     description:
       "Understand legal differences, costs, solicitor requirements, and which document you need for your UK name change.",
   }
@@ -72,7 +72,7 @@ export default function DeedPollVsStatutoryDeclarationPage() {
         }}
       />
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 lg:py-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 lg:py-20">
         
         {/* Breadcrumb */}
         <nav aria-label="Breadcrumb" className="mb-6 text-sm text-gray-500">

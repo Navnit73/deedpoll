@@ -14,7 +14,7 @@ export const metadata = {
 
 export default function VideoPage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 text-center">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 text-center">
       <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">How to Change Your Name</h1>
       
       <div className="bg-[#f3f2f1] border-[4px] border-[#1d70b8] p-8 md:p-12 mb-8">

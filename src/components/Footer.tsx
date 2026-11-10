@@ -1,260 +1,181 @@
 import Link from 'next/link';
 
+type FooterLink = { href: string; label: string };
+type FooterGroup = { heading: string; links: FooterLink[] };
+
+const tools: FooterLink[] = [
+  { href: '/change-name-in-uk-by-deedpoll', label: 'Deed Poll Generator' },
+  { href: '/name-change-letters-generator', label: 'Name Change Letter Generator' },
+  { href: '/checklist', label: 'Name Change Checklist' },
+  { href: '/free-deed-poll-template-uk', label: 'Free Deed Poll Template' },
+];
+
+const groups: FooterGroup[] = [
+  {
+    heading: 'Start Here',
+    links: [
+      { href: '/how-to-change-your-name-uk', label: 'How to Change Your Name' },
+      { href: '/how-to-change-name-by-deed-poll-uk', label: 'Change Name by Deed Poll' },
+      { href: '/deed-poll-online-uk', label: 'Deed Poll Online' },
+      { href: '/how-much-does-it-cost-to-change-your-name-uk', label: 'How Much Does It Cost?' },
+      { href: '/how-long-does-it-take-to-change-your-name-uk', label: 'How Long Does It Take?' },
+      { href: '/documents-needed-for-name-change-uk', label: 'Documents Needed' },
+      { href: '/before-you-start', label: 'Before You Start' },
+    ],
+  },
+  {
+    heading: 'Update Your Records',
+    links: [
+      { href: '/how-to-change-name-on-passport-uk', label: 'Passport' },
+      { href: '/change-name-on-driving-licence-dvla-uk', label: 'Driving Licence (DVLA)' },
+      { href: '/what-is-account-name-on-bank-card-uk', label: 'Bank Account Name' },
+      { href: '/change-name-on-mortgage-after-marriage-uk', label: 'Mortgage' },
+      { href: '/change-name-on-property-deeds-land-registry-uk', label: 'Property Deeds' },
+      { href: '/how-to-change-name-on-birth-certificate-uk', label: 'Birth Certificate' },
+      { href: '/how-to-change-company-name-uk', label: 'Company Name' },
+    ],
+  },
+  {
+    heading: 'Your Situation',
+    links: [
+      { href: '/how-to-change-name-after-marriage-uk', label: 'After Marriage' },
+      { href: '/revert-to-maiden-name-uk', label: 'Revert to Maiden Name' },
+      { href: '/change-name-on-passport-after-divorce-uk', label: 'Passport After Divorce' },
+      { href: '/child-deed-poll-uk', label: 'Child Deed Poll' },
+      { href: '/how-to-change-surname-uk', label: 'Change Surname' },
+      { href: '/how-to-change-first-name-uk', label: 'Change First Name' },
+      { href: '/how-to-change-middle-name-uk', label: 'Change Middle Name' },
+    ],
+  },
+  {
+    heading: 'Rules & Law',
+    links: [
+      { href: '/name-change-laws-uk', label: 'UK Name Change Laws' },
+      { href: '/what-is-a-legal-name-uk', label: 'What Is a Legal Name?' },
+      { href: '/legal-name-meaning-first-name-surname-uk', label: 'Forename & Surname Meaning' },
+      { href: '/can-i-change-my-name-to-anything-uk', label: 'Can I Change It to Anything?' },
+      { href: '/deed-poll-vs-statutory-declaration-uk', label: 'Deed Poll vs Statutory Declaration' },
+      { href: '/change-name-without-deed-poll-uk', label: 'Without a Deed Poll' },
+      { href: '/deed-poll-apostille-uk', label: 'Deed Poll Apostille' },
+      { href: '/deed-poll-scotland-northern-ireland', label: 'Scotland & Northern Ireland' },
+    ],
+  },
+  {
+    heading: 'Help & Company',
+    links: [
+      { href: '/faq', label: 'FAQ' },
+      { href: '/my-deed-poll-was-rejected', label: 'Deed Poll Rejected?' },
+      { href: '/name-change-solicitor-uk', label: 'Do You Need a Solicitor?' },
+      { href: '/how-to-fill-in-d1-form-change-name', label: 'How to Fill In Form D1' },
+      { href: '/name-change', label: 'All Name Change Guides' },
+      { href: '/tax-money', label: 'UK Tax & Money Guides' },
+      { href: '/about-us', label: 'About Us' },
+      { href: '/contact-us', label: 'Contact Us' },
+    ],
+  },
+];
+
+const calculators: FooterLink[] = [
+  { href: '/calculate-stamp-duty-england', label: 'Stamp Duty Calculator' },
+  { href: '/uk-mortgage-affordability-calculator', label: 'Mortgage Affordability' },
+  { href: '/after-tax-pay-calculator-uk', label: 'After-Tax Pay' },
+  { href: '/national-insurance-and-tax-calculator-uk', label: 'National Insurance' },
+  { href: '/uk-working-days-calculator', label: 'Working Days' },
+];
+
+const linkClass =
+  'inline-block py-1 text-[#0b0c0c] underline-offset-2 hover:text-[#1d70b8] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#ffdd00]';
+
 export default function Footer() {
   return (
-    <footer className="bg-[#f3f2f1] text-[#0b0c0c] border-t-2 border-[#b1b4b6] mt-auto w-full">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        
-        {/* Main 4-Column Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          
-          {/* Col 1: Legal Tools */}
+    <footer className="bg-[#f3f2f1] text-[#0b0c0c] border-t-4 border-[#1d70b8] mt-auto w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14">
+        {/* Top: brand + primary tools */}
+        <div className="grid gap-8 lg:grid-cols-[1.2fr_2fr] pb-10 mb-10 border-b border-[#b1b4b6]">
           <div>
-            <h2 className="text-base font-bold uppercase tracking-wider text-gray-700 mb-4">
-              Legal Tools
-            </h2>
-            <ul className="space-y-2.5 text-sm">
-              <li>
-                <Link href="/change-name-in-uk-by-deedpoll" className="text-[#00703c] font-bold hover:underline">
-                  ⚡ Deed Poll Generator (Free Preview)
-                </Link>
-              </li>
-              <li>
-                <Link href="/name-change-letters-generator" className="text-[#1d70b8] font-bold hover:underline">
-                  ✉️ Name Change Letter Generator
-                </Link>
-              </li>
-              <li>
-                <Link href="/checklist" className="hover:underline font-medium">
-                  📋 Interactive Name Change Checklist
-                </Link>
-              </li>
-              <li>
-                <Link href="/free-deed-poll-template-uk" className="hover:underline font-medium">
-                  📄 Free Deed Poll Template (Word)
-                </Link>
-              </li>
-              <li>
-                <Link href="/calculate-stamp-duty-england" className="hover:underline text-gray-700">
-                  Stamp Duty Calculator England
-                </Link>
-              </li>
-              <li>
-                <Link href="/after-tax-pay-calculator-uk" className="hover:underline text-gray-700">
-                  After-Tax Pay Calculator UK
-                </Link>
-              </li>
-              <li>
-                <Link href="/national-insurance-and-tax-calculator-uk" className="hover:underline text-gray-700">
-                  National Insurance Calculator
-                </Link>
-              </li>
-              <li>
-                <Link href="/uk-working-days-calculator" className="hover:underline text-gray-700">
-                  Working Days Calculator UK
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 2: Legal Guides */}
-          <div>
-            <h2 className="text-base font-bold uppercase tracking-wider text-gray-700 mb-4">
-              Official Name Change Guides
-            </h2>
-            <ul className="space-y-2.5 text-sm text-gray-700">
-              <li>
-                <Link href="/how-to-change-your-name-uk" className="hover:underline">
-                  How to Change Your Name in the UK
-                </Link>
-              </li>
-              <li>
-                <Link href="/change-name-on-driving-licence-dvla-uk" className="hover:underline">
-                  Change Name on Driving Licence (DVLA)
-                </Link>
-              </li>
-              <li>
-                <Link href="/how-to-change-name-on-passport-uk" className="hover:underline">
-                  How to Change Name on UK Passport
-                </Link>
-              </li>
-              <li>
-                <Link href="/how-to-change-name-after-marriage-uk" className="hover:underline">
-                  Change Name After Marriage
-                </Link>
-              </li>
-              <li>
-                <Link href="/child-deed-poll-uk" className="hover:underline">
-                  Child Deed Poll & Consent Guide
-                </Link>
-              </li>
-              <li>
-                <Link href="/how-to-change-surname-uk" className="hover:underline">
-                  How to Change Your Surname
-                </Link>
-              </li>
-              <li>
-                <Link href="/deed-poll-vs-statutory-declaration-uk" className="hover:underline">
-                  Deed Poll vs Statutory Declaration
-                </Link>
-              </li>
-              <li>
-                <Link href="/how-much-does-it-cost-to-change-your-name-uk" className="hover:underline">
-                  How Much Does It Cost to Change Name?
-                </Link>
-              </li>
-              <li>
-                <Link href="/how-long-does-it-take-to-change-your-name-uk" className="hover:underline">
-                  How Long Does a Name Change Take?
-                </Link>
-              </li>
-              <li>
-                <Link href="/how-to-fill-in-d1-form-change-name" className="hover:underline">
-                  How to Fill In the D1 Form
-                </Link>
-              </li>
-              <li>
-                <Link href="/revert-to-maiden-name-uk" className="hover:underline">
-                  Revert to Your Maiden or Birth Name
-                </Link>
-              </li>
-              <li>
-                <Link href="/change-name-on-passport-after-divorce-uk" className="hover:underline">
-                  Passport Name Change After Divorce
-                </Link>
-              </li>
-              <li>
-                <Link href="/change-name-without-deed-poll-uk" className="hover:underline">
-                  Change Your Name Without a Deed Poll
-                </Link>
-              </li>
-              <li>
-                <Link href="/deed-poll-scotland-northern-ireland" className="hover:underline">
-                  Scotland & Northern Ireland Name Change
-                </Link>
-              </li>
-              <li>
-                <Link href="/documents-needed-for-name-change-uk" className="hover:underline">
-                  Documents Needed for a Name Change
-                </Link>
-              </li>
-              <li>
-                <Link href="/name-change-solicitor-uk" className="hover:underline">
-                  Do You Need a Solicitor?
-                </Link>
-              </li>
-              <li>
-                <Link href="/how-to-change-middle-name-uk" className="hover:underline">
-                  Change Your Middle Name
-                </Link>
-              </li>
-              <li>
-                <Link href="/can-i-change-my-name-to-anything-uk" className="hover:underline">
-                  Can I Change My Name to Anything?
-                </Link>
-              </li>
-              <li>
-                <Link href="/what-is-a-legal-name-uk" className="hover:underline">
-                  What Is a Legal Name?
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 3: Help & Support */}
-          <div>
-            <h2 className="text-base font-bold uppercase tracking-wider text-gray-700 mb-4">
-              Help & Information
-            </h2>
-            <ul className="space-y-2.5 text-sm text-gray-700">
-              <li>
-                <Link href="/faq" className="hover:underline">
-                  Frequently Asked Questions (FAQ)
-                </Link>
-              </li>
-              <li>
-                <Link href="/before-you-start" className="hover:underline">
-                  Before You Start
-                </Link>
-              </li>
-              <li>
-                <Link href="/my-deed-poll-was-rejected" className="hover:underline">
-                  What to Do If Deed Poll is Rejected
-                </Link>
-              </li>
-              <li>
-                <Link href="/how-to-change-company-name-uk" className="hover:underline">
-                  How to Change Company Name UK
-                </Link>
-              </li>
-              <li>
-                <Link href="/name-change" className="hover:underline font-medium">
-                  All Name Change Guides
-                </Link>
-              </li>
-              <li>
-                <Link href="/tax-money" className="hover:underline font-medium">
-                  UK Tax &amp; Money Guides
-                </Link>
-              </li>
-              <li>
-                <Link href="/about-us" className="hover:underline">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact-us" className="hover:underline">
-                  Contact Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/privacy-policy" className="hover:underline">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms-and-conditions" className="hover:underline">
-                  Terms & Conditions
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 4: Trust & Legal Guarantee */}
-          <div>
-            <h2 className="text-base font-bold uppercase tracking-wider text-gray-700 mb-4">
-              Legal Recognition
-            </h2>
-            <p className="text-xs text-gray-600 leading-relaxed mb-4">
-              Deed Poll UK generates legally compliant unenrolled Deed of Change of Name documents recognised throughout England, Wales, and Scotland under UK common law.
+            <p className="text-xl font-extrabold tracking-tight">Deed Poll UK</p>
+            <p className="mt-3 text-sm text-gray-700 leading-relaxed max-w-md">
+              Free guides and simple tools to help you change your name in the UK, from your deed poll to every record that needs updating.
             </p>
-            <div className="bg-white p-3.5 border border-gray-300 rounded text-xs space-y-1.5 font-medium">
-              <div className="flex items-center gap-1.5 text-[#00703c] font-bold">
-                <span>✓</span> Accepted by HM Passport Office
-              </div>
-              <div className="flex items-center gap-1.5 text-[#00703c] font-bold">
-                <span>✓</span> Accepted by DVLA & HMRC
-              </div>
-              <div className="flex items-center gap-1.5 text-[#00703c] font-bold">
-                <span>✓</span> Accepted by NHS & UK Banks
-              </div>
+            <ul className="mt-5 space-y-1.5 text-sm font-medium" aria-label="Accepted by">
+              {['HM Passport Office', 'DVLA and HMRC', 'NHS and most UK banks'].map((org) => (
+                <li key={org} className="flex items-center gap-2 text-[#00703c]">
+                  <span aria-hidden="true">✓</span>
+                  <span>Accepted by {org}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h2 className="text-sm font-bold uppercase tracking-wider text-gray-700 mb-4">Tools</h2>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {tools.map((t, i) => (
+                <li key={t.href}>
+                  <Link
+                    href={t.href}
+                    className={`block rounded-md px-4 py-3 text-sm font-bold border transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#ffdd00] ${
+                      i === 0
+                        ? 'bg-[#00703c] border-[#00703c] text-white hover:bg-[#005a30]'
+                        : 'bg-white border-gray-300 text-[#1d70b8] hover:border-[#1d70b8]'
+                    }`}
+                  >
+                    {t.label} <span aria-hidden="true">→</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Link groups */}
+        <nav aria-label="Footer" className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-10">
+          {groups.map((g) => (
+            <div key={g.heading}>
+              <h2 className="text-sm font-bold uppercase tracking-wider text-gray-700 mb-3 pb-2 border-b border-[#b1b4b6]">
+                {g.heading}
+              </h2>
+              <ul className="text-sm">
+                {g.links.map((l) => (
+                  <li key={l.href}>
+                    <Link href={l.href} className={linkClass}>
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
+          ))}
+        </nav>
 
+        {/* Calculators strip */}
+        <div className="mt-10 pt-6 border-t border-[#b1b4b6] flex flex-col md:flex-row md:items-center gap-x-6 gap-y-2">
+          <h2 className="text-sm font-bold uppercase tracking-wider text-gray-700 shrink-0">UK Calculators</h2>
+          <ul className="flex flex-wrap gap-x-5 text-sm">
+            {calculators.map((c) => (
+              <li key={c.href}>
+                <Link href={c.href} className={linkClass}>
+                  {c.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
-        
-        {/* Bottom copyright */}
-        <div className="border-t border-[#b1b4b6] pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-600 gap-4">
-          <p>
-            © {new Date().getFullYear()} Deed Poll UK (deedpolluk.uk). Free Name Change Guides & Tools for British Citizens.
+
+        {/* Disclaimer + legal bar */}
+        <div className="mt-10 pt-6 border-t border-[#b1b4b6] space-y-4 text-xs text-gray-600">
+          <p className="leading-relaxed max-w-4xl">
+            Deed Poll UK is an independent information service. We are not a law firm and are not affiliated with HM Government. Our guides are general information, not legal advice. Always check requirements on GOV.UK or with the organisation concerned.
           </p>
-          <div className="flex gap-4">
-            <Link href="/terms-and-conditions" className="hover:underline">Terms of Service</Link>
-            <Link href="/privacy-policy" className="hover:underline">Privacy Policy</Link>
-            <Link href="/contact-us" className="hover:underline">Support</Link>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <p>© {new Date().getFullYear()} Deed Poll UK (deedpolluk.uk). All rights reserved.</p>
+            <ul className="flex flex-wrap gap-x-5 gap-y-1">
+              <li><Link href="/terms-and-conditions" className="underline underline-offset-2 hover:text-[#1d70b8]">Terms and Conditions</Link></li>
+              <li><Link href="/privacy-policy" className="underline underline-offset-2 hover:text-[#1d70b8]">Privacy Policy</Link></li>
+              <li><Link href="/contact-us" className="underline underline-offset-2 hover:text-[#1d70b8]">Contact</Link></li>
+            </ul>
           </div>
         </div>
-
       </div>
     </footer>
   );

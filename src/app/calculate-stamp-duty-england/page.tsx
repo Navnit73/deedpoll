@@ -132,7 +132,7 @@ export default function CalculateStampDutyEnglandPage() {
       </section>
 
       {/* EDUCATIONAL & SEO CONTENT */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-base sm:text-lg">
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-base sm:text-lg">
         {/* QUICK ANSWER */}
         <div className="bg-blue-50 border-l-4 border-[#1d70b8] p-5 mb-10 rounded-r-lg">
           <h2 className="text-xl font-bold text-[#0b0c0c] mb-2">Stamp duty at a glance</h2>

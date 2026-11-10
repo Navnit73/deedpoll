@@ -29,7 +29,7 @@ export default function Page() {
     <main className="min-h-screen bg-white text-gray-900">
 
       {/* ── Page wrapper ── */}
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 lg:py-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 lg:py-20">
 
         {/* ── Breadcrumb ── */}
         <nav aria-label="Breadcrumb" className="mb-6 text-sm text-gray-500">

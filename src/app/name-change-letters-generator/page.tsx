@@ -735,7 +735,7 @@ export default function LetterGeneratorPage() {
         />
 
         {/* Informational SEO Guide & FAQ */}
-        <article className="mt-12 max-w-3xl mx-auto text-gray-800 space-y-6">
+        <article className="mt-12 max-w-6xl mx-auto text-gray-800 space-y-6">
           <h2 className="text-2xl sm:text-3xl font-bold text-[#0b0c0c] border-b-2 border-gray-100 pb-3">
             How to Write a Name Change Letter in 3 Steps
           </h2>

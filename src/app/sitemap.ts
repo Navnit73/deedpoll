@@ -61,6 +61,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { route: '/change-name-on-passport-after-divorce-uk', priority: 0.8 },
     { route: '/change-name-without-deed-poll-uk', priority: 0.8 },
     { route: '/deed-poll-scotland-northern-ireland', priority: 0.8 },
+    { route: '/legal-name-meaning-first-name-surname-uk', priority: 0.8 },
+    { route: '/deed-poll-apostille-uk', priority: 0.8 },
+    { route: '/deed-poll-online-uk', priority: 0.8 },
+    { route: '/change-name-on-property-deeds-land-registry-uk', priority: 0.8 },
+    { route: '/name-change-laws-uk', priority: 0.8 },
+    { route: '/change-name-on-mortgage-after-marriage-uk', priority: 0.8 },
+    { route: '/what-is-account-name-on-bank-card-uk', priority: 0.8 },
   ].map(({ route, priority }) => ({
     url: `${baseUrl}${route}`,
     lastModified: currentDate,

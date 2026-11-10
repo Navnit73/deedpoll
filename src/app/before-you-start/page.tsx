@@ -14,7 +14,7 @@ export const metadata = {
 
 export default function BeforeYouStart() {
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
       <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-8">Checklist</h1>
       <p className="text-xl mb-8">
         Before you <Link href="/change-name-in-uk-by-deedpoll" className="text-[#1d70b8] underline underline-offset-4 decoration-2 hover:text-[#003078]">create your Deed Poll UK</Link>, here are a few things you should check:

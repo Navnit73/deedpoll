@@ -76,7 +76,7 @@ export default function NationalInsuranceTaxCalculatorPage() {
       </section>
 
       {/* CONTENT & SEO KEYWORD OPTIMIZATION */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-base sm:text-lg">
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-base sm:text-lg">
         <h2 className="text-2xl sm:text-3xl font-bold text-[#0b0c0c] mb-4">
           Understanding UK National Insurance & Tax Deductions
         </h2>

@@ -177,7 +177,7 @@ export default function DeedPollForm({ embedded = false, heading = 'Create your 
   const linkClassName = 'text-[#1d70b8] underline underline-offset-2 hover:text-[#003078]';
 
   return (
-    <div id="create-deed-poll" className={embedded ? 'scroll-mt-24' : 'max-w-4xl mx-auto px-4 sm:px-6 py-8 md:py-12'}>
+    <div id="create-deed-poll" className={embedded ? 'scroll-mt-24' : 'max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12'}>
       {embedded ? (
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-2">{heading}</h2>
       ) : (

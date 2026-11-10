@@ -5,7 +5,7 @@ const slug = 'what-is-a-legal-name-uk';
 const description =
   'What counts as your legal name in the UK? Learn whether it includes middle names, which document proves it, what to write on forms, and how to officially change it.';
 
-export const metadata = guideMetadata(slug, "What Is a Legal Name in the UK? Meaning & Examples", description);
+export const metadata = guideMetadata(slug, "What Is Your Legal Name? UK Meaning, Full Legal Name & Examples", description);
 
 const link = 'text-[#1d70b8] underline underline-offset-2 hover:text-[#003078]';
 
@@ -58,6 +58,7 @@ export default function Page() {
         { href: '/how-to-legally-change-your-name-uk', title: 'How to Legally Change Your Name', note: 'Step-by-step process.' },
         { href: '/can-i-change-my-name-to-anything-uk', title: 'Can I Change My Name to Anything?', note: 'The rules on new names.' },
         { href: '/how-to-change-name-on-birth-certificate-uk', title: 'Change a Name on a Birth Certificate', note: 'When it’s possible.' },
+        { href: '/legal-name-meaning-first-name-surname-uk', title: 'Legal First Name & Surname Meaning', note: 'What to write on forms.' },
       ]}
       formHeading="Make your new name your legal name"
       formIntro={<>Your deed poll becomes the official link between your old and new legal names. Enter both in full below.</>}
