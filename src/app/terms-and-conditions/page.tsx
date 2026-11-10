@@ -34,7 +34,7 @@ export default function TermsAndConditions() {
 
         <h2 className="text-2xl font-bold mt-8 mb-4">3. Price, Payment and Refunds</h2>
         <p>
-          Previewing your deed poll is free. Downloading the finished, unwatermarked deed poll PDF costs £9.99. This is a one-off payment, not a subscription. The price shown at checkout is the total you pay.
+          Previewing your deed poll is free. Downloading the finished, unwatermarked deed poll PDF costs £7.99. This is a one-off payment, not a subscription. The price shown at checkout is the total you pay.
         </p>
         <p>
           Payment is processed by PayPal. We do not see or store your card or PayPal account details.

@@ -12,7 +12,7 @@ interface ShareWidgetProps {
 
 export default function ShareWidget({
   title = "UK Deed Poll Generator — Free Preview & Instant PDF",
-  description = "Create a legally valid UK deed poll online in minutes. Preview it free, then download the PDF for £9.99. Accepted by HM Passport Office, DVLA, and banks.",
+  description = "Create a legally valid UK deed poll online in minutes. Preview it free, then download the PDF for £7.99. Accepted by HM Passport Office, DVLA, and banks.",
   url,
   className = "",
   compact = false,

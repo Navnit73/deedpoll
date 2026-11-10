@@ -75,7 +75,7 @@ const comparison = [
 
 const costs = [
   ["DIY deed poll from a template", "Free", "You print and check the wording yourself"],
-  ["Online deed poll service", "From £9.99", "Correct wording, formatted PDF, ready to sign"],
+  ["Online deed poll service", "From £7.99", "Correct wording, formatted PDF, ready to sign"],
   ["Solicitor", "£50 to £200+", "Useful for complex cases, but not required"],
   ["High Court enrolment", "£53.05", "Optional; adds the change to the public record"],
 ];
@@ -475,7 +475,7 @@ export default function Page() {
           <p className="text-lg font-semibold mb-2">Ready to change your name?</p>
           <p className="mb-4 text-gray-800">
             Create a correctly worded deed poll in minutes. Preview it free, then download your PDF for a
-            one-off £9.99, with no subscription.
+            one-off £7.99, with no subscription.
           </p>
           <Link
             href="/change-name-in-uk-by-deedpoll"

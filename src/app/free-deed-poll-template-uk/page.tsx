@@ -136,7 +136,7 @@ Occupation: [SECOND WITNESS OCCUPATION]`;
             Free UK Deed Poll Template (Copy into Word)
           </h1>
           <p className="mt-4 text-lg sm:text-xl text-gray-700 leading-relaxed">
-            Looking for a <strong>free deed poll template</strong> in the UK? Copy the legally validated wording below for free, or use our instant PDF generator to create your ready-to-print deed poll in 2 minutes (free preview, £9.99 to download).
+            Looking for a <strong>free deed poll template</strong> in the UK? Copy the legally validated wording below for free, or use our instant PDF generator to create your ready-to-print deed poll in 2 minutes (free preview, £7.99 to download).
           </p>
         </div>
 
@@ -148,7 +148,7 @@ Occupation: [SECOND WITNESS OCCUPATION]`;
             </span>
             <h2 className="text-2xl font-bold text-[#0b0c0c]">Want an instantly formatted PDF?</h2>
             <p className="text-sm sm:text-base text-gray-700 mt-1 max-w-xl">
-              Skip copy-pasting into Word. Our automated system formats the legal text, validates names, and shows you a free preview. Download the finished official PDF for a one-off £9.99.
+              Skip copy-pasting into Word. Our automated system formats the legal text, validates names, and shows you a free preview. Download the finished official PDF for a one-off £7.99.
             </p>
           </div>
           <Link

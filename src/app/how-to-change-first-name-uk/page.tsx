@@ -145,7 +145,7 @@ const faqs = [
   },
   {
     q: "How much does it cost to change your first name?",
-    a: "Writing your own deed poll is free. Our online deed poll costs £9.99. Changing the name on your driving licence is free, but you pay the normal fee for a new passport.",
+    a: "Writing your own deed poll is free. Our online deed poll costs £7.99. Changing the name on your driving licence is free, but you pay the normal fee for a new passport.",
   },
   {
     q: "Do I need a solicitor to change my first name?",
@@ -380,7 +380,7 @@ export default function Page() {
           </h2>
           <ul className="list-disc pl-5 space-y-1.5 text-gray-700 mb-4">
             <li><strong>DIY deed poll:</strong> free, ready the same day.</li>
-            <li><strong>Our online deed poll:</strong> £9.99, ready the same day.</li>
+            <li><strong>Our online deed poll:</strong> £7.99, ready the same day.</li>
             <li><strong>Driving licence update:</strong> free, usually up to three weeks.</li>
             <li><strong>New passport:</strong> the standard passport fee, allow about three weeks.</li>
             <li><strong>Bank accounts:</strong> free, usually a few days.</li>
@@ -585,7 +585,7 @@ export default function Page() {
             Create your deed poll in minutes
           </h2>
           <p className="text-sm sm:text-base text-gray-600 max-w-md mx-auto mb-7 leading-relaxed">
-            Change your first name, middle name, surname or all three in one document for £9.99. Sign it today and start using your new name straight away.
+            Change your first name, middle name, surname or all three in one document for £7.99. Sign it today and start using your new name straight away.
           </p>
           <Link
             href="/change-name-in-uk-by-deedpoll"

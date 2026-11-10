@@ -8,8 +8,8 @@ import ShareWidget from '@/components/ShareWidget';
 import { PaymentButton } from '@/components/payment/PaymentButton';
 import { PaymentState } from '@/types/payment';
 
-const PRICE_PENCE = 999;
-const PRICE_LABEL = '£9.99';
+const PRICE_PENCE = 799;
+const PRICE_LABEL = '£7.99';
 const PAID_STORAGE_KEY = 'deedpoll_paid_order';
 
 type PaidOrder = { orderId: string; oldName: string };
@@ -46,7 +46,6 @@ export default function PreviewPage() {
   const [hash, setHash] = useState('');
   const [isPaid, setIsPaid] = useState(false);
   const [orderId, setOrderId] = useState('');
-  const [consented, setConsented] = useState(false);
   const [submissionData, setSubmissionData] = useState<DeedPollSubmission | null>(null);
 
   useEffect(() => {
@@ -217,27 +216,27 @@ export default function PreviewPage() {
                 ))}
               </ul>
 
-              <label className={`flex items-start gap-2 mb-3 p-2 text-sm text-gray-800 cursor-pointer border-2 ${consented ? 'border-gray-200' : 'border-[#ffdd00] bg-[#fffbe6]'}`}>
-                <input
-                  type="checkbox"
-                  checked={consented}
-                  onChange={(e) => setConsented(e.target.checked)}
-                  className="mt-0.5 w-5 h-5 flex-shrink-0"
-                />
-                <span>
-                  My details are correct. I want instant download and understand I lose my 14-day right to cancel.{" "}
-                  <Link href="/terms-and-conditions" className="text-[#1d70b8] underline underline-offset-2">Terms</Link>
-                </span>
-              </label>
+              <div className="flex items-start gap-3 mb-3 p-3 border-2 border-[#00703c] bg-[#e6f4ea]" role="note">
+                <span className="text-2xl leading-none text-[#00703c]" aria-hidden="true">🛡️</span>
+                <p className="text-sm text-gray-900">
+                  <strong className="block text-base text-[#00703c]">100% Refund Guarantee</strong>
+                  If your PDF is faulty or not as described, we&apos;ll fix it or refund you in full.
+                </p>
+              </div>
+
               <PaymentButton
                 amount={PRICE_PENCE}
                 description="UK Deed Poll PDF download"
-                disabled={!consented}
                 onSuccess={handlePaymentSuccess}
               />
 
+              <p className="mt-3 text-sm text-gray-800 text-center">
+                Support &amp; refunds:{" "}
+                <a href="mailto:support@deedpolluk.uk" className="font-bold text-[#1d70b8] underline underline-offset-2">support@deedpolluk.uk</a>
+              </p>
+
               <details className="mt-3 text-sm text-gray-700">
-                <summary className="cursor-pointer font-bold text-[#1d70b8]">Refund policy</summary>
+                <summary className="cursor-pointer font-bold text-[#00703c]">100% refund guarantee – policy details</summary>
                 <p className="mt-2">
                   If your PDF is faulty or not as described, we&apos;ll fix or replace it, or refund you in full (Consumer
                   Rights Act 2015). No refunds for a change of mind once downloaded.{" "}

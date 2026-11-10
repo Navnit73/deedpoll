@@ -90,7 +90,7 @@ const nameRules = [
 
 const costs = [
   ["Write your own deed poll", "Free", "Same day"],
-  ["Online deed poll (Deed Poll UK)", "£9.99", "Same day"],
+  ["Online deed poll (Deed Poll UK)", "£7.99", "Same day"],
   ["Statutory declaration", "Solicitor's fee, usually from £5", "1–2 days"],
   ["Solicitor-drafted deed poll", "Often £50 or more", "A few days"],
   ["Enrolled deed poll (optional)", "Court fee plus Gazette notice", "Several weeks"],
@@ -662,7 +662,7 @@ export default function Page() {
             Create your deed poll in minutes
           </h2>
           <p className="text-sm sm:text-base text-gray-600 max-w-md mx-auto mb-7 leading-relaxed">
-            Answer a few questions and download a correctly formatted deed poll for £9.99. Sign it today and use it with your bank, the DVLA and HM Passport Office.
+            Answer a few questions and download a correctly formatted deed poll for £7.99. Sign it today and use it with your bank, the DVLA and HM Passport Office.
           </p>
           <Link
             href="/change-name-in-uk-by-deedpoll"
