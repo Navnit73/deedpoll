@@ -4,9 +4,9 @@ import WorkingDaysCalculator from '@/components/WorkingDaysCalculator';
 import StructuredData from '@/components/StructuredData';
 
 export const metadata: Metadata = {
-  title: 'UK Working Days Calculator — Business Days & Bank Holidays 2025/2026',
+  title: { absolute: 'UK Working Days Calculator: Business Days Between Dates (2026)' },
   description:
-    'Calculate working days (business days) between two dates in the UK or add/subtract business days. Includes official bank holiday schedules for England, Scotland & Northern Ireland.',
+    'Free UK working days calculator for 2026: count business days between two dates or add working days. Bank holidays for England, Scotland & Northern Ireland.',
   alternates: {
     canonical: '/uk-working-days-calculator',
     languages: {
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'UK Working Days Calculator — Business Days & Bank Holidays 2025/2026',
+    title: 'UK Working Days Calculator: Business Days Between Dates (2026)',
     description:
       'Free UK working days (business days) calculator. Calculate business days between dates or target completion dates accounting for weekends and UK Bank Holidays.',
     url: 'https://deedpolluk.uk/uk-working-days-calculator',
@@ -277,7 +277,7 @@ export default function UkWorkingDaysCalculatorPage() {
               '@type': 'WebPage',
               '@id': 'https://deedpolluk.uk/uk-working-days-calculator/#webpage',
               url: 'https://deedpolluk.uk/uk-working-days-calculator',
-              name: 'UK Working Days Calculator — Business Days & Bank Holidays 2025/2026',
+              name: 'UK Working Days Calculator: Business Days Between Dates (2026)',
               description:
                 'Free UK working days calculator. Calculate business days between dates or target completion dates considering bank holidays in England, Scotland, and Northern Ireland.',
               inLanguage: 'en-GB',

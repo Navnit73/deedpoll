@@ -8,17 +8,17 @@ export const metadata = {
       "x-default": "/how-to-change-surname-uk",
     },
   },
-  title: "How to Change Your Surname in the UK | Complete 2026 Guide",
+  title: { absolute: "How to Change Your Surname in the UK (2026): Step-by-Step" },
   description:
-    "Find out how to change your surname in the UK — legally and quickly. Covers deed polls, marriage, divorce, and every document to update. No solicitor needed.",
+    "Change your surname after marriage, divorce or by choice. Which document you need, how long it takes and every place to update. No solicitor needed.",
   openGraph: {
-    title: "How to Change Your Surname in the UK | Complete 2026 Guide",
-    description: "Find out how to change your surname in the UK — legally and quickly. Covers deed polls, marriage, divorce, and every document to update. No solicitor needed.",
+    title: "How to Change Your Surname in the UK (2026): Step-by-Step",
+    description: "Change your surname after marriage, divorce or by choice. Which document you need, how long it takes and every place to update. No solicitor needed.",
     url: "https://deedpolluk.uk/how-to-change-surname-uk",
   },
   twitter: {
-    title: "How to Change Your Surname in the UK | Complete 2026 Guide",
-    description: "Find out how to change your surname in the UK — legally and quickly. Covers deed polls, marriage, divorce, and every document to update. No solicitor needed.",
+    title: "How to Change Your Surname in the UK (2026): Step-by-Step",
+    description: "Change your surname after marriage, divorce or by choice. Which document you need, how long it takes and every place to update. No solicitor needed.",
   }
 };
 

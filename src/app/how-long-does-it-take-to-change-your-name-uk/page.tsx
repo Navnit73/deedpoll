@@ -5,7 +5,7 @@ const slug = 'how-long-does-it-take-to-change-your-name-uk';
 const description =
   'Your name changes legally the day you sign your deed poll. See how long the passport, DVLA, bank and HMRC updates take, and the order that gets you finished fastest.';
 
-export const metadata = guideMetadata(slug, "How Long Does a Name Change Take? UK Timeline", description);
+export const metadata = guideMetadata(slug, "How Long Does a Name Change Take in the UK? (Timeline)", description);
 
 const link = 'text-[#1d70b8] underline underline-offset-2 hover:text-[#003078]';
 

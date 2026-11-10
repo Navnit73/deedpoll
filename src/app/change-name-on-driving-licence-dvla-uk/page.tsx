@@ -4,9 +4,9 @@ import StructuredData from '@/components/StructuredData';
 import ShareWidget from '@/components/ShareWidget';
 
 export const metadata: Metadata = {
-  title: "How to Change Name on Driving Licence UK (DVLA Guide & Free D1 Form)",
+  title: { absolute: "Change Name on UK Driving Licence: D1 Form Walkthrough (2026)" },
   description:
-    "Complete step-by-step guide to changing your name on your UK driving licence with DVLA. Postal D1 form instructions, V5C logbook updates, and required documents.",
+    "How to change your name on your driving licence with DVLA. Fill in the D1 form box by box, documents you need, how long it takes and what it costs.",
   alternates: {
     canonical: "/change-name-on-driving-licence-dvla-uk",
     languages: {
@@ -15,9 +15,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "How to Change Name on Driving Licence UK (DVLA Guide & Free D1 Form)",
+    title: "Change Name on UK Driving Licence: D1 Form Walkthrough (2026)",
     description:
-      "Complete step-by-step guide to changing your name on your UK driving licence with DVLA. Postal D1 form instructions, V5C logbook updates, and required documents.",
+      "How to change your name on your driving licence with DVLA. Fill in the D1 form box by box, documents you need, how long it takes and what it costs.",
     url: "https://deedpolluk.uk/change-name-on-driving-licence-dvla-uk",
     type: "article",
     locale: "en_GB",

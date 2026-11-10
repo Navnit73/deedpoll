@@ -8,17 +8,17 @@ export const metadata = {
       "x-default": "/how-much-does-it-cost-to-change-your-name-uk",
     },
   },
-  title: "How Much Does It Cost to Change Your Name UK | Deed Poll UK",
+  title: { absolute: "How Much Does It Cost to Change Your Name in the UK? (From £0)" },
   description:
-    "Learn how much does it cost to change your name uk. Guide covers: how much does a name change cost uk, how much is it to change your name uk, and more.",
+    "Changing your name in the UK costs £0 if you do it yourself, or £7.99 for a ready-made deed poll PDF. Full cost breakdown including passport, DVLA and enrolment.",
   openGraph: {
-    title: "How Much Does It Cost to Change Your Name UK | Deed Poll UK",
-    description: "Learn how much does it cost to change your name uk. Guide covers: how much does a name change cost uk, how much is it to change your name uk, and more.",
+    title: "How Much Does It Cost to Change Your Name in the UK? (From £0)",
+    description: "Changing your name in the UK costs £0 if you do it yourself, or £7.99 for a ready-made deed poll PDF. Full cost breakdown including passport, DVLA and enrolment.",
     url: "https://deedpolluk.uk/how-much-does-it-cost-to-change-your-name-uk",
   },
   twitter: {
-    title: "How Much Does It Cost to Change Your Name UK | Deed Poll UK",
-    description: "Learn how much does it cost to change your name uk. Guide covers: how much does a name change cost uk, how much is it to change your name uk, and more.",
+    title: "How Much Does It Cost to Change Your Name in the UK? (From £0)",
+    description: "Changing your name in the UK costs £0 if you do it yourself, or £7.99 for a ready-made deed poll PDF. Full cost breakdown including passport, DVLA and enrolment.",
   }
 };
 

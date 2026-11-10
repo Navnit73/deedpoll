@@ -8,17 +8,17 @@ export const metadata = {
       "x-default": "/how-to-change-name-after-marriage-uk",
     },
   },
-  title: "How to Change Your Name After Marriage in the UK | 2026 Guide",
+  title: { absolute: "Change Name After Marriage UK: Passport, DVLA & Bank Steps" },
   description:
-    "Step-by-step guide to changing your name after marriage in the UK. Which documents to use, what to update first, how long it takes, and when you need a deed poll.",
+    "Married? You may not need a deed poll. The documents each organisation accepts, what to update first and how long it takes: passport, DVLA, bank, HMRC.",
   openGraph: {
-    title: "How to Change Your Name After Marriage in the UK | 2026 Guide",
-    description: "Step-by-step guide to changing your name after marriage in the UK. Which documents to use, what to update first, how long it takes, and when you need a deed poll.",
+    title: "Change Name After Marriage UK: Passport, DVLA & Bank Steps",
+    description: "Married? You may not need a deed poll. The documents each organisation accepts, what to update first and how long it takes: passport, DVLA, bank, HMRC.",
     url: "https://deedpolluk.uk/how-to-change-name-after-marriage-uk",
   },
   twitter: {
-    title: "How to Change Your Name After Marriage in the UK | 2026 Guide",
-    description: "Step-by-step guide to changing your name after marriage in the UK. Which documents to use, what to update first, how long it takes, and when you need a deed poll.",
+    title: "Change Name After Marriage UK: Passport, DVLA & Bank Steps",
+    description: "Married? You may not need a deed poll. The documents each organisation accepts, what to update first and how long it takes: passport, DVLA, bank, HMRC.",
   }
 };
 

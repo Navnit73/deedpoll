@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
 const PAGE_URL = "https://deedpolluk.uk/how-to-legally-change-your-name-uk";
-const PAGE_TITLE = "How to Legally Change Your Name in the UK (2026 Guide)";
+const PAGE_TITLE = "How to Legally Change Your Name in the UK: Fast, From £0";
 const PAGE_DESCRIPTION =
-  "Learn how to legally change your name in the UK. UK name change laws explained, every legal method, step-by-step deed poll instructions and a checklist of who to tell.";
+  "Yes, you can legally change your name in the UK without a solicitor. Every method compared, deed poll steps, cost and a checklist of who to tell.";
 
 export const metadata = {
   alternates: {
@@ -13,7 +13,7 @@ export const metadata = {
       "x-default": "/how-to-legally-change-your-name-uk",
     },
   },
-  title: PAGE_TITLE,
+  title: { absolute: PAGE_TITLE },
   description: PAGE_DESCRIPTION,
   openGraph: {
     title: PAGE_TITLE,

@@ -9,17 +9,17 @@ export const metadata = {
       "x-default": "/how-to-change-last-name-uk",
     },
   },
-  title: "How to Change Your Last Name in the UK | Complete 2026 Guide",
+  title: { absolute: "How to Change Your Last Name in the UK (2026): Quick Guide" },
   description:
-    "Learn how to change your last name in the UK — whether by deed poll, after marriage, or to revert to your maiden name after divorce or separation. Step-by-step guide.",
+    "Change your last name after marriage, divorce or by deed poll. Which document you need, how long it takes and what to update. No solicitor needed.",
   openGraph: {
-    title: "How to Change Your Last Name in the UK | Complete 2026 Guide",
-    description: "Learn how to change your last name in the UK — whether by deed poll, after marriage, or to revert to your maiden name after divorce or separation. Step-by-step guide.",
+    title: "How to Change Your Last Name in the UK (2026): Quick Guide",
+    description: "Change your last name after marriage, divorce or by deed poll. Which document you need, how long it takes and what to update. No solicitor needed.",
     url: "https://deedpolluk.uk/how-to-change-last-name-uk",
   },
   twitter: {
-    title: "How to Change Your Last Name in the UK | Complete 2026 Guide",
-    description: "Learn how to change your last name in the UK — whether by deed poll, after marriage, or to revert to your maiden name after divorce or separation. Step-by-step guide.",
+    title: "How to Change Your Last Name in the UK (2026): Quick Guide",
+    description: "Change your last name after marriage, divorce or by deed poll. Which document you need, how long it takes and what to update. No solicitor needed.",
   }
 };
 

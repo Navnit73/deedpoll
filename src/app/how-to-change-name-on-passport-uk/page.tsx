@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 const PAGE_URL = "https://deedpolluk.uk/how-to-change-name-on-passport-uk";
-const PAGE_TITLE = "How to Change Your Name on a UK Passport (2026): Cost, Time & Documents";
+const PAGE_TITLE = "Change Name on UK Passport (2026): Documents, Fee & Time";
 const PAGE_DESCRIPTION =
-  "Change your name on your UK passport after marriage, divorce or deed poll. See the documents you need, the £102 fee, processing times and how to apply online.";
+  "Name changed? See exactly which documents HM Passport Office accepts (marriage certificate, deed poll, divorce), the £102 fee and how long it takes. Step-by-step.";
 
 export const metadata: Metadata = {
   alternates: {
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
       "x-default": "/how-to-change-name-on-passport-uk",
     },
   },
-  title: PAGE_TITLE,
+  title: { absolute: PAGE_TITLE },
   description: PAGE_DESCRIPTION,
   openGraph: {
     title: PAGE_TITLE,

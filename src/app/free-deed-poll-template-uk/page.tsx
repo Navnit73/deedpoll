@@ -4,9 +4,9 @@ import StructuredData from '@/components/StructuredData';
 import ShareWidget from '@/components/ShareWidget';
 
 export const metadata: Metadata = {
-  title: "Free Deed Poll Template UK (Copy into Word) — Official Legal Wording",
+  title: { absolute: "Free Deed Poll Template UK: Printable PDF & Word Wording" },
   description:
-    "Copy our free UK deed poll template wording into Word and print it yourself. Fully compliant with HM Passport Office, DVLA, and UK banks. Complete wording & witness guide.",
+    "Free unenrolled deed poll template UK: copy the wording into Word or print it, plus witness rules. Accepted by Passport Office, DVLA and banks. Or get a formatted PDF for £7.99.",
   alternates: {
     canonical: "/free-deed-poll-template-uk",
     languages: {
@@ -15,9 +15,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Free Deed Poll Template UK (Copy into Word) — Official Legal Wording",
+    title: "Free Deed Poll Template UK: Printable PDF & Word Wording",
     description:
-      "Copy our free UK deed poll template wording into Word and print it yourself. Fully compliant with HM Passport Office, DVLA, and UK banks. Complete wording & witness guide.",
+      "Free unenrolled deed poll template UK: copy the wording into Word or print it, plus witness rules. Accepted by Passport Office, DVLA and banks. Or get a formatted PDF for £7.99.",
     url: "https://deedpolluk.uk/free-deed-poll-template-uk",
     type: "article",
     locale: "en_GB",

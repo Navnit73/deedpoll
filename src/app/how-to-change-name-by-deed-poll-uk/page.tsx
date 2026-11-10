@@ -3,9 +3,9 @@ import Link from 'next/link';
 import StructuredData from '@/components/StructuredData';
 
 const PAGE_URL = "https://deedpolluk.uk/how-to-change-name-by-deed-poll-uk";
-const PAGE_TITLE = "How to Change Your Name by Deed Poll UK (2026): Free & Online Options";
+const PAGE_TITLE = "Change Name by Deed Poll UK (2026): Free Template or £7.99 PDF";
 const PAGE_DESCRIPTION =
-  "Change your name by deed poll in the UK in 4 steps. Learn the wording, witness rules, unenrolled vs enrolled deed polls, costs, and how to update your passport and records.";
+  "Change your name by deed poll in 4 steps. Copy a free template or get a ready-made PDF for £7.99 with a free preview. Accepted by Passport Office, DVLA and banks.";
 
 export const metadata: Metadata = {
   alternates: {
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
       "x-default": "/how-to-change-name-by-deed-poll-uk",
     },
   },
-  title: PAGE_TITLE,
+  title: { absolute: PAGE_TITLE },
   description: PAGE_DESCRIPTION,
   openGraph: {
     title: PAGE_TITLE,

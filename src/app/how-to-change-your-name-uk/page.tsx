@@ -10,17 +10,17 @@ export const metadata = {
       "x-default": "/how-to-change-your-name-uk",
     },
   },
-  title: "How to Change Your Name in the UK | Complete 2026 Guide",
+  title: { absolute: "How to Change Your Name in the UK: Free Steps for 2026" },
   description:
-    "Learn how to change your name in the UK quickly and legally. Step-by-step guide covering deed polls, statutory declarations, and every document to update. Start today.",
+    "Change your name legally in the UK from £0. Deed poll or marriage certificate: which you need, how long it takes and who to tell first.",
   openGraph: {
-    title: "How to Change Your Name in the UK | Complete 2026 Guide",
-    description: "Learn how to change your name in the UK quickly and legally. Step-by-step guide covering deed polls, statutory declarations, and every document to update. Start today.",
+    title: "How to Change Your Name in the UK: Free Steps for 2026",
+    description: "Change your name legally in the UK from £0. Deed poll or marriage certificate: which you need, how long it takes and who to tell first.",
     url: "https://deedpolluk.uk/how-to-change-your-name-uk",
   },
   twitter: {
-    title: "How to Change Your Name in the UK | Complete 2026 Guide",
-    description: "Learn how to change your name in the UK quickly and legally. Step-by-step guide covering deed polls, statutory declarations, and every document to update. Start today.",
+    title: "How to Change Your Name in the UK: Free Steps for 2026",
+    description: "Change your name legally in the UK from £0. Deed poll or marriage certificate: which you need, how long it takes and who to tell first.",
   }
 };
 
