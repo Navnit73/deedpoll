@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/preview/'],
+        disallow: ['/preview/', '/premium-access/'],
       },
     ],
     sitemap: 'https://deedpolluk.uk/sitemap.xml',

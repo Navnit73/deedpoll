@@ -1,5 +1,6 @@
 User-Agent: *
 Allow: /
 Disallow: /preview/
+Disallow: /premium-access/
 
 Sitemap: https://deedpolluk.uk/sitemap.xml

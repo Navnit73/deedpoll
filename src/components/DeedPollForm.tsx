@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState, useEffect, FormEvent, ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
+import type { DeedPollSubmission } from '@/lib/generateDeedPoll';
 
 function Field({ id, label, hint, errors, children }: { id: string, label: string, hint?: ReactNode, errors: { message: string }[], children: ReactNode }) {
   return (
@@ -34,9 +35,17 @@ type DeedPollFormProps = {
   embedded?: boolean;
   heading?: string;
   intro?: ReactNode;
+  onSuccess?: (data: DeedPollSubmission) => void;
+  submitLabel?: string;
 };
 
-export default function DeedPollForm({ embedded = false, heading = 'Create your deed poll', intro }: DeedPollFormProps) {
+export default function DeedPollForm({
+  embedded = false,
+  heading = 'Create your deed poll',
+  intro,
+  onSuccess,
+  submitLabel = 'Create Deed Poll →',
+}: DeedPollFormProps) {
   const router = useRouter();
   
   const [formData, setFormData] = useState({
@@ -161,12 +170,17 @@ export default function DeedPollForm({ embedded = false, heading = 'Create your 
 
     setIsGenerating(true);
 
-    const dataToSave = { ...formData };
-    delete (dataToSave as any).skipValidation;
+    const { skipValidation: _skipValidation, ...dataToSave } = formData;
     
     // Save to sessionStorage
     sessionStorage.setItem('deedpoll_data', JSON.stringify(dataToSave));
     
+    if (onSuccess) {
+      onSuccess(dataToSave);
+      setIsGenerating(false);
+      return;
+    }
+
     // Push using router
     router.push(`/preview`);
   };
@@ -269,7 +283,7 @@ export default function DeedPollForm({ embedded = false, heading = 'Create your 
         )}
 
         <button type="submit" disabled={isGenerating} className="bg-[#00703c] hover:bg-[#005a30] text-white font-bold py-3 px-10 shadow-[0_3px_0_0_#002d18] active:shadow-none active:translate-y-[3px] transition-all text-lg w-full sm:w-auto cursor-pointer disabled:opacity-50">
-          {isGenerating ? 'Generating...' : 'Create Deed Poll →'}
+          {isGenerating ? 'Generating...' : submitLabel}
         </button>
       </form>
     </div>
