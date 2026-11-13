@@ -83,7 +83,7 @@ export default function DeedPollForm({
       }
     } else {
       try {
-        const stored = sessionStorage.getItem('deedpoll_data');
+        const stored = sessionStorage.getItem('deedpoll_data') || localStorage.getItem('deedpoll_data');
         if (stored) {
            const decoded = JSON.parse(stored);
            setFormData(prev => ({ ...prev, ...decoded }));
@@ -171,9 +171,15 @@ export default function DeedPollForm({
     setIsGenerating(true);
 
     const { skipValidation: _skipValidation, ...dataToSave } = formData;
-    
-    // Save to sessionStorage
-    sessionStorage.setItem('deedpoll_data', JSON.stringify(dataToSave));
+    const serialized = JSON.stringify(dataToSave);
+
+    // Save to both sessionStorage and localStorage so mobile banking / PayPal app switches don't lose data
+    try {
+      sessionStorage.setItem('deedpoll_data', serialized);
+    } catch {}
+    try {
+      localStorage.setItem('deedpoll_data', serialized);
+    } catch {}
     
     if (onSuccess) {
       onSuccess(dataToSave);

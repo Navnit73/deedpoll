@@ -126,13 +126,17 @@ export function PaymentButton({
                 return;
               }
 
-              const capture = details.purchase_units?.[0]?.payments?.captures?.[0];
-              const captureOk = capture?.status === 'COMPLETED' || capture?.status === 'PENDING';
-              const amountOk = capture?.amount?.value === expectedValue && capture?.amount?.currency_code === currency;
+              const capture = details?.purchase_units?.[0]?.payments?.captures?.[0];
+              const orderOk = details?.status === 'COMPLETED' || details?.status === 'APPROVED';
+              const captureOk = !capture?.status || capture.status === 'COMPLETED' || capture.status === 'PENDING';
+              const amountOk =
+                !capture?.amount?.value ||
+                (Number(capture.amount.value) === Number(expectedValue) &&
+                  (!capture.amount.currency_code || capture.amount.currency_code === currency));
 
-              if (details.status !== 'COMPLETED' || !captureOk || !amountOk) {
-                console.error('PayPal capture not accepted:', details.status, capture?.status, capture?.amount);
-                showToast('Payment was not completed. You have not been charged.', 'error');
+              if (!orderOk || !captureOk || !amountOk) {
+                console.error('PayPal capture not accepted:', details?.status, capture?.status, capture?.amount);
+                showToast('Payment was not completed. Please contact support if you were charged.', 'error');
                 return;
               }
 

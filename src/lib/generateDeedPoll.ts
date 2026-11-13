@@ -268,13 +268,101 @@ export function generateDeedPoll(sub: DeedPollSubmission, isPaid: boolean = fals
     doc.restoreGraphicsState();
   }
 
-  // We return the base64 output, to render via `<iframe src={dataUri}>`
+  // We return both the Blob and base64 data URI for reliable previewing and downloading
   const pdfDataUri = doc.output('datauristring');
+  const pdfBlob = doc.output('blob');
 
   return {
     pdfDataUri,
+    pdfBlob,
     htmlPreview: html,
     pdfTooLong,
     title
   };
+}
+
+export function downloadDeedPollPdf(sub: DeedPollSubmission, filename: string = 'deed-poll.pdf'): string {
+  const { pdfBlob } = generateDeedPoll(sub, true);
+  const blobUrl = URL.createObjectURL(pdfBlob);
+
+  const link = document.createElement('a');
+  link.href = blobUrl;
+  link.download = filename;
+  link.style.display = 'none';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+
+  // In-app mobile WebViews (Instagram, Facebook, Google App, iOS Chrome/WKWebView) often ignore
+  // the `download` attribute on blob: URLs. Open the PDF directly as a fallback so the user can
+  // still view, share, or save it from the native viewer.
+  if (typeof navigator !== 'undefined' && /(CriOS|FxiOS|EdgiOS|GSA\/|FBAN|FBAV|Instagram|; wv\))/i.test(navigator.userAgent)) {
+    window.open(blobUrl, '_blank');
+  }
+
+  setTimeout(() => URL.revokeObjectURL(blobUrl), 60_000);
+  return blobUrl;
+}
+
+export function printDeedPoll(htmlPreview: string, title: string, iframeEl?: HTMLIFrameElement | null) {
+  const isMobile = typeof navigator !== 'undefined' && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+  if (!isMobile && iframeEl?.contentWindow) {
+    try {
+      iframeEl.contentWindow.focus();
+      iframeEl.contentWindow.print();
+      return;
+    } catch {
+      // Fall back to HTML print window below
+    }
+  }
+
+  const printWindow = window.open('', '_blank');
+  if (!printWindow) {
+    window.print();
+    return;
+  }
+
+  printWindow.document.write(`
+    <!DOCTYPE html>
+    <html lang="en-GB">
+      <head>
+        <meta charset="utf-8" />
+        <title>${title}</title>
+        <style>
+          @page { size: A4; margin: 20mm 18mm; }
+          body {
+            font-family: "Times New Roman", Times, serif;
+            color: #000;
+            line-height: 1.65;
+            font-size: 12pt;
+            max-width: 175mm;
+            margin: 0 auto;
+            padding: 10mm 0;
+            text-align: justify;
+          }
+          h2 {
+            font-size: 22pt;
+            text-align: center;
+            text-decoration: underline;
+            margin-bottom: 24pt;
+          }
+          p { margin: 0 0 14pt 0; }
+          .flex { display: flex; gap: 12pt; margin-bottom: 14pt; }
+          .mt-12 { margin-top: 28pt; }
+          .mt-8 { margin-top: 20pt; }
+          .space-y-8 > * + * { margin-top: 20pt; }
+        </style>
+      </head>
+      <body>
+        ${htmlPreview}
+        <script>
+          window.onload = function() {
+            setTimeout(function() { window.print(); }, 150);
+          };
+        </script>
+      </body>
+    </html>
+  `);
+  printWindow.document.close();
 }

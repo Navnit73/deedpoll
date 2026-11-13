@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { generateDeedPoll, DeedPollSubmission } from '@/lib/generateDeedPoll';
+import { generateDeedPoll, downloadDeedPollPdf, printDeedPoll, DeedPollSubmission } from '@/lib/generateDeedPoll';
 import ShareWidget from '@/components/ShareWidget';
 import { PaymentButton } from '@/components/payment/PaymentButton';
 import { PaymentState } from '@/types/payment';
@@ -20,7 +20,7 @@ const normaliseName = (name: string) => name.trim().replace(/\s+/g, ' ').toLower
 
 function readPaidOrder(): PaidOrder | null {
   try {
-    const stored = sessionStorage.getItem(PAID_STORAGE_KEY);
+    const stored = sessionStorage.getItem(PAID_STORAGE_KEY) || localStorage.getItem(PAID_STORAGE_KEY);
     if (!stored) return null;
     const parsed = JSON.parse(stored) as PaidOrder;
     return parsed && parsed.orderId && typeof parsed.oldName === 'string' ? parsed : null;
@@ -29,15 +29,19 @@ function readPaidOrder(): PaidOrder | null {
   }
 }
 
-function dataUriToBlobUrl(dataUri: string): string {
-  const [header, base64] = dataUri.split(',');
-  const mime = header.match(/data:([^;]+)/)?.[1] || 'application/pdf';
-  const bytes = Uint8Array.from(atob(base64), (c) => c.charCodeAt(0));
-  return URL.createObjectURL(new Blob([bytes], { type: mime }));
+function savePaidOrder(paidOrder: PaidOrder) {
+  const serialized = JSON.stringify(paidOrder);
+  try {
+    sessionStorage.setItem(PAID_STORAGE_KEY, serialized);
+  } catch {}
+  try {
+    localStorage.setItem(PAID_STORAGE_KEY, serialized);
+  } catch {}
 }
 
 export default function PreviewPage() {
   const router = useRouter();
+  const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const [pdfDataUri, setPdfDataUri] = useState<string | null>(null);
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
   const [htmlPreview, setHtmlPreview] = useState<string>('');
@@ -47,6 +51,7 @@ export default function PreviewPage() {
   const [isPaid, setIsPaid] = useState(false);
   const [orderId, setOrderId] = useState('');
   const [submissionData, setSubmissionData] = useState<DeedPollSubmission | null>(null);
+  const [downloadStatus, setDownloadStatus] = useState<'idle' | 'downloading' | 'downloaded'>('idle');
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -66,7 +71,9 @@ export default function PreviewPage() {
           }
         } catch(e) {}
       } else {
-        decodedStr = sessionStorage.getItem('deedpoll_data') || '';
+        try {
+          decodedStr = sessionStorage.getItem('deedpoll_data') || localStorage.getItem('deedpoll_data') || '';
+        } catch {}
         // Note: we leave hash as '' which is fine for the "Edit Details" link
       }
       
@@ -91,35 +98,51 @@ export default function PreviewPage() {
   }, [router]);
 
   useEffect(() => {
-    if (submissionData) {
-      try {
-        const result = generateDeedPoll(submissionData, isPaid);
-        setPdfDataUri(result.pdfDataUri);
-        setHtmlPreview(result.htmlPreview);
-        setPdfTooLong(result.pdfTooLong);
-        setTitle(result.title);
-        document.title = result.title;
-      } catch (e) {
-        console.error("Failed to generate PDF", e);
-      }
+    if (!submissionData) return;
+    let urlToRevoke: string | null = null;
+    try {
+      const result = generateDeedPoll(submissionData, isPaid);
+      const url = URL.createObjectURL(result.pdfBlob);
+      urlToRevoke = url;
+      setPdfDataUri(result.pdfDataUri);
+      setPdfUrl(url);
+      setHtmlPreview(result.htmlPreview);
+      setPdfTooLong(result.pdfTooLong);
+      setTitle(result.title);
+      document.title = result.title;
+    } catch (e) {
+      console.error("Failed to generate PDF", e);
     }
+    return () => {
+      if (urlToRevoke) {
+        const oldUrl = urlToRevoke;
+        setTimeout(() => URL.revokeObjectURL(oldUrl), 60_000);
+      }
+    };
   }, [submissionData, isPaid]);
 
-  // Chrome blocks opening data: URLs in a new tab, so serve the PDF from a blob URL instead.
-  useEffect(() => {
-    if (!pdfDataUri) return;
-    const url = dataUriToBlobUrl(pdfDataUri);
-    setPdfUrl(url);
-    return () => URL.revokeObjectURL(url);
-  }, [pdfDataUri]);
-
   const handlePaymentSuccess = (payment: PaymentState) => {
-    try {
-      const paidOrder: PaidOrder = { orderId: payment.orderID, oldName: normaliseName(submissionData?.oldName || '') };
-      sessionStorage.setItem(PAID_STORAGE_KEY, JSON.stringify(paidOrder));
-    } catch {}
+    const paidOrder: PaidOrder = { orderId: payment.orderID, oldName: normaliseName(submissionData?.oldName || '') };
+    savePaidOrder(paidOrder);
     setOrderId(payment.orderID);
     setIsPaid(true);
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const handleDownloadPdf = () => {
+    if (!submissionData) return;
+    setDownloadStatus('downloading');
+    try {
+      downloadDeedPollPdf(submissionData, 'deed-poll.pdf');
+    } catch (e) {
+      console.error('Failed to trigger PDF download', e);
+      if (pdfUrl) {
+        window.open(pdfUrl, '_blank');
+      }
+    }
+    setTimeout(() => setDownloadStatus('downloaded'), 250);
   };
 
   if (!pdfDataUri || !pdfUrl) {
@@ -158,7 +181,7 @@ export default function PreviewPage() {
         <section aria-label="Deed poll preview" className="order-2 lg:order-1 min-w-0">
           {/* On desktop the preview fills the screen height so the whole page fits without scrolling. */}
           <div className="border border-gray-300 shadow-md aspect-[1/1.414] lg:aspect-auto lg:h-[calc(100vh-11rem)] lg:min-h-[520px] w-full bg-gray-100">
-            <iframe src={pdfUrl} className="w-full h-full" title="PDF Preview" />
+            <iframe ref={iframeRef} src={pdfUrl} className="w-full h-full" title="PDF Preview" />
           </div>
         </section>
 
@@ -166,14 +189,38 @@ export default function PreviewPage() {
           {isPaid ? (
             <div className="border-2 border-[#00703c] bg-white p-4 sm:p-5 space-y-3">
               <p className="text-xl font-bold text-[#00703c]">Your deed poll is ready to print and use.</p>
-              <div className="flex flex-col gap-2">
-                <a href={pdfUrl} download="deed-poll.pdf" className="bg-[#00703c] hover:bg-[#005a30] text-white text-center font-bold py-3 px-6 transition-colors text-lg">
-                  Download PDF
+              <div className="flex flex-col gap-2.5">
+                <button
+                  type="button"
+                  onClick={handleDownloadPdf}
+                  className="bg-[#00703c] hover:bg-[#005a30] text-white text-center font-bold py-3 px-6 shadow-[0_3px_0_0_#002d18] active:shadow-none active:translate-y-[3px] transition-all text-lg cursor-pointer select-none"
+                >
+                  {downloadStatus === 'downloading'
+                    ? 'Downloading PDF...'
+                    : downloadStatus === 'downloaded'
+                    ? '✓ Downloaded — Tap to download again'
+                    : 'Download PDF'}
+                </button>
+                {downloadStatus === 'downloaded' && (
+                  <p className="text-xs sm:text-sm bg-green-50 border border-green-300 text-green-900 p-2.5 rounded">
+                    <strong>deed-poll.pdf</strong> has been sent to your device&apos;s <strong>Downloads</strong> folder. If it didn&apos;t open automatically, tap <strong>Open PDF</strong> or <strong>Print / Save as PDF</strong> below.
+                  </p>
+                )}
+                <a
+                  href={pdfUrl}
+                  target="_blank"
+                  className="bg-white border-2 border-[#1d70b8] text-[#1d70b8] hover:bg-blue-50 active:translate-y-[1px] text-center font-bold py-2 px-6 transition-all"
+                >
+                  Open PDF in Browser
                 </a>
-                <a href={pdfUrl} target="_blank" rel="noopener noreferrer" className="bg-white border-2 border-[#1d70b8] text-[#1d70b8] hover:bg-gray-50 text-center font-bold py-2 px-6 transition-colors">
-                  Open PDF
-                </a>
-                <Link href="/checklist" className="bg-[#1d70b8] hover:bg-[#003078] text-white text-center font-bold py-2 px-6 transition-colors">
+                <button
+                  type="button"
+                  onClick={() => printDeedPoll(htmlPreview, title, iframeRef.current)}
+                  className="bg-white border-2 border-gray-700 text-gray-900 hover:bg-gray-100 active:translate-y-[1px] text-center font-bold py-2 px-6 transition-all cursor-pointer"
+                >
+                  Print / Save as PDF
+                </button>
+                <Link href="/checklist" className="bg-[#1d70b8] hover:bg-[#003078] active:translate-y-[1px] text-white text-center font-bold py-2 px-6 transition-all">
                   What to do next →
                 </Link>
               </div>
@@ -183,7 +230,7 @@ export default function PreviewPage() {
                 </p>
               )}
               <p className="text-sm text-gray-600">
-                You can correct your details and download again at no extra cost until you close this browser tab.
+                You can correct your details and download again at no extra cost.
               </p>
             </div>
           ) : pdfTooLong ? (
